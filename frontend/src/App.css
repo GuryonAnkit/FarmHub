@@ -1,0 +1,8 @@
+body {
+    margin: 0;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    background-color: #82c777;
+}
+
+
