@@ -15,23 +15,6 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-// const theme = createTheme({
-//     components: {
-//        MuiTypography: {
-//          styleOverrides: {
-//            h1: {
-//              '&.MuiTypography-gutterBottom': {
-//                marginBottom: 32
-//              }
-//            },
-//            gutterBottom: {
-//              marginBottom: 8 //default e.g. body1/paragraphs
-//            }
-//          }
-//        }
-//      }
-//    })
-
 const StyledBox = styled(Box)({
     position: 'relative',
     '&::before': {
@@ -51,9 +34,27 @@ const StyledBox = styled(Box)({
     }
 });
 
+const LanguageSelect = styled(Select)({
+    '& .MuiOutlinedInput-notchedOutline': {
+        borderColor: 'white',
+    },
+    '&:hover .MuiOutlinedInput-notchedOutline': {
+        borderColor: 'white',
+    },
+    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+        borderColor: 'white',
+    },
+    '& .MuiSvgIcon-root': {
+        fill: 'white',
+    },
+    '& .MuiSelect-root': {
+        color: 'white',
+    },
+});
+
 export default function BasicGrid() {
 
-    const [lang, setLang] = useState('');
+    const [lang, setLang] = useState('English');
 
     return (
         <StyledBox>
@@ -84,12 +85,10 @@ export default function BasicGrid() {
                             <LinkedInIcon fontSize="large" />
                             <InstagramIcon fontSize="large" />
 
-                            <Box sx={{ minWidth: 80 }}>
-                                <FormControl fullWidth>
-                                    <InputLabel id="demo-simple-select-label">Language</InputLabel>
-                                    <Select
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
+                            <Box mt={5}>
+                                <FormControl sx={{ minWidth: '8em' }}>
+                                    <InputLabel id="demo-simple-select-label" sx={{ color: 'primary.main' }}>Language</InputLabel>
+                                    <LanguageSelect
                                         value={lang}
                                         label="Language"
                                         onChange={(event) => { setLang(event.target.value) }}
@@ -97,9 +96,9 @@ export default function BasicGrid() {
                                             color: 'primary.main',
                                         }}
                                     >
-                                        <MenuItem value={10}>Hindi</MenuItem>
-                                        <MenuItem value={20}>English</MenuItem>
-                                    </Select>
+                                        <MenuItem value='English'>English</MenuItem>
+                                        <MenuItem value='Hindi'>Hindi</MenuItem>
+                                    </LanguageSelect>
                                 </FormControl>
                             </Box>
                         </Grid>
