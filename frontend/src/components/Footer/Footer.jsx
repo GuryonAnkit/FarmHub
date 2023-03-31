@@ -81,10 +81,9 @@ export default function BasicGrid() {
                             </List>
                         </Grid>
                         <Grid item xs={4}>
-                            <Typography variant='h6'>SOCIAL LINKS</Typography>
+                            <Typography variant='h6' gutterBottom>SOCIAL LINKS</Typography>
                             <LinkedInIcon fontSize="large" />
-                            <InstagramIcon fontSize="large" />
-
+                            <InstagramIcon sx={{ ml: 1 }} fontSize="large" />
                             <Box mt={5}>
                                 <FormControl sx={{ minWidth: '8em' }}>
                                     <InputLabel id="demo-simple-select-label" sx={{ color: 'primary.main' }}>Language</InputLabel>
