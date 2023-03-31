@@ -11,7 +11,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 
 const pages = ['Crops', 'Services', 'Shop', 'SIGN-IN'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -40,7 +39,7 @@ function NavBar() {
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     {/* -------------------------------- LOGO Start -------------------------------- */}
-                    <img src="Images/main-logo.png" style={{ width: '5%' }} />
+                    <img src="Images/main-logo.png" alt='FarmHub Logo' style={{ width: '3.5%' }} />
                     {/* -------------------------------- LOGO End -------------------------------- */}
 
                     {/* -------------------------------- Responsive start -------------------------------- */}
