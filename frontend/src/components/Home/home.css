@@ -1,0 +1,50 @@
+
+  /* Testimonal Styling */
+  
+  .testimonial {
+    background: #07412B;
+    width: 40%;
+    height: 16rem;
+    padding: 60px;
+    margin: 20px auto;
+    border-radius: 50px;
+    min-width: 80%;
+  }
+  .main {
+    display : flex;
+    flex-direction: row;
+    align-items: center ;
+  }
+  
+  /* Cards */
+
+  .card{
+    margin: -3rem;
+  }
+  
+  .Client-Card {
+    display:flex;
+    color: rgb(255, 255, 255) ;
+    align-items: center ;
+    flex-direction: column ;
+    text-align: center ;
+  }
+  .avatar {
+    width: 15rem;
+    height: 16rem ;
+    padding: 3px;
+    border-radius:2rem;
+  }
+  .Name {
+    font-size: 20px;
+    font-weight: bolder;
+    color: rgb(255, 255, 255);
+  }
+  .heading {
+    text-align: center;
+    font-family: "Roboto";
+    color:rgb(255, 255, 255);
+    font-size: 20px;
+  }
+
+  

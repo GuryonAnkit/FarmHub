@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import SignIn from './SignIn'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,7 +13,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['Crops', 'Services', 'Shop', 'Sign in'];
+const pages = ['Crops', 'Services', 'Shop'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function NavBar() {
@@ -33,6 +34,8 @@ function NavBar() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const [loginDialog, setLoginDialog] = useState(false);
 
     return (
         <AppBar position="fixed">
@@ -104,6 +107,12 @@ function NavBar() {
                                 {page}
                             </Button>
                         ))}
+                        <Button
+                            onClick={() => { handleCloseNavMenu(); setLoginDialog(true); }}
+                            sx={{ my: 2, fontWeight: 'bold', color: 'tertiary.main', display: 'block' }}
+                        >
+                            Sign In
+                        </Button>
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
@@ -138,6 +147,7 @@ function NavBar() {
                     </Box>
                 </Toolbar>
             </Container>
+            <SignIn open={loginDialog} setOpen={setLoginDialog} />
         </AppBar>
     );
 }

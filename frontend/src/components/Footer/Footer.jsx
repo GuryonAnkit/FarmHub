@@ -9,7 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Box from '@mui/material/Box';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
-// import LanguageIcon from '@mui/icons-material/Language';
+import LanguageIcon from '@mui/icons-material/Language';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -61,7 +61,7 @@ export default function BasicGrid() {
             <Box component='div' position='relative' color='white' pt={5} pb={2}>
                 <Container>
                     <Grid container columnSpacing={0}>
-                        <Grid item xs={4}>
+                        <Grid item xs={12} sm={6} md={4}>
                             <img src="Images/main-logo.png" alt='FarmHub Logo' style={{ width: '35%' }} />
                             <List>
                                 <ListItem disablePadding> <ListItemText primary="Invertis University Bareilly , Uttar Pradesh" /> </ListItem>
@@ -69,8 +69,8 @@ export default function BasicGrid() {
                                 <ListItem disablePadding> <ListItemText primary="Phone: +1 1123 456 780" /> </ListItem>
                             </List>
                         </Grid>
-                        <Grid item xs={4}>
-                            <Typography variant='h6'>QUICK LINKS</Typography>
+                        <Grid item xs={12} sm={6} md={4}>
+                            <Typography variant='h6' mt={2} >QUICK LINKS</Typography>
                             <List>
                                 <ListItem disablePadding> <ListItemText primary="HOME" /> </ListItem>
                                 <ListItem disablePadding> <ListItemText primary="ABOUT US " /> </ListItem>
@@ -80,8 +80,8 @@ export default function BasicGrid() {
                                 <ListItem disablePadding> <ListItemText primary="Privacy Policy" /> </ListItem>
                             </List>
                         </Grid>
-                        <Grid item xs={4}>
-                            <Typography variant='h6' gutterBottom>SOCIAL LINKS</Typography>
+                        <Grid item xs={12} sm={6} md={4}>
+                            <Typography variant='h6' mt={2} gutterBottom>SOCIAL LINKS</Typography>
                             <LinkedInIcon fontSize="large" />
                             <InstagramIcon sx={{ ml: 1 }} fontSize="large" />
                             <Box mt={5}>
@@ -95,6 +95,8 @@ export default function BasicGrid() {
                                         onChange={(event) => { setLang(event.target.value) }}
                                         sx={{
                                             color: 'primary.main',
+                                            width: '10rem',
+                                            pl: 4
                                         }}
                                         MenuProps={{
                                             disableScrollLock: true,
@@ -103,6 +105,7 @@ export default function BasicGrid() {
                                         <MenuItem value='English'>English</MenuItem>
                                         <MenuItem value='Hindi'>Hindi</MenuItem>
                                     </LanguageSelect>
+                                    <LanguageIcon sx={{ position: 'absolute', top:'0.64em', left:'0.5em' }}/>
                                 </FormControl>
                             </Box>
                         </Grid>

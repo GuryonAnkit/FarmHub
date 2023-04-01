@@ -4,7 +4,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import Navbar from './components/Navbar/Navbar'
-import Home from './components/Home';
+import Home from './components/Home/Home';
 import Footer from "./components/Footer/Footer"
 import { Routes, Route, Outlet } from 'react-router-dom'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -14,13 +14,18 @@ import Box from '@mui/material/Box';
 const theme = createTheme({
     palette: {
         primary: {
-            main: grey[50]
+            main: grey[50],
+            contrastText: '#07412B',
         },
         secondary: {
             main: '#82c777',
         },
-        tertiary: {
+        tertiary : {
             main: '#00635A',
+        },
+        homeBtn : {
+            main: '#07412B',
+            contrastText: '#fff',
         }
     },
 });
