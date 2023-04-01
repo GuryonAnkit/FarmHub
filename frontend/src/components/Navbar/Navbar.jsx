@@ -35,7 +35,7 @@ function NavBar() {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="fixed">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     {/* -------------------------------- LOGO Start -------------------------------- */}
@@ -103,7 +103,7 @@ function NavBar() {
                             <Button
                                 key={page}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, fontWeight: 'bold', color: 'secondary.dark', display: 'block' }}
+                                sx={{ my: 2, fontWeight: 'bold', color: 'tertiary.main', display: 'block' }}
                             >
                                 {page}
                             </Button>
@@ -131,6 +131,7 @@ function NavBar() {
                             }}
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
+                            disableScrollLock={true}
                         >
                             {settings.map((setting) => (
                                 <MenuItem key={setting} onClick={handleCloseUserMenu}>

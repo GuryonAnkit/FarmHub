@@ -96,6 +96,9 @@ export default function BasicGrid() {
                                         sx={{
                                             color: 'primary.main',
                                         }}
+                                        MenuProps={{
+                                            disableScrollLock: true,
+                                        }}
                                     >
                                         <MenuItem value='English'>English</MenuItem>
                                         <MenuItem value='Hindi'>Hindi</MenuItem>
