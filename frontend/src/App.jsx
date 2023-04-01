@@ -6,7 +6,7 @@ import '@fontsource/roboto/700.css';
 import Navbar from './components/Navbar/Navbar'
 import Home from './components/Home';
 import Footer from "./components/Footer/Footer"
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Outlet } from 'react-router-dom'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import grey from '@mui/material/colors/grey';
 import Box from '@mui/material/Box';
@@ -21,7 +21,6 @@ const theme = createTheme({
         },
         tertiary: {
             main: '#00635A',
-            contrastText: '#fff'
         }
     },
 });
@@ -29,10 +28,12 @@ const theme = createTheme({
 export default function App() {
     return (
         <ThemeProvider theme={theme}>
-            <Navbar />
             <Box sx={{ mt: { xs: 6, sm: 8 }, mb: 5 }}>
                 <Routes>
-                    <Route path='/' element={<Home />} />
+                    <Route path='/' element={<><Navbar /><Outlet /></>}>
+                        <Route index element={<Home />} />
+                    </Route>
+                    <Route path='/signup' element={<></>} />
                 </Routes>
             </Box>
             <Footer />

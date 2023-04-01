@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['Crops', 'Services', 'Shop', 'SIGN-IN'];
+const pages = ['Crops', 'Services', 'Shop', 'Sign in'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function NavBar() {
@@ -37,13 +37,19 @@ function NavBar() {
     return (
         <AppBar position="fixed">
             <Container maxWidth="xl">
-                <Toolbar disableGutters>
+                <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
                     {/* -------------------------------- LOGO Start -------------------------------- */}
-                    <img src="Images/main-logo.png" alt='FarmHub Logo' style={{ width: '3.5%' }} />
+                    <Box
+                        component='img'
+                        display={{ xs: 'none', md: 'block' }}
+                        src="Images/main-logo.png"
+                        alt='FarmHub Logo'
+                        width='3.5rem'
+                    />
                     {/* -------------------------------- LOGO End -------------------------------- */}
 
                     {/* -------------------------------- Responsive start -------------------------------- */}
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                    <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
                             aria-label="account of current user"
@@ -71,6 +77,7 @@ function NavBar() {
                             sx={{
                                 display: { xs: 'block', md: 'none' },
                             }}
+                            disableScrollLock={true}
                         >
                             {pages.map((page) => (
                                 <MenuItem key={page} onClick={handleCloseNavMenu}>
@@ -79,24 +86,13 @@ function NavBar() {
                             ))}
                         </Menu>
                     </Box>
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href=""
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'flex', md: 'none' },
-                            flexGrow: 1,
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        LOGO
-                    </Typography>
+                    <Box
+                        component='img'
+                        width='3rem'
+                        display={{ xs: 'flex', md: 'none' }}
+                        src="Images/main-logo.png"
+                        alt='FarmHub Logo'
+                    />
                     {/* -------------------------------- Responsive end -------------------------------- */}
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
                         {pages.map((page) => (
