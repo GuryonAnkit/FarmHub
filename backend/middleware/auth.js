@@ -2,15 +2,15 @@ import passport from "passport";
 import { Strategy as LocalStrategy } from 'passport-local';
 import User from '../models/userModel';
 
-passport.use(new LocalStrategy({ usernameField: 'email' }, async (username, password, done) => {
+passport.use(new LocalStrategy({ usernameField: 'phoneNumber' }, async (username, password, done) => {
     try {
-        const user = await User.findOne({ email: username }).exec();
+        const user = await User.findOne({ phoneNumber: username }).exec();
         if (!user) {
-            return done(null, false, { message: 'Invalid Username or password' });
+            return done(null, false, { message: 'Invalid phoneNumber or password' });
         }
         const passwordOK = await user.comparePassword(password);
         if (!passwordOK) {
-            return done(null, false, { message: 'Invalid Username or password' });
+            return done(null, false, { message: 'Invalid phoneNumber or password' });
         }
         return done(null, user);
     } catch (err) {
