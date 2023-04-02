@@ -25,7 +25,7 @@ const featuredCrops = [
 
 function Crops() {
     return (
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" sx={{ mt: { xs: 6, sm: 8 } }}>
             <Typography
                 pt={7}
                 variant="h4"

@@ -13,7 +13,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import grey from '@mui/material/colors/grey';
 import Box from '@mui/material/Box';
 import Crops from './components/Crops/Crops' 
-import CropDetails from './components/Crops/CropsDetail';
+import CropDetails from './components/Crops/CropDetails';
+import SignUp from './components/Navbar/SignUp';
 
 const theme = createTheme({
     palette: {
@@ -26,6 +27,7 @@ const theme = createTheme({
         },
         tertiary: {
             main: '#00635A',
+            contrastText: '#fff',
         },
         homeBtn: {
             main: '#07412B',
@@ -52,16 +54,20 @@ export default function App() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Box sx={{ mt: { xs: 6, sm: 8 } }}>
                 <Routes>
-                    <Route path='/' element={<><Navbar setTrigger={setTrigger}/><Outlet /><Footer /></>}>
+                    <Route path='/' element={
+                        <>
+                            <Navbar setTrigger={setTrigger} user={user} />
+                            <Outlet />
+                            <Footer />
+                        </>
+                    }>
                         <Route index element={<Home />} />
                         <Route path='/crops' element={<Crops/>} />
                         <Route path='/crops/:crop' element={<CropDetails/>} />
                     </Route>
-                    <Route path='/signup' element={<></>} />
+                    <Route path='/signup' element={<SignUp/>} />
                 </Routes>
-            </Box>
         </ThemeProvider>
     );
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 import { Link } from "react-router-dom";
 import SignIn from './SignIn'
 import AppBar from '@mui/material/AppBar';
@@ -20,19 +21,18 @@ const pages = [
     {
         name: 'Crops',
         link: '/crops'
-    }, 
+    },
     {
         name: 'Services',
         link: '/'
-    }, 
+    },
     {
         name: 'Shop',
         link: '/'
     }
 ];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function NavBar({ setTrigger }) {
+function NavBar({ user, setTrigger }) {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -52,6 +52,12 @@ function NavBar({ setTrigger }) {
     };
 
     const [loginDialog, setLoginDialog] = useState(false);
+
+    function signOut() {
+        axios.get(`http://localhost:4000/user/logout`, { withCredentials: true })
+            .then(() => setTrigger(prevValue => !prevValue))
+            .catch((err) => console.log(err));
+    }
 
     return (
         <AppBar position="fixed">
@@ -127,26 +133,61 @@ function NavBar({ setTrigger }) {
                                 {page.name}
                             </Button>
                         ))}
-                        <Button
-                            onClick={() => { handleCloseNavMenu(); setLoginDialog(true); }}
-                            sx={{ my: 2, fontWeight: 'bold', color: 'tertiary.main', display: 'block' }}
-                        >
-                            Sign In
-                        </Button>
+                        {!user ?
+                            <Button
+                                onClick={() => { handleCloseNavMenu(); setLoginDialog(true); }}
+                                sx={{ my: 2, fontWeight: 'bold', color: 'tertiary.main', display: 'block' }}
+                            >
+                                Sign In
+                            </Button>
+                            : null
+                        }
                     </Box>
-                        <IconButton >
-                            <SearchIcon color="tertiary"/>
-                        </IconButton>
-                        <IconButton >
-                            <ShoppingCartIcon color="tertiary"/>
-                        </IconButton>
-
-                    {/* <Box sx={{ flexGrow: 0 }}>
-                        
-                    </Box> */}
+                    <IconButton >
+                        <SearchIcon color="tertiary" />
+                    </IconButton>
+                    {user ?
+                        <>
+                            <IconButton >
+                                <ShoppingCartIcon color="tertiary" />
+                            </IconButton>
+                            <Box sx={{ flexGrow: 0 }}>
+                                <Tooltip title="Open settings">
+                                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                        <Avatar alt="Remy Sharp" src={user.avatar} />
+                                    </IconButton>
+                                </Tooltip>
+                                <Menu
+                                    sx={{ mt: '45px' }}
+                                    id="menu-appbar"
+                                    anchorEl={anchorElUser}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    open={Boolean(anchorElUser)}
+                                    onClose={handleCloseUserMenu}
+                                    disableScrollLock={true}
+                                >
+                                    <MenuItem onClick={handleCloseUserMenu}>
+                                        <Typography textAlign="center">Profile</Typography>
+                                    </MenuItem>
+                                    <MenuItem onClick={() => { signOut(); handleCloseUserMenu() }}>
+                                        <Typography textAlign="center">Sign Out</Typography>
+                                    </MenuItem>
+                                </Menu>
+                            </Box>
+                        </>
+                        : null
+                    }
                 </Toolbar>
             </Container>
-            <SignIn open={loginDialog} setOpen={setLoginDialog} setTrigger={setTrigger}/>
+            <SignIn open={loginDialog} setOpen={setLoginDialog} setTrigger={setTrigger} />
         </AppBar>
     );
 }

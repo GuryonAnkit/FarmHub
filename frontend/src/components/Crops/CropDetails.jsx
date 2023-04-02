@@ -13,10 +13,10 @@ const items = [
 
 function CropDetail() {
 
-    const { crop } = useParams;
+    // const { crop } = useParams;
 
     return (
-        <Container>
+        <Container sx={{ mt: { xs: 6, sm: 8 } }}>
             <Typography
                 pt={7}
                 variant="h4"
@@ -42,16 +42,17 @@ function CropDetail() {
                         height: '100%',
                         width: '100%',
                         backgroundColor: 'primary.main',
-                        color: 'white'
+                        color: 'white',
+                        marginBottom:'1rem'
                     }}
-                        
+                      
                     >
                     <Box width='10em'>
                         <CardMedia
                             component="img"
                             width="100%"
                             height="100%"
-                            image='Images/combine.jpg'
+                            image='Images/wheat.jpg'
                             alt="Cereal"
                         />
                     </Box>
