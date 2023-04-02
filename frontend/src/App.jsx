@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios'
 import './App.css';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -10,6 +12,8 @@ import { Routes, Route, Outlet } from 'react-router-dom'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import grey from '@mui/material/colors/grey';
 import Box from '@mui/material/Box';
+import Crops from './components/Crops/Crops' 
+import CropDetails from './components/Crops/CropsDetail';
 
 const theme = createTheme({
     palette: {
@@ -31,12 +35,29 @@ const theme = createTheme({
 });
 
 export default function App() {
+    
+    // -------------------------------- User --------------------------------
+
+    const [user, setUser] = useState(null);
+    const [updateTrigger, setTrigger] = useState(false);
+
+    useEffect(() => {
+        axios.get(`http://localhost:4000/user`, { withCredentials: true })
+            .then((response) => {
+                if (response) setUser(response.data)
+                else setUser(null);
+            })
+            .catch((err) => console.log(err));
+    }, [updateTrigger]);
+
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{ mt: { xs: 6, sm: 8 } }}>
                 <Routes>
-                    <Route path='/' element={<><Navbar /><Outlet /><Footer /></>}>
+                    <Route path='/' element={<><Navbar setTrigger={setTrigger}/><Outlet /><Footer /></>}>
                         <Route index element={<Home />} />
+                        <Route path='/crops' element={<Crops/>} />
+                        <Route path='/crops/:crop' element={<CropDetails/>} />
                     </Route>
                     <Route path='/signup' element={<></>} />
                 </Routes>

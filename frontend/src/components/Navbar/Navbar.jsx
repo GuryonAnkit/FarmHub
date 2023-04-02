@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 import SignIn from './SignIn'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,11 +13,26 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import SearchIcon from '@mui/icons-material/Search';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-const pages = ['Crops', 'Services', 'Shop'];
+const pages = [
+    {
+        name: 'Crops',
+        link: '/crops'
+    }, 
+    {
+        name: 'Services',
+        link: '/'
+    }, 
+    {
+        name: 'Shop',
+        link: '/'
+    }
+];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function NavBar() {
+function NavBar({ setTrigger }) {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -42,13 +58,15 @@ function NavBar() {
             <Container maxWidth="xl">
                 <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
                     {/* -------------------------------- LOGO Start -------------------------------- */}
-                    <Box
-                        component='img'
-                        display={{ xs: 'none', md: 'block' }}
-                        src="Images/main-logo.png"
-                        alt='FarmHub Logo'
-                        width='3.5rem'
-                    />
+                    <Link to='/'>
+                        <Box
+                            component='img'
+                            display={{ xs: 'none', md: 'block' }}
+                            src="Images/main-logo.png"
+                            alt='FarmHub Logo'
+                            width='3.5rem'
+                        />
+                    </Link>
                     {/* -------------------------------- LOGO End -------------------------------- */}
 
                     {/* -------------------------------- Responsive start -------------------------------- */}
@@ -83,8 +101,8 @@ function NavBar() {
                             disableScrollLock={true}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                                <MenuItem component={Link} to={page.link} key={page.name} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">{page.name}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -100,11 +118,13 @@ function NavBar() {
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
                         {pages.map((page) => (
                             <Button
-                                key={page}
+                                component={Link}
+                                to={page.link}
+                                key={page.name}
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, fontWeight: 'bold', color: 'tertiary.main', display: 'block' }}
                             >
-                                {page}
+                                {page.name}
                             </Button>
                         ))}
                         <Button
@@ -114,40 +134,19 @@ function NavBar() {
                             Sign In
                         </Button>
                     </Box>
+                        <IconButton >
+                            <SearchIcon color="tertiary"/>
+                        </IconButton>
+                        <IconButton >
+                            <ShoppingCartIcon color="tertiary"/>
+                        </IconButton>
 
-                    <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                            disableScrollLock={true}
-                        >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
+                    {/* <Box sx={{ flexGrow: 0 }}>
+                        
+                    </Box> */}
                 </Toolbar>
             </Container>
-            <SignIn open={loginDialog} setOpen={setLoginDialog} />
+            <SignIn open={loginDialog} setOpen={setLoginDialog} setTrigger={setTrigger}/>
         </AppBar>
     );
 }

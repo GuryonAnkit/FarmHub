@@ -9,6 +9,7 @@ import CardContent from '@mui/material/CardContent';
 import Carousel from 'react-material-ui-carousel'
 import Container from '@mui/material/Container'
 
+
 const VideoBox = styled(Box)({
     position: 'relative',
     '& video': {
@@ -44,17 +45,17 @@ const CaptionBox = styled(Stack)({
 
 const featuredCrops = [
     {
-        name: 'WHEAT',
+        name: 'Wheat',
         image: 'Images/wheat.jpg',
         link: ''
     },
     {
-        name: 'CARROT',
+        name: 'Carrot',
         image: 'Images/Carrot.JPG',
         link: ''
     },
     {
-        name: 'WATERMELON',
+        name: 'Watermelon',
         image: 'Images/watermelon.webp',
         link: ''
     }
@@ -63,13 +64,13 @@ const featuredCrops = [
 const items = [
     {
         image: "Images/m.s-swaminathan.jpg",
-        name: "DR. M.S. SWAMINATHAN",
-        message: "I have been using FarmHub website for over a year now and it has been a game-changer for me. The website provides me with all information I need to make informed decisionsabout my crops, including weather forecasts, market prices, and information on fertilizers, seeds, machinery, etc. The user-friendly interface and option to use the website in different languages makes it more widely accesible"
+        name: "Dr. M.S. Swaminathan",
+        message: '"I have been using FarmHub website for over a year now and it has been a game-changer for me. The website provides me with all information I need to make informed decisionsabout my crops, including weather forecasts, market prices, and information on fertilizers, seeds, machinery, etc. The user-friendly interface and option to use the website in different languages makes it more widely accesible"'
     },
     {
         image: "Images/m.s-swaminathan.jpg",
-        name: "DR. M.S. SWAMINATHAN",
-        message: "I have been using FarmHub website for over a year now and it has been a game-changer for me. The website provides me with all information I need to make informed decisionsabout my crops, including weather forecasts, market prices, and information on fertilizers, seeds, machinery, etc. The user-friendly interface and option to use the website in different languages makes it more widely accesible"
+        name: "Dr. M.S. Swaminathan",
+        message: '"I have been using FarmHub website for over a year now and it has been a game-changer for me. The website provides me with all information I need to make informed decisionsabout my crops, including weather forecasts, market prices, and information on fertilizers, seeds, machinery, etc. The user-friendly interface and option to use the website in different languages makes it more widely accesible"'
     }
 ]
 
@@ -142,9 +143,12 @@ export default function Home() {
             </VideoBox>
 
             <Container maxWidth="lg">
+                <Typography mt={8} variant="h4" fontWeight='500' textAlign='center' color="tertiary" gutterBottom>
+                    Top Profitable Crops
+                </Typography>
                 <Stack direction='row' justifyContent='space-between'>
                     {featuredCrops.map((crop) => (
-                        <Card sx={{ maxWidth: 345, mt: 8, position: 'relative' }} key={crop.name}>
+                        <Card sx={{ maxWidth: 345, position: 'relative' }} key={crop.name}>
                             <CardMedia
                                 component="img"
                                 width='100%'
@@ -155,22 +159,26 @@ export default function Home() {
 
                             />
                             <Typography
-                                variant="h4"
+                                variant="h5"
                                 color='primary'
                                 sx={{
                                     position: 'absolute',
-                                    bottom: '0.5rem',
+                                    bottom: 0,
                                     left: 0,
                                     right: 0,
                                     textAlign: 'center',
-                                    paddingTop: '60px'
+                                    pt: 12,
+                                    pb: 1,
+                                    background: 'linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent)'
                                 }}>
                                 {crop.name}
                             </Typography>
                         </Card>
                     ))}
                 </Stack>
-
+                <Typography mt={8} variant="h4" fontWeight='500' textAlign='center' color="tertiary" gutterBottom>
+                    Testimonials
+                </Typography>
                 <Carousel
                     navButtonsAlwaysInvisible={true}
                     animation='slide'
@@ -182,7 +190,7 @@ export default function Home() {
                     }}
                     activeIndicatorIconButtonProps={{
                         style: {
-                            color: '#82c777' // 2
+                            color: '#07412B' // 2
                         }
                     }}
                     indicatorContainerProps={{
@@ -193,7 +201,7 @@ export default function Home() {
                         }
 
                     }}
-                    sx={{ position: 'relative', mt: 8 }}
+                    sx={{ position: 'relative', width: '80%', m: 'auto', mt: 2, borderRadius: '1em' }}
                 >
                     {items.map(item => (
                         <Card
@@ -203,17 +211,20 @@ export default function Home() {
                                 backgroundColor: 'tertiary.main',
                                 color: 'white'
                             }}>
+                            <Box width='60em'>
                             <CardMedia
                                 component="img"
-                                sx={{ width: '20%' }}
+                                width="100%"
+                                height="100%"
                                 image={item.image}
                                 alt="Live from space album cover"
                             />
+                            </Box>
                             <CardContent sx={{ p: 4 }}>
                                 <Typography variant="subtitle1" component="div">
                                     {item.message}
                                 </Typography>
-                                <Typography component="div" variant="h5">
+                                <Typography component="div" variant="h5" mt={6}>
                                     {item.name}
                                 </Typography>
                             </CardContent>
