@@ -62,20 +62,8 @@ function NavBar({ user, setTrigger }) {
     return (
         <AppBar position="fixed">
             <Container maxWidth="xl">
-                <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
-                    {/* -------------------------------- LOGO Start -------------------------------- */}
-                    <Link to='/'>
-                        <Box
-                            component='img'
-                            display={{ xs: 'none', md: 'block' }}
-                            src="Images/main-logo.png"
-                            alt='FarmHub Logo'
-                            width='3.5rem'
-                        />
-                    </Link>
-                    {/* -------------------------------- LOGO End -------------------------------- */}
-
-                    {/* -------------------------------- Responsive start -------------------------------- */}
+                <Toolbar disableGutters>
+                    {/* -------------------------------- Mobile View -------------------------------- */}
                     <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
@@ -85,7 +73,7 @@ function NavBar({ user, setTrigger }) {
                             onClick={handleOpenNavMenu}
                             color="inherit"
                         >
-                            <MenuIcon />
+                            <MenuIcon fontSize='inherit'/>
                         </IconButton>
                         <Menu
                             id="menu-appbar"
@@ -111,24 +99,58 @@ function NavBar({ user, setTrigger }) {
                                     <Typography textAlign="center">{page.name}</Typography>
                                 </MenuItem>
                             ))}
+                            {!user ?
+                                <MenuItem onClick={() => { handleCloseNavMenu(); setLoginDialog(true); }}>
+                                    <Typography textAlign="center">Sign In</Typography>
+                                </MenuItem>
+                                : null
+                            }
                         </Menu>
                     </Box>
                     <Box
-                        component='img'
-                        width='3rem'
-                        display={{ xs: 'flex', md: 'none' }}
-                        src="Images/main-logo.png"
-                        alt='FarmHub Logo'
-                    />
-                    {/* -------------------------------- Responsive end -------------------------------- */}
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
+                        component={Link}
+                        to='/'
+                        sx={{
+                            display: { xs: 'flex', md: 'none' },
+                            ml: 1
+                        }}>
+                        <Box
+                            component='img'
+                            src="Images/main-logo.png"
+                            alt='FarmHub Logo'
+                            width='2.5rem'
+                        />
+                    </Box>
+                    {/* -------------------------------- Desktop View -------------------------------- */}
+                    <Box
+                        sx={{
+                            flex: '1 1 0',
+                            width: 0,
+                            display: { xs: 'none', md: 'flex' }
+                        }}>
+                        <Link to='/'>
+                        <Box
+                            component='img'
+                            src="Images/main-logo.png"
+                            alt='FarmHub Logo'
+                            width='3.5rem'
+                        />
+                        </Link>
+                    </Box>
+                    <Box
+                        sx={{
+                            flex: '1 1 0',
+                            width: 0,
+                            display: { xs: 'none', md: 'flex' },
+                            justifyContent: 'center'
+                        }}>
                         {pages.map((page) => (
                             <Button
                                 component={Link}
                                 to={page.link}
                                 key={page.name}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, fontWeight: 'bold', color: 'tertiary.main', display: 'block' }}
+                                sx={{ my: 2, fontWeight: 'bold', minWidth: 0, color: 'tertiary.main', display: 'block' }}
                             >
                                 {page.name}
                             </Button>
@@ -143,17 +165,24 @@ function NavBar({ user, setTrigger }) {
                             : null
                         }
                     </Box>
-                    <IconButton >
-                        <SearchIcon color="tertiary" />
-                    </IconButton>
-                    {user ?
-                        <>
-                            <IconButton >
-                                <ShoppingCartIcon color="tertiary" />
-                            </IconButton>
-                            <Box sx={{ flexGrow: 0 }}>
+                    {/* -------------------------------- Universal View -------------------------------- */}
+                    <Box 
+                        sx={{ 
+                            display: 'flex',
+                            flex: '1 1 0', 
+                            width: 0, 
+                            justifyContent: 'flex-end',
+                        }}>
+                        <IconButton size='large'>
+                            <SearchIcon color="tertiary" fontSize='inherit' />
+                        </IconButton>
+                        {user ?
+                            <>
+                                <IconButton size='large'>
+                                    <ShoppingCartIcon color="tertiary" fontSize='inherit' />
+                                </IconButton>
                                 <Tooltip title="Open settings">
-                                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, mx: 1 }}>
                                         <Avatar alt="Remy Sharp" src={user.avatar} />
                                     </IconButton>
                                 </Tooltip>
@@ -181,10 +210,10 @@ function NavBar({ user, setTrigger }) {
                                         <Typography textAlign="center">Sign Out</Typography>
                                     </MenuItem>
                                 </Menu>
-                            </Box>
-                        </>
-                        : null
-                    }
+                            </>
+                            : null
+                        }
+                    </Box>
                 </Toolbar>
             </Container>
             <SignIn open={loginDialog} setOpen={setLoginDialog} setTrigger={setTrigger} />
