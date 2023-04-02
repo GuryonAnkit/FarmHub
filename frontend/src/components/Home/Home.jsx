@@ -8,7 +8,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Carousel from 'react-material-ui-carousel'
 import Container from '@mui/material/Container'
-
+import Grid from '@mui/material/Grid';
 
 const VideoBox = styled(Box)({
     position: 'relative',
@@ -143,40 +143,49 @@ export default function Home() {
             </VideoBox>
 
             <Container maxWidth="lg">
-                <Typography mt={8} variant="h4" fontWeight='500' textAlign='center' color="tertiary" gutterBottom>
+                <Typography mt={8} variant="h4" fontWeight='500' textAlign='center' color="tertiary" mb={3}>
                     Top Profitable Crops
                 </Typography>
-                <Stack direction='row' justifyContent='space-between'>
+                <Grid container spacing={4}>
                     {featuredCrops.map((crop) => (
-                        <Card sx={{ maxWidth: 345, position: 'relative' }} key={crop.name}>
-                            <CardMedia
-                                component="img"
-                                width='100%'
-                                height='100%'
-                                image={crop.image}
-                                alt="Wheat"
-                                sx={{ objectFit: 'cover' }}
+                        <Grid item xs={12} sm={6} md={4}>
+                            <Card 
+                                sx={{ 
+                                    width: '100%',
+                                    height: '18rem', 
+                                    position: 'relative', 
+                                    borderRadius: '1rem'
+                                }} 
+                                key={crop.name}>
+                                <CardMedia
+                                    component="img"
+                                    width='100%'
+                                    height='100%'
+                                    image={crop.image}
+                                    alt="Wheat"
+                                    sx={{ objectFit: 'cover' }}
 
-                            />
-                            <Typography
-                                variant="h5"
-                                color='primary'
-                                sx={{
-                                    position: 'absolute',
-                                    bottom: 0,
-                                    left: 0,
-                                    right: 0,
-                                    textAlign: 'center',
-                                    pt: 12,
-                                    pb: 1,
-                                    background: 'linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent)'
-                                }}>
-                                {crop.name}
-                            </Typography>
-                        </Card>
+                                />
+                                <Typography
+                                    variant="h5"
+                                    color='primary'
+                                    sx={{
+                                        position: 'absolute',
+                                        bottom: 0,
+                                        left: 0,
+                                        right: 0,
+                                        textAlign: 'center',
+                                        pt: 16,
+                                        pb: 2,
+                                        background: 'linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent)'
+                                    }}>
+                                    {crop.name}
+                                </Typography>
+                            </Card>
+                        </Grid>
                     ))}
-                </Stack>
-                <Typography mt={8} variant="h4" fontWeight='500' textAlign='center' color="tertiary" gutterBottom>
+                </Grid>
+                <Typography mt={8} variant="h4" fontWeight='500' textAlign='center' color="tertiary">
                     Testimonials
                 </Typography>
                 <Carousel
@@ -201,7 +210,7 @@ export default function Home() {
                         }
 
                     }}
-                    sx={{ position: 'relative', width: '80%', m: 'auto', mt: 2, borderRadius: '1em' }}
+                    sx={{ position: 'relative', width: '80%', m: 'auto', mt: 3, borderRadius: '1em' }}
                 >
                     {items.map(item => (
                         <Card
@@ -213,13 +222,13 @@ export default function Home() {
                                 color: 'white'
                             }}>
                             <Box width='60em'>
-                            <CardMedia
-                                component="img"
-                                width="100%"
-                                height="100%"
-                                image={item.image}
-                                alt="Live from space album cover"
-                            />
+                                <CardMedia
+                                    component="img"
+                                    width="100%"
+                                    height="100%"
+                                    image={item.image}
+                                    alt="Live from space album cover"
+                                />
                             </Box>
                             <CardContent sx={{ p: 4 }}>
                                 <Typography variant="subtitle1" component="div">
