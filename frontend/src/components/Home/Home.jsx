@@ -5,9 +5,9 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button'
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
 import Carousel from 'react-material-ui-carousel'
-import Avatar from '@mui/material/Avatar';
-import './home.css'
+import Container from '@mui/material/Container'
 
 const VideoBox = styled(Box)({
     position: 'relative',
@@ -61,6 +61,11 @@ const featuredCrops = [
 ]
 
 const items = [
+    {
+        image: "Images/m.s-swaminathan.jpg",
+        name: "DR. M.S. SWAMINATHAN",
+        message: "I have been using FarmHub website for over a year now and it has been a game-changer for me. The website provides me with all information I need to make informed decisionsabout my crops, including weather forecasts, market prices, and information on fertilizers, seeds, machinery, etc. The user-friendly interface and option to use the website in different languages makes it more widely accesible"
+    },
     {
         image: "Images/m.s-swaminathan.jpg",
         name: "DR. M.S. SWAMINATHAN",
@@ -136,61 +141,86 @@ export default function Home() {
                 </CaptionBox>
             </VideoBox>
 
-            <Stack direction='row' justifyContent='center'>
-                {featuredCrops.map((crop) => (
-                    <Card sx={{ maxWidth: 345, mt: 5, mx: 3, position: 'relative' }} >
-                        <CardMedia
-                            component="img"
-                            height='200px'
-                            image={crop.image}
-                            alt="Wheat"
-                            sx={{objectFit:'cover'}}
+            <Container maxWidth="lg">
+                <Stack direction='row' justifyContent='space-between'>
+                    {featuredCrops.map((crop) => (
+                        <Card sx={{ maxWidth: 345, mt: 8, position: 'relative' }} key={crop.name}>
+                            <CardMedia
+                                component="img"
+                                width='100%'
+                                height='100%'
+                                image={crop.image}
+                                alt="Wheat"
+                                sx={{ objectFit: 'cover' }}
 
-                        />
-                        <Typography
-                            variant="h4"
-                            color='primary'
+                            />
+                            <Typography
+                                variant="h4"
+                                color='primary'
+                                sx={{
+                                    position: 'absolute',
+                                    bottom: '0.5rem',
+                                    left: 0,
+                                    right: 0,
+                                    textAlign: 'center',
+                                    paddingTop: '60px'
+                                }}>
+                                {crop.name}
+                            </Typography>
+                        </Card>
+                    ))}
+                </Stack>
+
+                <Carousel
+                    navButtonsAlwaysInvisible={true}
+                    animation='slide'
+                    indicatorIconButtonProps={{
+                        style: {
+                            color: 'white',
+                        },
+
+                    }}
+                    activeIndicatorIconButtonProps={{
+                        style: {
+                            color: '#82c777' // 2
+                        }
+                    }}
+                    indicatorContainerProps={{
+                        style: {
+                            position: 'absolute',
+                            bottom: '0.5em',
+                            zIndex: 1
+                        }
+
+                    }}
+                    sx={{ position: 'relative', mt: 8 }}
+                >
+                    {items.map(item => (
+                        <Card
                             sx={{
-                                position: 'absolute',
-                                bottom: '0.5rem',
-                                left: 0,
-                                right: 0,
-                                textAlign: 'center',
-                                paddingTop: '60px'
+                                display: 'flex',
+                                height: '20rem',
+                                backgroundColor: 'tertiary.main',
+                                color: 'white'
                             }}>
-                            {crop.name}
-                        </Typography>
-                    </Card>
-                ))}
-            </Stack>
-
-            <div className="testimonial">
-                <div className='card'>
-                    <h1 className="heading">Testimonial Slider</h1>
-                    <Carousel>
-                        {items.map((test) => (
-                            <div className="main">
-                                    <img
-                                        className="avatar"
-                                        src={test.image}
-                                    />
-                                <div className="Client-Card">
-                                    <p style={{ marginTop: 25 }}>
-                                        <span>&ldquo;</span>
-                                        {test.message}
-                                    </p>
-                                    <p>
-                                        <span className="Name">
-                                            {test.name}
-                                        </span>
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </Carousel>
-                </div>
-            </div>
+                            <CardMedia
+                                component="img"
+                                sx={{ width: '20%' }}
+                                image={item.image}
+                                alt="Live from space album cover"
+                            />
+                            <CardContent sx={{ p: 4 }}>
+                                <Typography variant="subtitle1" component="div">
+                                    {item.message}
+                                </Typography>
+                                <Typography component="div" variant="h5">
+                                    {item.name}
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    ))}
+                </Carousel>
+            </Container>
         </>
-
     )
 }

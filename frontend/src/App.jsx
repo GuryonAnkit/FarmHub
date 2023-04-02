@@ -20,10 +20,10 @@ const theme = createTheme({
         secondary: {
             main: '#82c777',
         },
-        tertiary : {
+        tertiary: {
             main: '#00635A',
         },
-        homeBtn : {
+        homeBtn: {
             main: '#07412B',
             contrastText: '#fff',
         }
@@ -33,15 +33,14 @@ const theme = createTheme({
 export default function App() {
     return (
         <ThemeProvider theme={theme}>
-            <Box sx={{ mt: { xs: 6, sm: 8 }, mb: 5 }}>
+            <Box sx={{ mt: { xs: 6, sm: 8 } }}>
                 <Routes>
-                    <Route path='/' element={<><Navbar /><Outlet /></>}>
+                    <Route path='/' element={<><Navbar /><Outlet /><Footer /></>}>
                         <Route index element={<Home />} />
                     </Route>
                     <Route path='/signup' element={<></>} />
                 </Routes>
             </Box>
-            <Footer />
         </ThemeProvider>
     );
 }

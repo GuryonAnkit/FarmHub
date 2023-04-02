@@ -19,7 +19,6 @@ export default function FormDialog({ open, setOpen }) {
                     color='tertiary'
                     autoFocus
                     margin="dense"
-                    id="name"
                     label="Phone No."
                     fullWidth
                     variant="standard"
@@ -28,7 +27,6 @@ export default function FormDialog({ open, setOpen }) {
                     color='tertiary'
                     autoFocus
                     margin="dense"
-                    id="name"
                     label="Password"
                     type='password'
                     fullWidth

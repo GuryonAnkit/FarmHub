@@ -58,9 +58,9 @@ export default function BasicGrid() {
 
     return (
         <StyledBox>
-            <Box component='div' position='relative' color='white' pt={5} pb={2}>
+            <Box component='div' position='relative' color='white' mt={8} pt={8} pb={2}>
                 <Container>
-                    <Grid container columnSpacing={0}>
+                    <Grid container columnSpacing={4} rowSpacing={8}>
                         <Grid item xs={12} sm={6} md={4}>
                             <img src="Images/main-logo.png" alt='FarmHub Logo' style={{ width: '35%' }} />
                             <List>
@@ -70,7 +70,7 @@ export default function BasicGrid() {
                             </List>
                         </Grid>
                         <Grid item xs={12} sm={6} md={4}>
-                            <Typography variant='h6' mt={2} >QUICK LINKS</Typography>
+                            <Typography variant='h6'>QUICK LINKS</Typography>
                             <List>
                                 <ListItem disablePadding> <ListItemText primary="HOME" /> </ListItem>
                                 <ListItem disablePadding> <ListItemText primary="ABOUT US " /> </ListItem>
@@ -81,7 +81,7 @@ export default function BasicGrid() {
                             </List>
                         </Grid>
                         <Grid item xs={12} sm={6} md={4}>
-                            <Typography variant='h6' mt={2} gutterBottom>SOCIAL LINKS</Typography>
+                            <Typography variant='h6' gutterBottom>SOCIAL LINKS</Typography>
                             <LinkedInIcon fontSize="large" />
                             <InstagramIcon sx={{ ml: 1 }} fontSize="large" />
                             <Box mt={5}>
@@ -109,7 +109,7 @@ export default function BasicGrid() {
                                 </FormControl>
                             </Box>
                         </Grid>
-                        <Grid item xs={12} mt={5}>
+                        <Grid item xs={12}>
                             <Typography variant='subtitle2' align='center'>
                                 2023 All Rights Reserved,Developed By 4A's
                             </Typography>
