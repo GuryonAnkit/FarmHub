@@ -26,7 +26,7 @@ const StyledBox = styled(Box)({
         width: '100%',
         height: '100%',
         opacity: 0.8,
-        backgroundImage: `url(Images/combine.jpg)`,
+        backgroundImage: `url(/Images/combine.jpg)`,
         filter: 'brightness(50%)',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center center',
@@ -62,7 +62,7 @@ export default function BasicGrid() {
                 <Container>
                     <Grid container columnSpacing={4} rowSpacing={8}>
                         <Grid item xs={12} sm={6} md={4}>
-                            <img src="Images/main-logo.png" alt='FarmHub Logo' style={{ width: '35%' }} />
+                            <img src="/Images/main-logo.png" alt='FarmHub Logo' style={{ width: '35%' }} />
                             <List>
                                 <ListItem disablePadding> <ListItemText primary="Invertis University Bareilly , Uttar Pradesh" /> </ListItem>
                                 <ListItem disablePadding> <ListItemText primary="Email: uilib.help@gmail.com" /> </ListItem>

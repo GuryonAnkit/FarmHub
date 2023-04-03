@@ -116,7 +116,7 @@ function NavBar({ user, setTrigger }) {
                         }}>
                         <Box
                             component='img'
-                            src="Images/main-logo.png"
+                            src="/Images/main-logo.png"
                             alt='FarmHub Logo'
                             width='2.5rem'
                         />
@@ -131,7 +131,7 @@ function NavBar({ user, setTrigger }) {
                         <Link to='/'>
                         <Box
                             component='img'
-                            src="Images/main-logo.png"
+                            src="/Images/main-logo.png"
                             alt='FarmHub Logo'
                             width='3.5rem'
                         />

@@ -89,7 +89,7 @@ export default function SignUp({ setTrigger }) {
             .then((response) => {
                 if (response) {
                     console.log(response);
-                    // loginUser();
+                    loginUser();
                 }
             })
             .catch((error) => console.log(error));
@@ -112,12 +112,13 @@ export default function SignUp({ setTrigger }) {
     }
 
     return (
-        <Container maxWidth='xl'   sx={{background:'url(Images/signupbg.jpg) ',py:'3rem'}}>
+        <Container maxWidth='xl'   sx={{background:'url(/Images/signupbg.jpg) ',py:'3rem'}}>
             <Card sx={{ width: 500, mx: 'auto'  }}>
             <CardContent sx={{ p: 5 }} component='form' onSubmit={createUser}>
                 <Stack>
                     <img
-                        src='Images/main-logo.png'
+                        src='/Images/main-logo.png'
+                        alt='FarmHub'
                         style={{ width: '5em', height: '5em', margin: 'auto' }}
                     />
                     <Typography align='center' variant='h6' mt={2}>Create Your Account</Typography>

@@ -8,13 +8,12 @@ import '@fontsource/roboto/700.css';
 import Navbar from './components/Navbar/Navbar'
 import Home from './components/Home/Home';
 import Footer from "./components/Footer/Footer"
-import { Routes, Route, Outlet } from 'react-router-dom'
+import { Route, Outlet, Routes } from 'react-router-dom'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import grey from '@mui/material/colors/grey';
-import Box from '@mui/material/Box';
 import Crops from './components/Crops/Crops' 
-import CropDetails from './components/Crops/CropDetails';
 import SignUp from './components/Navbar/SignUp';
+import CropDetails from './components/Crops/CropDetails';
 
 const theme = createTheme({
     palette: {
@@ -63,8 +62,8 @@ export default function App() {
                         </>
                     }>
                         <Route index element={<Home />} />
-                        <Route path='/crops' element={<Crops/>} />
-                        <Route path='/crops/:crop' element={<CropDetails/>} />
+                        <Route path='crops' element={<Crops/>} />
+                        <Route path='crops/:crop' element={<CropDetails/>} />
                     </Route>
                     <Route path='/signup' element={<SignUp/>} />
                 </Routes>

@@ -9,6 +9,7 @@ import CardContent from '@mui/material/CardContent';
 import Carousel from 'react-material-ui-carousel'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid';
+import Avatar from '@mui/material/Avatar';
 
 const VideoBox = styled(Box)({
     position: 'relative',
@@ -29,7 +30,7 @@ const VideoBox = styled(Box)({
         width: '100%',
         height: '100%',
         opacity: 0.8,
-        backgroundImage: `url(Images/combine.jpg)`,
+        backgroundImage: `url(/Images/combine.jpg)`,
         filter: 'brightness(50%)',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center center',
@@ -46,29 +47,34 @@ const CaptionBox = styled(Stack)({
 const featuredCrops = [
     {
         name: 'Wheat',
-        image: 'Images/wheat.jpg',
+        image: '/Images/wheat.jpg',
         link: ''
     },
     {
         name: 'Carrot',
-        image: 'Images/Carrot.JPG',
+        image: '/Images/Carrot.JPG',
         link: ''
     },
     {
         name: 'Watermelon',
-        image: 'Images/watermelon.webp',
+        image: '/Images/watermelon.webp',
         link: ''
     }
 ]
 
 const items = [
     {
-        image: "Images/m.s-swaminathan.jpg",
+        image: "/Images/m.s-swaminathan.jpg",
         name: "Dr. M.S. Swaminathan",
         message: '"I have been using FarmHub website for over a year now and it has been a game-changer for me. The website provides me with all information I need to make informed decisionsabout my crops, including weather forecasts, market prices, and information on fertilizers, seeds, machinery, etc. The user-friendly interface and option to use the website in different languages makes it more widely accesible"'
     },
     {
-        image: "Images/m.s-swaminathan.jpg",
+        image: "/Images/m.s-swaminathan.jpg",
+        name: "Dr. M.S. Swaminathan",
+        message: '"I have been using FarmHub website for over a year now and it has been a game-changer for me. The website provides me with all information I need to make informed decisionsabout my crops, including weather forecasts, market prices, and information on fertilizers, seeds, machinery, etc. The user-friendly interface and option to use the website in different languages makes it more widely accesible"'
+    },
+    {
+        image: "/Images/m.s-swaminathan.jpg",
         name: "Dr. M.S. Swaminathan",
         message: '"I have been using FarmHub website for over a year now and it has been a game-changer for me. The website provides me with all information I need to make informed decisionsabout my crops, including weather forecasts, market prices, and information on fertilizers, seeds, machinery, etc. The user-friendly interface and option to use the website in different languages makes it more widely accesible"'
     }
@@ -80,7 +86,7 @@ export default function Home() {
             <VideoBox minHeight='30em' height={{ xs: 'calc(100vh - 3rem)', md: 'calc(100vh - 4rem)' }}>
                 {/* <video autoPlay muted loop>
                     <source
-                        src="Images/main-video.mp4"
+                        src="/Images/main-video.mp4"
                         type="video/mp4"
                     />
                 </video> */}
@@ -149,13 +155,13 @@ export default function Home() {
                 <Grid container spacing={4}>
                     {featuredCrops.map((crop) => (
                         <Grid item xs={12} sm={6} md={4}>
-                            <Card 
-                                sx={{ 
+                            <Card
+                                sx={{
                                     width: '100%',
-                                    height: '18rem', 
-                                    position: 'relative', 
+                                    height: '18rem',
+                                    position: 'relative',
                                     borderRadius: '1rem'
-                                }} 
+                                }}
                                 key={crop.name}>
                                 <CardMedia
                                     component="img"
@@ -189,7 +195,6 @@ export default function Home() {
                     Testimonials
                 </Typography>
                 <Carousel
-                    navButtonsAlwaysInvisible={true}
                     animation='slide'
                     indicatorIconButtonProps={{
                         style: {
@@ -205,36 +210,72 @@ export default function Home() {
                     indicatorContainerProps={{
                         style: {
                             position: 'absolute',
-                            bottom: '0.5em',
+                            bottom: '1em',
+                            right: '2em',
+                            width: 'fit-content',
                             zIndex: 1
                         }
 
                     }}
-                    sx={{ position: 'relative', width: '80%', m: 'auto', mt: 3, borderRadius: '1em' }}
+                    sx={{
+                        position: 'relative',
+                        width: { md: '80%' },
+                        height: { xs: '35rem', md: '20rem' },
+                        m: 'auto',
+                        mt: 3,
+                        borderRadius: '1em'
+                    }}
                 >
                     {items.map(item => (
                         <Card
                             key={item.name}
                             sx={{
                                 display: 'flex',
-                                height: '20rem',
+                                flexDirection: { xs: 'column', md: 'row' },
+                                alignItems: 'center',
+                                height: { xs: '35rem', md: '20rem' },
+                                pb: { xs: 4, md: 0 },
                                 backgroundColor: 'tertiary.main',
                                 color: 'white'
                             }}>
-                            <Box width='60em'>
+                            <Box
+                                display={{ xs: 'none', md: 'flex' }}
+                                width='70rem'
+                                height='100%'
+                            >
                                 <CardMedia
                                     component="img"
                                     width="100%"
                                     height="100%"
                                     image={item.image}
+                                    sx={{ objectFit: 'cover' }}
                                     alt="Live from space album cover"
                                 />
                             </Box>
+                            <Avatar
+                                src={item.image}
+                                sx={{
+                                    display: { md: 'none' },
+                                    width: '5rem',
+                                    height: '5rem',
+                                    mt: 4
+                                }}
+                                alt='avatar'
+                            />
+                            <Typography
+                                display={{ xs: 'block', md: 'none' }}
+                                textAlign='center'
+                                component="div"
+                                variant="h6"
+                                mt={3}
+                            >
+                                {item.name}
+                            </Typography>
                             <CardContent sx={{ p: 4 }}>
-                                <Typography variant="subtitle1" component="div">
+                                <Typography variant="subtitle1" fontSize='1.1rem' component="div">
                                     {item.message}
                                 </Typography>
-                                <Typography component="div" variant="h5" mt={6}>
+                                <Typography display={{ xs: 'none', md: 'block' }} component="div" variant="h6" mt={3}>
                                     {item.name}
                                 </Typography>
                             </CardContent>

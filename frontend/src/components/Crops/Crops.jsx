@@ -8,17 +8,17 @@ import { Link as RouterLink } from "react-router-dom";
 const featuredCrops = [
     {
         name: "Rabi Crops",
-        image: "Images/wheat.jpg",
+        image: "/Images/wheat.jpg",
         link: "/crops/rabi",
     },
     {
         name: "Kharif Crops",
-        image: "Images/Carrot.JPG",
+        image: "/Images/Carrot.JPG",
         link: "/crops/kharif",
     },
     {
         name: "Zaid Crops",
-        image: "Images/watermelon.webp",
+        image: "/Images/watermelon.webp",
         link: "/crops/zaid",
     },
 ];
