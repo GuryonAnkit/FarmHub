@@ -79,11 +79,11 @@ export default function Home() {
         <Box sx={{ mt: { xs: 6, sm: 8 } }}>
             <VideoBox minHeight='30em' height={{ xs: 'calc(100vh - 3rem)', md: 'calc(100vh - 4rem)' }}>
                 {/* <video autoPlay muted loop>
-                <source
-                    src="Images/main-video.mp4"
-                    type="video/mp4"
-                />
-            </video> */}
+                    <source
+                        src="Images/main-video.mp4"
+                        type="video/mp4"
+                    />
+                </video> */}
                 <CaptionBox
                     alignItems='center'
                     justifyContent='center'
