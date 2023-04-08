@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import SignIn from './SignIn'
@@ -17,7 +17,7 @@ import MenuItem from '@mui/material/MenuItem';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-const pages = [
+const mainPages = [
     {
         name: 'Crops',
         link: '/crops'
@@ -28,11 +28,34 @@ const pages = [
     },
     {
         name: 'Shop',
-        link: '/'
+        link: '/shop'
     }
 ];
 
-function NavBar({ user, setTrigger }) {
+const shopPages = [
+    {
+        name: 'Fertilisers',
+        link: ''
+    },
+    {
+        name: 'Pesticides',
+        link: ''
+    },
+    {
+        name: 'Crop-Tonics',
+        link: ''
+    },
+    {
+        name: 'Seeds',
+        link: ''
+    },
+    {
+        name: 'Traps',
+        link: ''
+    },
+];
+
+function NavBar({ shopNav, user, setTrigger }) {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -50,6 +73,13 @@ function NavBar({ user, setTrigger }) {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+    
+    const [pages, setPages] = useState([]);
+
+    useEffect(() => {
+        shopNav ? setPages(shopPages) : setPages(mainPages);
+    }, [shopNav])
+    
 
     const [loginDialog, setLoginDialog] = useState(false);
 
@@ -139,7 +169,7 @@ function NavBar({ user, setTrigger }) {
                     </Box>
                     <Box
                         sx={{
-                            flex: '1 1 0',
+                            flex: '2 1 0',
                             width: 0,
                             display: { xs: 'none', md: 'flex' },
                             justifyContent: 'center'

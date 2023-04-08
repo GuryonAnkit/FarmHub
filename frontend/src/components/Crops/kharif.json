@@ -19,6 +19,7 @@
       "name": "Fruits",
       "image": "/Images/mango-main.jpg",
       "crops": [
+        "Mangoes",
         "Banana",
         "Ber",
         "Date",
@@ -27,7 +28,6 @@
         "Guava",
         "Lime",
         "Lemon",
-        "Mangoes",
         "Mandarin orange",
         "Orange",
         "Mulberries"
