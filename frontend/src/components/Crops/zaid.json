@@ -1,0 +1,19 @@
+{
+    "name": "Zaid",
+    "description": "Rabi crops or rabi harvest, also known as winter crops, are agricultural crops that are sown in winter and harvested in the spring in India, Pakistan and Bangladesh. The rabi crops are sown around mid-November, preferably after the monsoon rains are over, and harvesting begins in April / May. The crops are grown either with rainwater that has percolated into the ground or using irrigation",
+    "category": [
+        {
+            "name": "Cereals",
+            "image": "/Images/wheat.jpg",
+            "crops": [
+                "Barley",
+                "Gram",
+                "Rapeseed",
+                "Mustard",
+                "Oat",
+                "Wheat",
+                "Linseed"
+            ]
+        }
+    ]
+}

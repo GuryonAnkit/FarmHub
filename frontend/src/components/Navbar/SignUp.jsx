@@ -16,16 +16,11 @@ function TextFieldx({ children, ...other }) {
     return (
         <TextField
             variant="outlined"
+            color='tertiary'
             sx={{
                 mb: 2,
-                '& .Mui-focused.MuiFormLabel-root': {
-                    color: 'tertiary.main',
-                },
                 '& .MuiFormLabel-filled.MuiFormLabel-root': {
                     display: 'none',
-                },
-                '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
-                    borderColor: 'tertiary.main',
                 },
             }}
             InputLabelProps={{ shrink: false }}

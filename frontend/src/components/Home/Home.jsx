@@ -154,7 +154,7 @@ export default function Home() {
                 </Typography>
                 <Grid container spacing={4}>
                     {featuredCrops.map((crop) => (
-                        <Grid item xs={12} sm={6} md={4}>
+                        <Grid item xs={12} sm={6} md={4} key={crop.name}>
                             <Card
                                 sx={{
                                     width: '100%',
