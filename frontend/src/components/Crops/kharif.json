@@ -1,19 +1,99 @@
 {
-    "name": "Kharif",
-    "description": "Rabi crops or rabi harvest, also known as winter crops, are agricultural crops that are sown in winter and harvested in the spring in India, Pakistan and Bangladesh. The rabi crops are sown around mid-November, preferably after the monsoon rains are over, and harvesting begins in April / May. The crops are grown either with rainwater that has percolated into the ground or using irrigation",
-    "category": [
-        {
-            "name": "Cereals",
-            "image": "/Images/wheat.jpg",
-            "crops": [
-                "Barley",
-                "Gram",
-                "Rapeseed",
-                "Mustard",
-                "Oat",
-                "Wheat",
-                "Linseed"
-            ]
-        }
-    ]
+  "name": "Kharif",
+  "description": "Rabi crops or rabi harvest, also known as winter crops, are agricultural crops that are sown in winter and harvested in the spring in India, Pakistan and Bangladesh. The rabi crops are sown around mid-November, preferably after the monsoon rains are over, and harvesting begins in April / May. The crops are grown either with rainwater that has percolated into the ground or using irrigation",
+  "category": [
+    {
+      "name": "Cereals",
+      "image": "/Images/wheat.jpg",
+      "crops": [
+        "Barley",
+        "Gram",
+        "Rapeseed",
+        "Mustard",
+        "Oat",
+        "Wheat",
+        "Linseed"
+      ]
+    },
+    {
+      "name": "Fruits",
+      "image": "/Images/mango-main.jpg",
+      "crops": [
+        "Banana",
+        "Ber",
+        "Date",
+        "Grape",
+        "Kinnow",
+        "Guava",
+        "Lime",
+        "Lemon",
+        "Mangoes",
+        "Mandarin orange",
+        "Orange",
+        "Mulberries"
+      ]
+    },
+    {
+      "name": "Legumes",
+      "image": "/Images/chickpea-main.jpg",
+      "crops": [
+        "Chickpea",
+        "Kulthi (horse gram)",
+        "Lobias",
+        "Mung bean",
+        "Pigeon pea",
+        "Toria",
+        "Urad bean"
+      ]
+    },
+    {
+      "name": "Seed plants",
+      "image": "/Images/sunflower-main.jpg",
+      "crops": [
+        "Alfalfa",
+        "Cumin",
+        "Coriander",
+        "Linseed",
+        "Fenugreek",
+        "Isabgol",
+        "Mustard",
+        "Bengal gram",
+        "Sunflower",
+        "Black pepper",
+        "Red gram"
+      ]
+    },
+    {
+      "name": "Vegetables",
+      "image": "/Images/potato-main.jpg",
+      "crops": [
+        "Bean",
+        "Beetroot",
+        "Brinjal",
+        "Broccoli",
+        "Cabbage",
+        "Capsicum",
+        "Carrot",
+        "Cauliflowers",
+        "Chickpea",
+        "Fenugreek",
+        "Garlic",
+        "Lady finger",
+        "Lettuce",
+        "Pea",
+        "Onion",
+        "Potato",
+        "Radish",
+        "Spinach",
+        "Sweet potato",
+        "Tomato",
+        "Turnip"
+      ]
+    },
+    {
+      "name": "Others",
+      "image": "/Images/tabacco-main.jpg",
+      "crops": ["Tabacco"]
+    }
+  ]
 }
