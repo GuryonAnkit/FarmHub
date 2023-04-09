@@ -13,12 +13,12 @@ const featuredCrops = [
     },
     {
         name: "Kharif Crops",
-        image: "/Images/Carrot.JPG",
+        image: "/Images/rice.jpg",
         link: "/crops/kharif",
     },
     {
         name: "Zaid Crops",
-        image: "/Images/watermelon.webp",
+        image: "/Images/muskmelon.jpg",
         link: "/crops/zaid",
     },
 ];
