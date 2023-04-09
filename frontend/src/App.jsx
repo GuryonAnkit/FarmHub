@@ -11,7 +11,8 @@ import Footer from "./components/Footer/Footer"
 import { Route, Outlet, Routes } from 'react-router-dom'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import grey from '@mui/material/colors/grey';
-import Crops from './components/Crops/Crops' 
+import Crops from './components/Crops/Crops'
+import ProductList from './components/Shop/ProductList';
 import SignUp from './components/Navbar/SignUp';
 import CropDetails from './components/Crops/CropDetails';
 import ShopHome from './components/Shop/ShopHome';
@@ -37,7 +38,7 @@ const theme = createTheme({
 });
 
 export default function App() {
-    
+
     // -------------------------------- User --------------------------------
 
     const [user, setUser] = useState(null);
@@ -54,29 +55,32 @@ export default function App() {
 
     return (
         <ThemeProvider theme={theme}>
-                <Routes>
-                    <Route path='/' element={
-                        <>
-                            <Navbar shopNav={false} setTrigger={setTrigger} user={user} />
-                            <Outlet />
-                            <Footer />
-                        </>
-                    }>
-                        <Route index element={<Home />} />
-                        <Route path='crops' element={<Crops/>} />
-                        <Route path='crops/:crop' element={<CropDetails/>} />
-                    </Route>
-                    <Route path='/shop' element={
-                        <>
-                            <Navbar shopNav={true} setTrigger={setTrigger} user={user} />
-                            <Outlet />
-                            <Footer />
-                        </>
-                    }>
-                        <Route index element={<ShopHome />} />
-                    </Route>
-                    <Route path='/signup' element={<SignUp/>} />
-                </Routes>
+            <Routes>
+                <Route path='/' element={
+                    <>
+                        <Navbar shopNav={false} setTrigger={setTrigger} user={user} />
+                        <Outlet />
+                        <Footer />
+                    </>
+                }>
+                    <Route index element={<Home />} />
+                    <Route path='crops' element={<Crops />} />
+                    <Route path='crops/:crop' element={<CropDetails />} />
+                </Route>
+                <Route path='/shop' element={
+                    <>
+                        <Navbar shopNav={true} setTrigger={setTrigger} user={user} />
+                        <Outlet />
+                        <Footer />
+                    </>
+                }>
+                    <Route index element={<ShopHome />} />
+                    <Route path='products/category/:category' element={
+                        <ProductList updateTrigger={updateTrigger} />}
+                    />
+                </Route>
+                <Route path='/signup' element={<SignUp />} />
+            </Routes>
         </ThemeProvider>
     );
 }

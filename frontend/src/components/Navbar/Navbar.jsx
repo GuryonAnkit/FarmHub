@@ -34,24 +34,24 @@ const mainPages = [
 
 const shopPages = [
     {
-        name: 'Fertilisers',
-        link: ''
+        name: 'Fertilizers',
+        link: '/shop/products/category/Fertilizers'
     },
     {
         name: 'Pesticides',
-        link: ''
+        link: '/shop/products/category/Pesticides'
     },
     {
         name: 'Crop-Tonics',
-        link: ''
+        link: '/shop/products/category/Crop-Tonics'
     },
     {
         name: 'Seeds',
-        link: ''
+        link: '/shop/products/category/Seeds'
     },
     {
         name: 'Traps',
-        link: ''
+        link: '/shop/products/category/Traps'
     },
 ];
 

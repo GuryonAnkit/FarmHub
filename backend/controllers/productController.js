@@ -64,12 +64,25 @@ export const productList = async (req, res) => {
     try {
         const products = await Product.find(
             { category: req.params.category },
-            'name price images reviews brand');
+            'name price images reviews brand')
+            .sort(req.params.sort !== 'none' ? req.params.sort : '');
         const brands = await Product.find({ category: req.params.category }).distinct('brand');
         res.json({ products: products, brands: brands })
     } catch (err) {
         res.send(err);
     }    
+}
+
+export const productSearch = async (req, res) => {
+    try {
+        const products = await Product.find(
+            { $text: { $search: req.params.term } },
+            'name price images reviews brand')
+            .sort(req.params.sort !== 'none' ? req.params.sort : '');
+        res.json(products);
+    } catch (err) {
+        res.send(err);
+    }
 }
 
 // -------------------------------- Reviews --------------------------------

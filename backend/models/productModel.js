@@ -17,7 +17,6 @@ const productSchema = new Schema({
     name: { type: String, required: true },
     images: { type: [imageSchema], required: true },
     description: { type: String, required: true },
-    suitableFor: { type: String },
     category: {
         type: String,
         required: true,
