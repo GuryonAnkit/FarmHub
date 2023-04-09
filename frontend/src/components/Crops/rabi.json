@@ -14,6 +14,88 @@
                 "Wheat",
                 "Linseed"
             ]
+        },
+        {
+            "name": "Fruits",
+            "image": "/Images/mango-main.jpg",
+            "crops": [
+                "Mangoes",
+                "Banana",
+                "Ber",
+                "Date",
+                "Grape",
+                "Kinnow",
+                "Guava",
+                "Lime",
+                "Lemon",
+                "Mandarin orange",
+                "Orange",
+                "Mulberries"
+            ]
+        },
+        {
+            "name": "Legumes",
+            "image": "/Images/chickpea-main.jpg",
+            "crops": [
+                "Chickpea",
+                "Kulthi (horse gram)",
+                "Lobias",
+                "Mung bean",
+                "Pigeon pea",
+                "Toria",
+                "Urad bean"
+            ]
+        },
+        {
+            "name": "Seed plants",
+            "image": "/Images/sunflower-main.jpg",
+            "crops": [
+                "Alfalfa",
+                "Cumin",
+                "Coriander",
+                "Linseed",
+                "Fenugreek",
+                "Isabgol",
+                "Mustard",
+                "Bengal gram",
+                "Sunflower",
+                "Black pepper",
+                "Red gram"
+            ]
+        },
+        {
+            "name": "Vegetables",
+            "image": "/Images/potato-main.jpg",
+            "crops": [
+                "Bean",
+                "Beetroot",
+                "Brinjal",
+                "Broccoli",
+                "Cabbage",
+                "Capsicum",
+                "Carrot",
+                "Cauliflowers",
+                "Chickpea",
+                "Fenugreek",
+                "Garlic",
+                "Lady finger",
+                "Lettuce",
+                "Pea",
+                "Onion",
+                "Potato",
+                "Radish",
+                "Spinach",
+                "Sweet potato",
+                "Tomato",
+                "Turnip"
+            ]
+        },
+        {
+            "name": "Others",
+            "image": "/Images/tabacco-main.jpg",
+            "crops": [
+                "Tabacco"
+            ]
         }
     ]
 }

@@ -1,99 +1,84 @@
 {
   "name": "Kharif",
-  "description": "Rabi crops or rabi harvest, also known as winter crops, are agricultural crops that are sown in winter and harvested in the spring in India, Pakistan and Bangladesh. The rabi crops are sown around mid-November, preferably after the monsoon rains are over, and harvesting begins in April / May. The crops are grown either with rainwater that has percolated into the ground or using irrigation",
+  "description": "Kharif crops, also known as monsoon crops or autumn crops, are domesticated plants that are cultivated and harvested in India, Pakistan and Bangladesh during the Indian subcontinent's monsoon season, which lasts from June to November depending on the area. Monsoon rains may begin as early as May in some parts of the Indian subcontinent, and crops are generally harvested from the third week of September to October. Rice, maize, and cotton are some of the major Kharif crops in India. Unlike the Rabi crops, which are grown in the winter, the kharif crops require good rainfall.",
   "category": [
     {
       "name": "Cereals",
-      "image": "/Images/wheat.jpg",
+      "image": "/Images/Rice.jpg",
       "crops": [
-        "Barley",
-        "Gram",
-        "Rapeseed",
-        "Mustard",
-        "Oat",
-        "Wheat",
-        "Linseed"
+        "Rice",
+        "Jowar",
+        "Maize (corn)",
+        "Millet"
       ]
     },
     {
       "name": "Fruits",
-      "image": "/Images/mango-main.jpg",
+      "image": "/Images/Guava.jpg",
       "crops": [
-        "Mangoes",
-        "Banana",
-        "Ber",
-        "Date",
-        "Grape",
-        "Kinnow",
+        "Almonds",
+        "Apples",
+        "Apricots",
+        "Bananas",
+        "Cantaloupe",
+        "Chikoo",
+        "Coconut",
+        "Dates",
+        "Figs",
         "Guava",
-        "Lime",
-        "Lemon",
-        "Mandarin orange",
+        "Jaman",
+        "Litchi",
+        "Luffa",
+        "Mango",
+        "Muskmelon",
         "Orange",
-        "Mulberries"
-      ]
-    },
-    {
-      "name": "Legumes",
-      "image": "/Images/chickpea-main.jpg",
-      "crops": [
-        "Chickpea",
-        "Kulthi (horse gram)",
-        "Lobias",
-        "Mung bean",
-        "Pigeon pea",
-        "Toria",
-        "Urad bean"
+        "Pomegrante",
+        "Plums",
+        "Pears",
+        "Phalsa",
+        "Papaya",
+        "Peaches",
+        "Sarda",
+        "Sugarcane",
+        "Walnut",
+        "Watermelon"
       ]
     },
     {
       "name": "Seed plants",
-      "image": "/Images/sunflower-main.jpg",
+      "image": "/Images/Moong.jpg",
       "crops": [
-        "Alfalfa",
-        "Cumin",
-        "Coriander",
-        "Linseed",
-        "Fenugreek",
-        "Isabgol",
-        "Mustard",
-        "Bengal gram",
-        "Sunflower",
-        "Black pepper",
-        "Red gram"
+        "Arhar (tur)",
+        "Black gram (urad)",
+        "Cotton",
+        "Cowpea (chavala)",
+        "Green gram (moong)",
+        "Groundnut",
+        "Guar",
+        "Moth bean",
+        "Mung bean",
+        "Sesame (til)",
+        "Soybean",
+        "Urad bean",
+        "Red gram (Pegion pea)",
+        "Fennel (Saunf)"
       ]
     },
     {
       "name": "Vegetables",
-      "image": "/Images/potato-main.jpg",
+      "image": "/Images/Tomato.jpg",
       "crops": [
-        "Bean",
-        "Beetroot",
+        "Bitter gourd",
+        "Bottle gourd",
         "Brinjal",
-        "Broccoli",
-        "Cabbage",
-        "Capsicum",
-        "Carrot",
-        "Cauliflowers",
-        "Chickpea",
-        "Fenugreek",
-        "Garlic",
-        "Lady finger",
-        "Lettuce",
-        "Pea",
-        "Onion",
-        "Potato",
-        "Radish",
-        "Spinach",
-        "Sweet potato",
+        "Chili",
+        "Green bean",
+        "Ladies' fingers",
+        "Sponge gourd",
+        "Tinda",
         "Tomato",
-        "Turnip"
+        "Turmeric"
       ]
-    },
-    {
-      "name": "Others",
-      "image": "/Images/tabacco-main.jpg",
-      "crops": ["Tabacco"]
     }
   ]
 }
