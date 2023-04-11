@@ -94,6 +94,7 @@ export default function ProductList({ updateTrigger }) {
                                     <Select
                                         sx={{ ml: 1, minWidth: '12em' }}
                                         size='small'
+                                        color='primary'
                                         value={sort}
                                         onChange={(event) => setSort(event.target.value)}
                                         displayEmpty

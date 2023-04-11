@@ -65,7 +65,7 @@ export default function App() {
                 }>
                     <Route index element={<Home />} />
                     <Route path='crops' element={<Crops />} />
-                    <Route path='crops/:crop' element={<CropDetails />} />
+                    <Route path='crops/:season' element={<CropDetails />} />
                 </Route>
                 <Route path='/shop' element={
                     <>

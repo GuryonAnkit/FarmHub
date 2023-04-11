@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link as RouterLink, useParams } from "react-router-dom";
 import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import Grid from "@mui/material/Grid";
@@ -15,20 +16,19 @@ import zaid from './zaid.json';
 
 function CropDetail() {
 
-    const { crop } = useParams();
-    const [season, setSeason] = useState(null);
+    const { season } = useParams();
+    const [crops, setCrops] = useState(null);
 
     useEffect(() => {
-        if (crop === 'rabi')
-            setSeason(rabi);
-        else if (crop === 'kharif')
-            setSeason(kharif);
+        if (season === 'rabi')
+            setCrops(rabi);
+        else if (season === 'kharif')
+            setCrops(kharif);
         else
-            setSeason(zaid);
-    }, [crop])
+            setCrops(zaid);
+    }, [season])
 
-
-    if (season)
+    if (crops)
         return (
             <Container sx={{ mt: { xs: 6, sm: 8 } }}>
                 <Typography
@@ -37,7 +37,7 @@ function CropDetail() {
                     fontWeight="500"
                     color="primary"
                     gutterBottom>
-                    {season.name} Crops
+                    {crops.name} Crops
                 </Typography>
                 <Typography
                     variant='h6'
@@ -46,7 +46,7 @@ function CropDetail() {
                     color="primary"
                     gutterBottom
                 >
-                    {season.description}
+                    {crops.description}
                 </Typography>
 
                 <Grid
@@ -54,42 +54,61 @@ function CropDetail() {
                     spacing={{ xs: 8, md: 15 }}
                     pt={5}
                 >
-                    {season.category.map(crop => (
-                        <Grid item container spacing={{ xs: 5, md: 10 }}
+                    {crops.category.map(crop => (
+                        <Grid item container spacing={{ xs: 5, md: 8 }}
                             sx={{
-                                alignItems: 'center',
-                                flexDirection: { sm: season.category.indexOf(crop) % 2 === 0 ? 'row-reverse' : '' }
+                                flexDirection: { sm: crops.category.indexOf(crop) % 2 === 0 ? 'row-reverse' : '' }
                             }}>
                             <Grid item xs={12} sm={8}>
-                                <Box component='img' src={crop.image} width='100%' />
+                                <Box
+                                    sx={{
+                                        borderRadius: '1rem',
+                                        height: '30em',
+                                        objectFit: 'cover'
+                                    }}
+                                    component='img'
+                                    src={crop.image}
+                                    width='100%'
+                                />
                             </Grid>
-                            <Grid
-                                item
-                                xs={12}
-                                sm={4}
-                                sx={{
-                                    // pl: { sm: 10 },
-                                }}
-                            >
-                                <Typography variant='h4' color='primary'>{crop.name}</Typography>
-                                <List>
-                                    {crop.crops.map(crop => (
-                                        <ListItem disablePadding>
-                                            <ListItemIcon sx={{ minWidth: '30px' }}>
-                                                <FiberManualRecordIcon
-                                                    sx={{
-                                                        color: 'primary.main',
-                                                        fontSize: 'small'
-                                                    }}
-                                                />
-                                            </ListItemIcon>
-                                            <ListItemText
-                                                primaryTypographyProps={{ style: { color: 'white' } }}
-                                                primary={crop}
-                                            />
-                                        </ListItem>
-                                    ))}
-                                </List>
+                            <Grid item xs={12} sm={4}>
+                                <Box height='30em'>
+                                    <Typography variant='h4' color='primary'>{crop.name}</Typography>
+                                    {season !== 'zaid' ?
+                                        <List
+                                            sx={{
+                                                width: '50%',
+                                                height: '26em',
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                flexWrap: 'wrap'
+                                            }}>
+                                            {crop.crops.map(crop => (
+                                                <ListItem component={RouterLink} to='/' disablePadding>
+                                                    <ListItemIcon sx={{ minWidth: '30px' }}>
+                                                        <FiberManualRecordIcon
+                                                            sx={{
+                                                                color: 'primary.main',
+                                                                fontSize: 'small'
+                                                            }}
+                                                        />
+                                                    </ListItemIcon>
+                                                    <ListItemText
+                                                        primaryTypographyProps={{ style: { color: 'white' } }}
+                                                        primary={crop}
+                                                    />
+                                                </ListItem>
+                                            ))}
+                                        </List>
+                                        :
+                                        crop.crops.map(crop => (
+                                            <>
+                                                <Typography mt={4} variant="subtitle1" color='primary'>{crop}</Typography>
+                                                <Link component={RouterLink} to='' color='tertiary.main'>Read more</Link>
+                                            </>
+                                        ))
+                                    }
+                                </Box>
                             </Grid>
                         </Grid>
                     ))}
