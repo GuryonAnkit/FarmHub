@@ -54,7 +54,12 @@ export const deleteProduct = async (req, res) => {
 export const displayProduct = async (req, res) => {
     try {
         const product = await Product.findById(req.params.productId).populate('reviews.user');
-        res.json(product);
+        const productObj = product.toObject();
+        if (req.user) {
+            productObj.currentUserReview = product.reviews.find(review => review.user._id.equals(req.user._id));
+            productObj.reviews = product.reviews.filter(review => !review.user._id.equals(req.user._id));
+        }
+        res.json(productObj);
     } catch (err) {
         res.send(err);
     }

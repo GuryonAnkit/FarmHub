@@ -13,6 +13,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import grey from '@mui/material/colors/grey';
 import Crops from './components/Crops/Crops'
 import ProductList from './components/Shop/ProductList';
+import ProductDetail from './components/Shop/ProductDetail';
 import SignUp from './components/Navbar/SignUp';
 import CropDetails from './components/Crops/CropDetails';
 import ShopHome from './components/Shop/ShopHome';
@@ -53,12 +54,42 @@ export default function App() {
             .catch((err) => console.log(err));
     }, [updateTrigger]);
 
+    const [loginDialog, setLoginDialog] = useState(false);
+
+    // -------------------------------- Cart --------------------------------
+
+    async function updateInCart(productId, quantity) {
+        axios.put(`http://localhost:4000/customer/${user._id}/cart/${productId}`,
+            { quantity: quantity },
+            { withCredentials: true })
+            .then((response) => {
+                if (response) setTrigger(prevValue => !prevValue)
+            })
+            .catch((error) => console.log(error));
+    }
+
+    async function removeFromCart(productId) {
+        axios.delete(`http://localhost:4000/customer/${user._id}/cart/${productId}`, { withCredentials: true })
+            .then((response) => {
+                if (response) setTrigger(prevValue => !prevValue)
+            })
+            .catch((error) => console.log(error));
+    }
+
     return (
         <ThemeProvider theme={theme}>
             <Routes>
                 <Route path='/' element={
                     <>
-                        <Navbar shopNav={false} setTrigger={setTrigger} user={user} />
+                        <Navbar
+                            shopNav={false}
+                            setTrigger={setTrigger}
+                            user={user}
+                            loginDialog={loginDialog}
+                            setLoginDialog={setLoginDialog}
+                            updateInCart={updateInCart}
+                            removeFromCart={removeFromCart}
+                        />
                         <Outlet />
                         <Footer />
                     </>
@@ -69,7 +100,15 @@ export default function App() {
                 </Route>
                 <Route path='/shop' element={
                     <>
-                        <Navbar shopNav={true} setTrigger={setTrigger} user={user} />
+                        <Navbar
+                            shopNav={true}
+                            setTrigger={setTrigger}
+                            user={user}
+                            loginDialog={loginDialog}
+                            setLoginDialog={setLoginDialog}
+                            updateInCart={updateInCart}
+                            removeFromCart={removeFromCart}
+                        />
                         <Outlet />
                         <Footer />
                     </>
@@ -77,6 +116,15 @@ export default function App() {
                     <Route index element={<ShopHome />} />
                     <Route path='products/category/:category' element={
                         <ProductList updateTrigger={updateTrigger} />}
+                    />
+                    <Route path='product/:id' element={
+                        <ProductDetail
+                            user={user}
+                            updateTrigger={updateTrigger}
+                            setTrigger={setTrigger}
+                            setLoginDialog={setLoginDialog}
+                            updateInCart={updateInCart}
+                        />}
                     />
                 </Route>
                 <Route path='/signup' element={<SignUp />} />

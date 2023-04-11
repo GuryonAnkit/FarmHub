@@ -145,6 +145,7 @@ export default function ProductList({ updateTrigger }) {
                                                 <Checkbox
                                                     checked={checkedRating.some(selected => selected === rating)}
                                                     onChange={(event) => changeCheckedRating(event, rating)}
+                                                    color='tertiary'
                                                 />
                                             }
                                             label={<Rating name="read-only" value={rating} readOnly />} />
@@ -162,6 +163,7 @@ export default function ProductList({ updateTrigger }) {
                                                         <Checkbox
                                                             checked={checkedBrands.some(selected => selected === brand)}
                                                             onChange={(event) => changeCheckedBrands(event, brand)}
+                                                            color='tertiary'
                                                         />
                                                     }
                                                     label={brand}

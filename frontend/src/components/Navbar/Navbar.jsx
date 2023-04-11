@@ -55,7 +55,15 @@ const shopPages = [
     },
 ];
 
-function NavBar({ shopNav, user, setTrigger }) {
+function NavBar({
+    shopNav,
+    setTrigger,
+    user,
+    loginDialog,
+    setLoginDialog,
+    // updateInCart,
+    // removeFromCart,
+}) {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -73,15 +81,12 @@ function NavBar({ shopNav, user, setTrigger }) {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-    
+
     const [pages, setPages] = useState([]);
 
     useEffect(() => {
         shopNav ? setPages(shopPages) : setPages(mainPages);
     }, [shopNav])
-    
-
-    const [loginDialog, setLoginDialog] = useState(false);
 
     function signOut() {
         axios.get(`http://localhost:4000/user/logout`, { withCredentials: true })
@@ -103,7 +108,7 @@ function NavBar({ shopNav, user, setTrigger }) {
                             onClick={handleOpenNavMenu}
                             color="inherit"
                         >
-                            <MenuIcon fontSize='inherit'/>
+                            <MenuIcon fontSize='inherit' />
                         </IconButton>
                         <Menu
                             id="menu-appbar"
@@ -159,12 +164,12 @@ function NavBar({ shopNav, user, setTrigger }) {
                             display: { xs: 'none', md: 'flex' }
                         }}>
                         <Link to='/'>
-                        <Box
-                            component='img'
-                            src="/Images/main-logo.png"
-                            alt='FarmHub Logo'
-                            width='3.5rem'
-                        />
+                            <Box
+                                component='img'
+                                src="/Images/main-logo.png"
+                                alt='FarmHub Logo'
+                                width='3.5rem'
+                            />
                         </Link>
                     </Box>
                     <Box
@@ -196,11 +201,11 @@ function NavBar({ shopNav, user, setTrigger }) {
                         }
                     </Box>
                     {/* -------------------------------- Universal View -------------------------------- */}
-                    <Box 
-                        sx={{ 
+                    <Box
+                        sx={{
                             display: 'flex',
-                            flex: '1 1 0', 
-                            width: 0, 
+                            flex: '1 1 0',
+                            width: 0,
                             justifyContent: 'flex-end',
                         }}>
                         <IconButton size='large'>
