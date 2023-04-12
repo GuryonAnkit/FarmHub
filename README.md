@@ -1,3 +1,1 @@
 # FarmHub
-## ARSHAD KHAN
-### IGNORE
