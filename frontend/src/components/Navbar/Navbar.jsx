@@ -61,8 +61,7 @@ function NavBar({
     user,
     loginDialog,
     setLoginDialog,
-    // updateInCart,
-    // removeFromCart,
+    setUserTab
 }) {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
@@ -238,8 +237,11 @@ function NavBar({
                                     onClose={handleCloseUserMenu}
                                     disableScrollLock={true}
                                 >
-                                    <MenuItem onClick={handleCloseUserMenu}>
+                                    <MenuItem component={Link} to='/user' onClick={() => setUserTab(0)} key="Profile">
                                         <Typography textAlign="center">Profile</Typography>
+                                    </MenuItem>
+                                    <MenuItem component={Link} to='/user' onClick={() => setUserTab(3)} key="Orders">
+                                        <Typography textAlign="center">Orders</Typography>
                                     </MenuItem>
                                     <MenuItem onClick={() => { signOut(); handleCloseUserMenu() }}>
                                         <Typography textAlign="center">Sign Out</Typography>
