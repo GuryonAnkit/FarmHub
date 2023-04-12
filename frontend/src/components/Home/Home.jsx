@@ -10,6 +10,7 @@ import Carousel from 'react-material-ui-carousel'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
+import {Link} from 'react-router-dom'
 
 const VideoBox = styled(Box)({
     position: 'relative',
@@ -48,17 +49,17 @@ const featuredCrops = [
     {
         name: 'Wheat',
         image: '/Images/wheat.jpg',
-        link: ''
+        link: '/crops/rabi'
     },
     {
-        name: 'Carrot',
-        image: '/Images/Carrot.JPG',
-        link: ''
+        name: 'Rice',
+        image: '/Images/Rice.jpg',
+        link: '/crops/kharif'
     },
     {
         name: 'Watermelon',
         image: '/Images/watermelon.webp',
-        link: ''
+        link: '/crops/zaid'
     }
 ]
 
@@ -137,6 +138,7 @@ export default function Home() {
                     </Typography>
                     <Stack direction='row' spacing='3vw'>
                         <Button
+                            component={Link} to="/shop"
                             variant='contained'
                             color="homeBtn"
                             mr={2}
@@ -144,6 +146,7 @@ export default function Home() {
                             SEE ALL PRODUCTS
                         </Button>
                         <Button
+                            component={Link} to="/about-us"
                             variant='contained'
                             color="primary"
                             sx={{ width: '11rem' }}>
@@ -167,6 +170,7 @@ export default function Home() {
                                     position: 'relative',
                                     borderRadius: '1rem'
                                 }}
+                                component={Link} to={crop.link}
                                 key={crop.name}>
                                 <CardMedia
                                     component="img"
