@@ -17,6 +17,7 @@ import ProductDetail from './components/Shop/ProductDetail';
 import SignUp from './components/Navbar/SignUp';
 import CropDetails from './components/Crops/CropDetails';
 import ShopHome from './components/Shop/ShopHome';
+import AboutUs from './components/Shop/AboutUs';
 
 const theme = createTheme({
     palette: {
@@ -97,6 +98,7 @@ export default function App() {
                     <Route index element={<Home />} />
                     <Route path='crops' element={<Crops />} />
                     <Route path='crops/:season' element={<CropDetails />} />
+                    <Route path='about-us' element={<AboutUs/>} />
                 </Route>
                 <Route path='/shop' element={
                     <>

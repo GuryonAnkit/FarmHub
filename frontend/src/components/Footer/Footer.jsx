@@ -14,6 +14,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Link from '@mui/material/Link';
+import { Link as RouterLink } from 'react-router-dom';
 
 const StyledBox = styled(Box)({
     position: 'relative',
@@ -65,25 +67,49 @@ export default function BasicGrid() {
                             <img src="/Images/main-logo.png" alt='FarmHub Logo' style={{ width: '35%' }} />
                             <List>
                                 <ListItem disablePadding> <ListItemText primary="Invertis University Bareilly , Uttar Pradesh" /> </ListItem>
-                                <ListItem disablePadding> <ListItemText primary="Email: uilib.help@gmail.com" /> </ListItem>
+                                <ListItem disablePadding> <ListItemText primary="Email: farm4hub@gmail.com" /> </ListItem>
                                 <ListItem disablePadding> <ListItemText primary="Phone: +1 1123 456 780" /> </ListItem>
                             </List>
                         </Grid>
                         <Grid item xs={12} sm={6} md={4}>
                             <Typography variant='h6'>QUICK LINKS</Typography>
                             <List>
-                                <ListItem disablePadding> <ListItemText primary="HOME" /> </ListItem>
-                                <ListItem disablePadding> <ListItemText primary="ABOUT US " /> </ListItem>
-                                <ListItem disablePadding> <ListItemText primary="CROPS" /> </ListItem>
-                                <ListItem disablePadding> <ListItemText primary="SERVICES" /> </ListItem>
-                                <ListItem disablePadding> <ListItemText primary="Terms & Conditions" /> </ListItem>
-                                <ListItem disablePadding> <ListItemText primary="Privacy Policy" /> </ListItem>
+                                <ListItem disablePadding>
+                                    <Link component={RouterLink} to='/' color='primary.main' underline='none'>
+                                        <ListItemText primary="HOME" />
+                                    </Link>
+                                </ListItem>
+                                <ListItem disablePadding> 
+                                    <Link component={RouterLink} to='/about-us' color='primary.main' underline='none'>
+                                        <ListItemText primary="ABOUT US"/>
+                                    </Link> 
+                                </ListItem>
+                                <ListItem disablePadding>
+                                    <Link component={RouterLink} to='/crops' color='primary.main' underline='none'>
+                                        <ListItemText primary="CROPS" />
+                                    </Link>
+                                </ListItem>
+                                <ListItem disablePadding> 
+                                    <Link component={RouterLink} to='' color='primary.main' underline='none'>
+                                        <ListItemText primary="SERVICES"/>
+                                    </Link> 
+                                </ListItem>
+                                <ListItem disablePadding> 
+                                    <Link component={RouterLink} to='' color='primary.main' underline='none'>
+                                        <ListItemText primary="Terms & Conditions"/>
+                                    </Link> 
+                                </ListItem>
+                                <ListItem disablePadding> 
+                                    <Link component={RouterLink} to='' color='primary.main' underline='none'>
+                                        <ListItemText primary="Privacy Policy"/>
+                                    </Link> 
+                                </ListItem>
                             </List>
                         </Grid>
                         <Grid item xs={12} sm={6} md={4}>
                             <Typography variant='h6' gutterBottom>SOCIAL LINKS</Typography>
-                            <LinkedInIcon fontSize="large" />
-                            <InstagramIcon sx={{ ml: 1 }} fontSize="large" />
+                            <Link to='https://www.linkedin.com/in/farm-hub-6843a1272/'><LinkedInIcon fontSize="large" color="primary" /></Link>
+                            <Link to=''><InstagramIcon sx={{ ml: 1 }} fontSize="large" color="primary" /></Link>
                             <Box mt={5}>
                                 <FormControl sx={{ minWidth: '8em' }}>
                                     <InputLabel id="demo-simple-select-label" sx={{ color: 'primary.main' }}>
@@ -105,7 +131,7 @@ export default function BasicGrid() {
                                         <MenuItem value='English'>English</MenuItem>
                                         <MenuItem value='Hindi'>Hindi</MenuItem>
                                     </LanguageSelect>
-                                    <LanguageIcon sx={{ position: 'absolute', top:'0.64em', left:'0.5em' }}/>
+                                    <LanguageIcon sx={{ position: 'absolute', top: '0.64em', left: '0.5em' }} />
                                 </FormControl>
                             </Box>
                         </Grid>
