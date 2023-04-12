@@ -10,7 +10,6 @@ import Carousel from 'react-material-ui-carousel'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
-import { Link } from 'react-router-dom';
 
 const VideoBox = styled(Box)({
     position: 'relative',
@@ -49,34 +48,39 @@ const featuredCrops = [
     {
         name: 'Wheat',
         image: '/Images/wheat.jpg',
-        link: '/crops/rabi'
+        link: ''
     },
     {
-        name: 'Rice',
-        image: '/Images/Rice.jpg',
-        link: '/crops/kharif'
+        name: 'Carrot',
+        image: '/Images/Carrot.JPG',
+        link: ''
     },
     {
         name: 'Watermelon',
         image: '/Images/watermelon.webp',
-        link: '/crops/zaid'
+        link: ''
     }
 ]
 
 const items = [
     {
-        image: "/Images/m.s-swaminathan.jpg",
-        name: "Dr. M.S. Swaminathan",
+        image: "/Images/seema.jpg",
+        name: "Seema",
         message: '"I have been using FarmHub website for over a year now and it has been a game-changer for me. The website provides me with all information I need to make informed decisionsabout my crops, including weather forecasts, market prices, and information on fertilizers, seeds, machinery, etc. The user-friendly interface and option to use the website in different languages makes it more widely accesible"'
     },
     {
-        image: "/Images/m.s-swaminathan.jpg",
-        name: "Dr. M.S. Swaminathan",
+        image: "/Images/shivam.jpg",
+        name: "Shivam",
         message: '"I have been using FarmHub website for over a year now and it has been a game-changer for me. The website provides me with all information I need to make informed decisionsabout my crops, including weather forecasts, market prices, and information on fertilizers, seeds, machinery, etc. The user-friendly interface and option to use the website in different languages makes it more widely accesible"'
     },
     {
-        image: "/Images/m.s-swaminathan.jpg",
-        name: "Dr. M.S. Swaminathan",
+        image: "/Images/ramesh.jpg",
+        name: "Ramesh",
+        message: '"I have been using FarmHub website for over a year now and it has been a game-changer for me. The website provides me with all information I need to make informed decisionsabout my crops, including weather forecasts, market prices, and information on fertilizers, seeds, machinery, etc. The user-friendly interface and option to use the website in different languages makes it more widely accesible"'
+    },
+    {
+        image: "/Images/lala-ram.jpg",
+        name: "Lala Ram",
         message: '"I have been using FarmHub website for over a year now and it has been a game-changer for me. The website provides me with all information I need to make informed decisionsabout my crops, including weather forecasts, market prices, and information on fertilizers, seeds, machinery, etc. The user-friendly interface and option to use the website in different languages makes it more widely accesible"'
     }
 ]
@@ -135,7 +139,6 @@ export default function Home() {
                         <Button
                             variant='contained'
                             color="homeBtn"
-                            component ={Link} to ="/shop"
                             mr={2}
                             sx={{ width: '11rem' }}>
                             SEE ALL PRODUCTS
@@ -164,7 +167,6 @@ export default function Home() {
                                     position: 'relative',
                                     borderRadius: '1rem'
                                 }}
-                                component={Link} to={crop.link}
                                 key={crop.name}>
                                 <CardMedia
                                     component="img"
