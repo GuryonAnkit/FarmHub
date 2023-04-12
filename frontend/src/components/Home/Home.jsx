@@ -64,18 +64,23 @@ const featuredCrops = [
 
 const items = [
     {
-        image: "/Images/m.s-swaminathan.jpg",
-        name: "Dr. M.S. Swaminathan",
+        image: "/Images/seema.jpg",
+        name: "Seema",
         message: '"I have been using FarmHub website for over a year now and it has been a game-changer for me. The website provides me with all information I need to make informed decisionsabout my crops, including weather forecasts, market prices, and information on fertilizers, seeds, machinery, etc. The user-friendly interface and option to use the website in different languages makes it more widely accesible"'
     },
     {
-        image: "/Images/m.s-swaminathan.jpg",
-        name: "Dr. M.S. Swaminathan",
+        image: "/Images/shivam.jpg",
+        name: "Shivam",
         message: '"I have been using FarmHub website for over a year now and it has been a game-changer for me. The website provides me with all information I need to make informed decisionsabout my crops, including weather forecasts, market prices, and information on fertilizers, seeds, machinery, etc. The user-friendly interface and option to use the website in different languages makes it more widely accesible"'
     },
     {
-        image: "/Images/m.s-swaminathan.jpg",
-        name: "Dr. M.S. Swaminathan",
+        image: "/Images/ramesh.jpg",
+        name: "Ramesh",
+        message: '"I have been using FarmHub website for over a year now and it has been a game-changer for me. The website provides me with all information I need to make informed decisionsabout my crops, including weather forecasts, market prices, and information on fertilizers, seeds, machinery, etc. The user-friendly interface and option to use the website in different languages makes it more widely accesible"'
+    },
+    {
+        image: "/Images/lala-ram.jpg",
+        name: "Lala Ram",
         message: '"I have been using FarmHub website for over a year now and it has been a game-changer for me. The website provides me with all information I need to make informed decisionsabout my crops, including weather forecasts, market prices, and information on fertilizers, seeds, machinery, etc. The user-friendly interface and option to use the website in different languages makes it more widely accesible"'
     }
 ]
