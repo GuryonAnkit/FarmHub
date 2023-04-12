@@ -198,8 +198,15 @@ export default function ProductList({ updateTrigger }) {
                                                 </Typography>
                                                 <Box height='1.4em'>
                                                     {product.avgRating ?
-                                                        <Rating name="read-only" value={product.avgRating} readOnly size='small' />
-                                                        : <Typography variant="body2" color="text.secondary">No ratings</Typography>
+                                                        <Rating name="read-only"
+                                                            value={product.avgRating}
+                                                            readOnly
+                                                            size='small'
+                                                        />
+                                                        :
+                                                        <Typography variant="body2" color="text.secondary">
+                                                            No ratings
+                                                        </Typography>
                                                     }
                                                 </Box>
                                                 <Typography variant="body2" color="text.secondary">

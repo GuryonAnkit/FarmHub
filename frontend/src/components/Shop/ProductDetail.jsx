@@ -222,13 +222,21 @@ export default function Product({
                                         </>
                                         :
                                         <>
-                                            <Button variant="outlined" type='button' onClick={() => addToCart(product._id)}>Add to Cart</Button>
-                                            <Button variant="contained">Buy now</Button>
+                                            <Button variant="outlined" type='button' onClick={() => addToCart(product._id)}>
+                                                Add to Cart
+                                            </Button>
+                                            <Button variant="contained">
+                                                Buy now
+                                            </Button>
                                         </>
                                     :
                                     <>
-                                        <Button variant="outlined" type='button' onClick={() => setLoginDialog(true)}>Add to Cart</Button>
-                                        <Button variant="contained" onClick={() => setLoginDialog(true)}>Buy now</Button>
+                                        <Button variant="outlined" type='button' onClick={() => setLoginDialog(true)}>
+                                            Add to Cart
+                                        </Button>
+                                        <Button variant="contained" onClick={() => setLoginDialog(true)}>
+                                            Buy now
+                                        </Button>
                                     </>
                                 :
                                 <Typography>Out of Stock</Typography>}
@@ -273,7 +281,8 @@ export default function Product({
                                             sx={{ display: 'block' }}
                                             fullWidth
                                             margin='normal'
-                                            defaultValue={product.currentUserReview ? product.currentUserReview.description : ''}
+                                            defaultValue={product.currentUserReview ?
+                                                product.currentUserReview.description : ''}
                                             placeholder="Write a review here..."
                                             inputRef={reviewDescription}
                                         />
@@ -298,10 +307,16 @@ export default function Product({
                                                     />
                                                 </Box>
                                             </Box>
-                                            <Typography mt={1} gutterBottom>{product.currentUserReview.description}</Typography>
+                                            <Typography mt={1} gutterBottom>
+                                                {product.currentUserReview.description}
+                                            </Typography>
                                             <Stack direction='row' spacing={2} mt={3}>
-                                                <Button variant='contained' onClick={() => setReviewForm(true)}>Edit your review</Button>
-                                                <Button variant="outlined" onClick={OpenDeleteDialog}>Delete</Button>
+                                                <Button variant='contained' onClick={() => setReviewForm(true)}>
+                                                    Edit your review
+                                                </Button>
+                                                <Button variant="outlined" onClick={OpenDeleteDialog}>
+                                                    Delete
+                                                </Button>
                                             </Stack>
                                             <Dialog
                                                 open={deleteDialog}
