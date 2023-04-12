@@ -5,18 +5,22 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { Route, Outlet, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Home from './components/Home/Home';
 import Footer from "./components/Footer/Footer"
-import { Route, Outlet, Routes } from 'react-router-dom'
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import grey from '@mui/material/colors/grey';
 import Crops from './components/Crops/Crops'
 import ProductList from './components/Shop/ProductList';
 import ProductDetail from './components/Shop/ProductDetail';
 import SignUp from './components/Navbar/SignUp';
 import CropDetails from './components/Crops/CropDetails';
 import ShopHome from './components/Shop/ShopHome';
+import User from './components/User/User';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import grey from '@mui/material/colors/grey';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+
 
 const theme = createTheme({
     palette: {
@@ -55,6 +59,9 @@ export default function App() {
     }, [updateTrigger]);
 
     const [loginDialog, setLoginDialog] = useState(false);
+    const [profSec, setProfSec] = useState(true);
+    const [addressForm, setAddressForm] = useState(false);
+    const [userTab, setUserTab] = useState(0);
 
     // -------------------------------- Cart --------------------------------
 
@@ -76,6 +83,23 @@ export default function App() {
             .catch((error) => console.log(error));
     }
 
+    // -------------------------------- Snackbar --------------------------------
+
+    const [userSnackbar, setUserSnackbar] = useState({
+        open: false,
+        vertical: 'bottom',
+        horizontal: 'right',
+    });
+    const { vertical, horizontal, open } = userSnackbar;
+
+    const userCreatedSnackbar = () => {
+        setUserSnackbar({ ...userSnackbar, open: true });
+    };
+
+    const closeUserSnackbar = () => {
+        setUserSnackbar({ ...userSnackbar, open: false });
+    };
+
     return (
         <ThemeProvider theme={theme}>
             <Routes>
@@ -87,8 +111,7 @@ export default function App() {
                             user={user}
                             loginDialog={loginDialog}
                             setLoginDialog={setLoginDialog}
-                            updateInCart={updateInCart}
-                            removeFromCart={removeFromCart}
+                            setUserTab={setUserTab}
                         />
                         <Outlet />
                         <Footer />
@@ -97,6 +120,18 @@ export default function App() {
                     <Route index element={<Home />} />
                     <Route path='crops' element={<Crops />} />
                     <Route path='crops/:season' element={<CropDetails />} />
+                    <Route path='/user' element={
+                        <User
+                            setTrigger={setTrigger}
+                            user={user}
+                            profSec={profSec}
+                            setProfSec={setProfSec}
+                            addressForm={addressForm}
+                            setAddressForm={setAddressForm}
+                            userTab={userTab}
+                            setUserTab={setUserTab}
+                        />}
+                    />
                 </Route>
                 <Route path='/shop' element={
                     <>
@@ -127,8 +162,22 @@ export default function App() {
                         />}
                     />
                 </Route>
-                <Route path='/signup' element={<SignUp />} />
+                <Route path='/signup' element={
+                    <SignUp setTrigger={setTrigger} userCreatedSnackbar={userCreatedSnackbar} />}
+                />
             </Routes>
+            <Snackbar
+                anchorOrigin={{
+                    vertical,
+                    horizontal
+                }}
+                open={open}
+                autoHideDuration={6000}
+                onClose={closeUserSnackbar}>
+                <Alert onClose={closeUserSnackbar} severity="success" sx={{ width: '100%' }}>
+                    Account created successfully
+                </Alert>
+            </Snackbar>
         </ThemeProvider>
     );
 }

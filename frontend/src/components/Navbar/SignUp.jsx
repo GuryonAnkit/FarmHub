@@ -94,14 +94,16 @@ export default function SignUp({ setTrigger }) {
 
     async function loginUser() {
         const loginDetails = {
-            email: signUpInfo.email,
+            phoneNumber: signUpInfo.phoneNumber,
             password: signUpInfo.password,
         };
 
         axios.post('http://localhost:4000/user/login', loginDetails, { withCredentials: true })
-            .then(() => {
-                setTrigger(prevValue => !prevValue)
-                navigate('/');
+            .then((response) => {
+                if(response) {
+                    setTrigger(prevValue => !prevValue)
+                    navigate('/');
+                }
             })
             .catch((error) => console.log(error));
     }
