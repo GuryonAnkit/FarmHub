@@ -15,7 +15,6 @@ import ProductDetail from './components/Shop/ProductDetail';
 import SignUp from './components/Layout/Navbar/SignUp';
 import CropDetails from './components/Crops/CropDetails';
 import ShopHome from './components/Shop/ShopHome';
-import Cart from './components/Cart/cart';
 import AboutUs from './components/Layout/About us/AboutUs';
 import User from './components/User/User';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -72,6 +71,7 @@ export default function App() {
             { quantity: quantity },
             { withCredentials: true })
             .then((response) => {
+                console.log(response);
                 if (response) setTrigger(prevValue => !prevValue)
             })
             .catch((error) => console.log(error));
@@ -113,6 +113,8 @@ export default function App() {
                             user={user}
                             loginDialog={loginDialog}
                             setLoginDialog={setLoginDialog}
+                            updateInCart={updateInCart}
+                            removeFromCart={removeFromCart}
                             setUserTab={setUserTab}
                         />
                         <Outlet />
@@ -123,13 +125,6 @@ export default function App() {
                     <Route path='crops' element={<Crops />} />
                     <Route path='crops/:season' element={<CropDetails />} />
                     <Route path='about-us' element={<AboutUs />} />
-                    <Route path='cart' element={
-                        <Cart
-                            user={user}
-                            updateInCart={updateInCart}
-                            removeFromCart={removeFromCart}
-                        />}
-                    />
                     <Route path='/user' element={
                         <User
                             setTrigger={setTrigger}

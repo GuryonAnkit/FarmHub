@@ -95,7 +95,7 @@ export default function Product({
             quantity: 1
         };
 
-        axios.put(`http://localhost:4000/customer/${user._id}/cart`, itemDetails, { withCredentials: true })
+        axios.put(`http://localhost:4000/user/${user._id}/cart`, itemDetails, { withCredentials: true })
             .then((response) => {
                 if (response) setTrigger(prevValue => !prevValue)
             })

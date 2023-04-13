@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import SignIn from './SignIn'
+import Cart from './Cart';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,6 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import Badge from '@mui/material/Badge';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import SearchIcon from '@mui/icons-material/Search';
@@ -61,6 +63,8 @@ function NavBar({
     user,
     loginDialog,
     setLoginDialog,
+    updateInCart,
+    removeFromCart,
     setUserTab
 }) {
     const [anchorElNav, setAnchorElNav] = useState(null);
@@ -92,6 +96,8 @@ function NavBar({
             .then(() => setTrigger(prevValue => !prevValue))
             .catch((err) => console.log(err));
     }
+
+    const [cartDrawer, setCartDrawer] = useState(false);
 
     return (
         <AppBar position="fixed">
@@ -212,9 +218,18 @@ function NavBar({
                         </IconButton>
                         {user ?
                             <>
-                                <IconButton component={Link} to='/cart' size='large'>
-                                    <ShoppingCartIcon color="tertiary" fontSize='inherit' />
+                                <IconButton onClick={() => setCartDrawer(true)} size='large'>
+                                    <Badge badgeContent={user.cartItems} color="secondary">
+                                        <ShoppingCartIcon color="tertiary" fontSize='inherit' />
+                                    </Badge>
                                 </IconButton>
+                                <Cart
+                                    user={user}
+                                    cartDrawer={cartDrawer}
+                                    setCartDrawer={setCartDrawer}
+                                    updateInCart={updateInCart}
+                                    removeFromCart={removeFromCart}
+                                />
                                 <Tooltip title="Open settings">
                                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, mx: 1 }}>
                                         <Avatar alt="Remy Sharp" src={user.avatar} />
