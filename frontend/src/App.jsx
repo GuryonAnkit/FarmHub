@@ -6,16 +6,16 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { Route, Outlet, Routes } from 'react-router-dom'
-import Navbar from './components/Navbar/Navbar'
-import Home from './components/Home/Home';
-import Footer from "./components/Footer/Footer"
+import Navbar from './components/Layout/Navbar/Navbar'
+import Home from './components/Layout/Home/Home';
+import Footer from "./components/Layout/Footer/Footer"
 import Crops from './components/Crops/Crops'
 import ProductList from './components/Shop/ProductList';
 import ProductDetail from './components/Shop/ProductDetail';
-import SignUp from './components/Navbar/SignUp';
+import SignUp from './components/Layout/Navbar/SignUp';
 import CropDetails from './components/Crops/CropDetails';
 import ShopHome from './components/Shop/ShopHome';
-import AboutUs from './components/Shop/AboutUs';
+import AboutUs from './components/Layout/About us/AboutUs';
 import User from './components/User/User';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import grey from '@mui/material/colors/grey';
