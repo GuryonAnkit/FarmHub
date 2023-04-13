@@ -75,32 +75,32 @@ export default function BasicGrid() {
                             <Typography variant='h6'>QUICK LINKS</Typography>
                             <List>
                                 <ListItem disablePadding>
-                                    <Link component={RouterLink} to='/' color='primary.main' underline='none'>
-                                        <ListItemText primary="HOME" />
+                                    <Link component={RouterLink} to='/' color='primary.main' underline='hover'>
+                                        <ListItemText primary="Home" />
                                     </Link>
                                 </ListItem>
                                 <ListItem disablePadding> 
-                                    <Link component={RouterLink} to='/about-us' color='primary.main' underline='none'>
-                                        <ListItemText primary="ABOUT US"/>
+                                    <Link component={RouterLink} to='/about-us' color='primary.main' underline='hover'>
+                                        <ListItemText primary="About us"/>
                                     </Link> 
                                 </ListItem>
                                 <ListItem disablePadding>
-                                    <Link component={RouterLink} to='/crops' color='primary.main' underline='none'>
-                                        <ListItemText primary="CROPS" />
+                                    <Link component={RouterLink} to='/crops' color='primary.main' underline='hover'>
+                                        <ListItemText primary="Crops" />
                                     </Link>
                                 </ListItem>
                                 <ListItem disablePadding> 
-                                    <Link component={RouterLink} to='' color='primary.main' underline='none'>
-                                        <ListItemText primary="SERVICES"/>
+                                    <Link component={RouterLink} to='' color='primary.main' underline='hover'>
+                                        <ListItemText primary="Services"/>
                                     </Link> 
                                 </ListItem>
                                 <ListItem disablePadding> 
-                                    <Link component={RouterLink} to='' color='primary.main' underline='none'>
+                                    <Link component={RouterLink} to='' color='primary.main' underline='hover'>
                                         <ListItemText primary="Terms & Conditions"/>
                                     </Link> 
                                 </ListItem>
                                 <ListItem disablePadding> 
-                                    <Link component={RouterLink} to='' color='primary.main' underline='none'>
+                                    <Link component={RouterLink} to='' color='primary.main' underline='hover'>
                                         <ListItemText primary="Privacy Policy"/>
                                     </Link> 
                                 </ListItem>
