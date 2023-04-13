@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link as RouterLink, useParams } from "react-router-dom";
-import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
+import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import Grid from "@mui/material/Grid";
@@ -93,17 +93,17 @@ function CropDetail() {
                                                             }}
                                                         />
                                                     </ListItemIcon>
-                                                    <a onClick={(e) => {
+                                                    <Link href='/' onClick={(e) => {
                                                         e.preventDefault();
                                                         window.location.href = (crop.link);
                                                         return null;
-                                                    }} sx={{ color: 'primary.main', textDecoration: "none" }}
+                                                    }} underline="none" sx={{ color: 'primary.main' }}
                                                     >
                                                         <ListItemText
                                                             primaryTypographyProps={{ style: { color: 'white' } }}
                                                             primary={crop.name}
                                                         />
-                                                    </a>
+                                                    </Link>
                                                 </ListItem>
                                             ))}
                                         </List>
@@ -112,13 +112,13 @@ function CropDetail() {
                                             <>
                                                 <Typography mt={4} variant="subtitle1" color='primary'>{crop.name}</Typography>
 
-                                                <a onClick={(e) => {
-                                                        e.preventDefault();
-                                                        window.location.href = (crop.link);
-                                                        return null;
-                                                    }} sx={{ color: 'tertiary.main', textDecoration: "none" }}>
+                                                <Link href='/' onClick={(e) => {
+                                                    e.preventDefault();
+                                                    window.location.href = (crop.link);
+                                                    return null;
+                                                }} underline="none" sx={{ color: 'tertiary.main' }}>
                                                     Read more
-                                            </a>
+                                                </Link>
                                                 {/* <Link component={RouterLink} to={crop.link} color='tertiary.main'>Read more</Link> */}
                                             </>
                                         ))
