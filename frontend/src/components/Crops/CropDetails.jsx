@@ -35,7 +35,7 @@ function CropDetail() {
                     pt={7}
                     variant="h3"
                     fontWeight="500"
-                    color="primary"
+                    color="cropHeading.main"
                     gutterBottom>
                     {crops.name} Crops
                 </Typography>
@@ -73,7 +73,7 @@ function CropDetail() {
                             </Grid>
                             <Grid item xs={12} sm={4}>
                                 <Box height='30em'>
-                                    <Typography variant='h4' color='primary'>{crop.name}</Typography>
+                                    <Typography variant='h4' color='cropHeading.main'>{crop.name}</Typography>
                                     {season !== 'zaid' ?
                                         <List
                                             sx={{
@@ -97,7 +97,7 @@ function CropDetail() {
                                                         e.preventDefault();
                                                         window.location.href = (crop.link);
                                                         return null;
-                                                    }} underline="none" sx={{ color: 'primary.main' }}
+                                                    }} underline="hover" sx={{ color: 'primary.main'}}
                                                     >
                                                         <ListItemText
                                                             primaryTypographyProps={{ style: { color: 'white' } }}
