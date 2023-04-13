@@ -93,18 +93,33 @@ function CropDetail() {
                                                             }}
                                                         />
                                                     </ListItemIcon>
-                                                    <ListItemText
-                                                        primaryTypographyProps={{ style: { color: 'white' } }}
-                                                        primary={crop}
-                                                    />
+                                                    <a onClick={(e) => {
+                                                        e.preventDefault();
+                                                        window.location.href = (crop.link);
+                                                        return null;
+                                                    }} sx={{ color: 'primary.main', textDecoration: "none" }}
+                                                    >
+                                                        <ListItemText
+                                                            primaryTypographyProps={{ style: { color: 'white' } }}
+                                                            primary={crop.name}
+                                                        />
+                                                    </a>
                                                 </ListItem>
                                             ))}
                                         </List>
                                         :
                                         crop.crops.map(crop => (
                                             <>
-                                                <Typography mt={4} variant="subtitle1" color='primary'>{crop}</Typography>
-                                                <Link component={RouterLink} to='' color='tertiary.main'>Read more</Link>
+                                                <Typography mt={4} variant="subtitle1" color='primary'>{crop.name}</Typography>
+
+                                                <a onClick={(e) => {
+                                                        e.preventDefault();
+                                                        window.location.href = (crop.link);
+                                                        return null;
+                                                    }} sx={{ color: 'tertiary.main', textDecoration: "none" }}>
+                                                    Read more
+                                            </a>
+                                                {/* <Link component={RouterLink} to={crop.link} color='tertiary.main'>Read more</Link> */}
                                             </>
                                         ))
                                     }

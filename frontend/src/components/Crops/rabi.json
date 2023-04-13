@@ -6,95 +6,276 @@
             "name": "Cereals",
             "image": "/Images/wheat.jpg",
             "crops": [
-                "Barley",
-                "Gram",
-                "Rapeseed",
-                "Mustard",
-                "Oat",
-                "Wheat",
-                "Linseed"
+                {
+                    "name": "Barley",
+                    "link": "https://en.wikipedia.org/wiki/Barley"
+                },
+                {
+                    "name": "Chickpea",
+                    "link": "https://en.wikipedia.org/wiki/Chickpea"
+                },
+                {
+                    "name": "Rapeseed",
+                    "link": "https://en.wikipedia.org/wiki/Rapeseed"
+                },
+                {
+                    "name": "Mustard",
+                    "link": "https://en.wikipedia.org/wiki/Mustard_plant"
+                },
+                {
+                    "name": "Oat",
+                    "link": "https://en.wikipedia.org/wiki/Oat"
+                },
+                {
+                    "name": "Wheat",
+                    "link": "https://en.wikipedia.org/wiki/Wheat"
+                },
+                {
+                    "name": "Linseed",
+                    "link": "https://en.wikipedia.org/wiki/Flax"
+                }
             ]
         },
         {
             "name": "Fruits",
             "image": "/Images/mango-main.jpg",
             "crops": [
-                "Mangoes",
-                "Banana",
-                "Ber",
-                "Date",
-                "Grape",
-                "Kinnow",
-                "Guava",
-                "Lime",
-                "Lemon",
-                "Mandarin orange",
-                "Orange",
-                "Mulberries"
+                {
+                    "name": "Banana",
+                    "link": "https://en.wikipedia.org/wiki/Banana"
+                },
+                {
+                    "name": "Mangoes",
+                    "link": "https://en.wikipedia.org/wiki/Mango"
+                },
+                {
+                    "name": "Ber",
+                    "link": "https://en.wikipedia.org/wiki/Ziziphus_mauritiana"
+                },
+                {
+                    "name": "Date",
+                    "link": "https://en.wikipedia.org/wiki/Date_palm"
+                },
+                {
+                    "name": "Grape",
+                    "link": "https://en.wikipedia.org/wiki/Grape"
+                },
+                {
+                    "name": "Grape fruit",
+                    "link": "https://en.wikipedia.org/wiki/Grapefruit"
+                },
+                {
+                    "name": "Kinnow",
+                    "link": "https://en.wikipedia.org/wiki/Kinnow"
+                },
+                {
+                    "name": "Guava",
+                    "link": "https://en.wikipedia.org/wiki/Guava"
+                },
+                {
+                    "name": "Lime",
+                    "link": "https://en.wikipedia.org/wiki/Lime_(fruit)"
+                },
+                {
+                    "name": "Lemon",
+                    "link": "https://en.wikipedia.org/wiki/Lemon"
+                },
+                {
+                    "name": "Mandarin orange",
+                    "link": "https://en.wikipedia.org/wiki/Mandarin_orange"
+                },
+                {
+                    "name": "Orange",
+                    "link": "https://en.wikipedia.org/wiki/Orange_(fruit)"
+                },
+                {
+                    "name": "Mulberries",
+                    "link": "https://en.wikipedia.org/wiki/Morus_(plant)"
+                }
             ]
         },
         {
             "name": "Legumes",
             "image": "/Images/chickpea-main.jpg",
             "crops": [
-                "Chickpea",
-                "Kulthi (horse gram)",
-                "Lobias",
-                "Mung bean",
-                "Pigeon pea",
-                "Toria",
-                "Urad bean"
+                {
+                    "name": "Chickpea",
+                    "link": ""
+                },
+                {
+                    "name": "Kulthi (horse gram)",
+                    "link": ""
+                },
+                {
+                    "name": "Lobias",
+                    "link": ""
+                },
+                {
+                    "name": "Mung bean",
+                    "link": ""
+                },
+                {
+                    "name": "Pigeon pea",
+                    "link": ""
+                },
+                {
+                    "name": "Toria",
+                    "link": ""
+                },
+                {
+                    "name": "Urad bean",
+                    "link": ""
+                }
             ]
         },
         {
             "name": "Seed plants",
             "image": "/Images/sunflower-main.jpg",
             "crops": [
-                "Alfalfa",
-                "Cumin",
-                "Coriander",
-                "Linseed",
-                "Fenugreek",
-                "Isabgol",
-                "Mustard",
-                "Bengal gram",
-                "Sunflower",
-                "Black pepper",
-                "Red gram"
+                {
+                    "name": "Alfalfa",
+                    "link": ""
+                },
+                {
+                    "name": "Cumin",
+                    "link": ""
+                },
+                {
+                    "name": "Coriander",
+                    "link": ""
+                },
+                {
+                    "name": "Linseed",
+                    "link": ""
+                },
+                {
+                    "name": "Fenugreek",
+                    "link": ""
+                },
+                {
+                    "name": "Isabgol",
+                    "link": ""
+                },
+                {
+                    "name": "Mustard",
+                    "link": ""
+                },
+                {
+                    "name": "Bengal gram",
+                    "link": ""
+                },
+                {
+                    "name": "Sunflower",
+                    "link": ""
+                },
+                {
+                    "name": "Black pepper",
+                    "link": ""
+                },
+                {
+                    "name": "Red gram",
+                    "link": ""
+                }
             ]
         },
         {
             "name": "Vegetables",
             "image": "/Images/potato-main.jpg",
             "crops": [
-                "Bean",
-                "Beetroot",
-                "Brinjal",
-                "Broccoli",
-                "Cabbage",
-                "Capsicum",
-                "Carrot",
-                "Cauliflowers",
-                "Chickpea",
-                "Fenugreek",
-                "Garlic",
-                "Lady finger",
-                "Lettuce",
-                "Pea",
-                "Onion",
-                "Potato",
-                "Radish",
-                "Spinach",
-                "Sweet potato",
-                "Tomato",
-                "Turnip"
+                {
+                    "name": "Bean",
+                    "link": ""
+                },
+                {
+                    "name": "Beetroot",
+                    "link": ""
+                },
+                {
+                    "name": "Brinjal",
+                    "link": ""
+                },
+                {
+                    "name": "Broccoli",
+                    "link": ""
+                },
+                {
+                    "name": "Cabbage",
+                    "link": ""
+                },
+                {
+                    "name": "Capsicum",
+                    "link": ""
+                },
+                {
+                    "name": "Carrot",
+                    "link": ""
+                },
+                {
+                    "name": "Cauliflowers",
+                    "link": ""
+                },
+                {
+                    "name": "Chickpea",
+                    "link": ""
+                },
+                {
+                    "name": "Fenugreek",
+                    "link": ""
+                },
+                {
+                    "name": "Garlic",
+                    "link": ""
+                },
+                {
+                    "name": "Lady finger",
+                    "link": ""
+                },
+                {
+                    "name": "Lettuce",
+                    "link": ""
+                },
+                {
+                    "name": "Pea",
+                    "link": ""
+                },
+                {
+                    "name": "Onion",
+                    "link": ""
+                },
+                {
+                    "name": "Potato",
+                    "link": ""
+                },
+                {
+                    "name": "Radish",
+                    "link": ""
+                },
+                {
+                    "name": "Spinach",
+                    "link": ""
+                },
+                {
+                    "name": "Sweet potato",
+                    "link": ""
+                },
+                {
+                    "name": "Tomato",
+                    "link": ""
+                },
+                {
+                    "name": "Turnip",
+                    "link": ""
+                }
             ]
         },
         {
             "name": "Others",
             "image": "/Images/tabacco-main.jpg",
             "crops": [
-                "Tabacco"
+                {
+                    "name": "Tabacco",
+                    "link": ""
+                }
             ]
         }
     ]
