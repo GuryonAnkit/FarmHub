@@ -22,7 +22,7 @@ passport.serializeUser((user, done) => done(null, user._id));
 
 passport.deserializeUser(async (id, done) => {
     try {
-        const user = await User.findById(id)
+        const user = await User.findById(id).populate('cart.product');
         return done(null, user);
     } catch (err) {
         return done(err);

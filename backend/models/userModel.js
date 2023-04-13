@@ -58,6 +58,14 @@ const userSchema = new Schema({
                 return cartSubtotal;
             }
         },
+        cartItems: {
+            get() {
+                let cartItems = 0;
+                for (const item of this.cart)
+                    cartItems += item.quantity;
+                return cartItems;
+            }
+        }
     }
 });
 
