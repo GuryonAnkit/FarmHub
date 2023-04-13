@@ -8,19 +8,19 @@
       "crops": [
         {
           "name": "Rice",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Rice"
         },
         {
           "name": "Jowar",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Sorghum_bicolor"
         },
         {
           "name": "Maize (corn)",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Maize"
         },
         {
-          "name":"Millet",
-          "link": ""
+          "name": "Millet",
+          "link": "https://en.wikipedia.org/wiki/Millet"
         }
       ]
     },
@@ -30,107 +30,103 @@
       "crops": [
         {
           "name": "Almonds",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Almond"
         },
         {
           "name": "Apples",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Apple"
         },
         {
           "name": "Apricots",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Apricot"
         },
         {
           "name": "Bananas",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Banana"
         },
         {
           "name": "Cantaloupe",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Cantaloupe"
         },
         {
           "name": "Chikoo",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Manilkara_zapota"
         },
         {
           "name": "Coconut",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Coconut"
         },
         {
           "name": "Dates",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Date_palm#Fruits"
         },
         {
           "name": "Figs",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Fig"
         },
         {
           "name": "Guava",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Guava"
         },
         {
           "name": "Jaman",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Jaman"
         },
         {
           "name": "Litchi",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Lychee"
         },
         {
           "name": "Luffa",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Luffa"
         },
         {
           "name": "Mango",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Mango"
         },
         {
           "name": "Muskmelon",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Cucumis_melo"
         },
         {
           "name": "Orange",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Orange_(fruit)"
         },
         {
           "name": "Pomegrante",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Pomegranate"
         },
         {
-          "name": "Plums",
-          "link": ""
+          "name": "Plum",
+          "link": "https://en.wikipedia.org/wiki/Plum"
         },
         {
           "name": "Pears",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Pear"
         },
         {
           "name": "Phalsa",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Grewia_asiatica"
         },
         {
           "name": "Papaya",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Papaya"
         },
         {
           "name": "Peaches",
-          "link": ""
-        },
-        {
-          "name": "Sarda",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Peach"
         },
         {
           "name": "Sugarcane",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Sugarcane"
         },
         {
           "name": "Walnut",
-          "link": ""
+          "link": "https://en.wikipedia.org/wiki/Walnut"
         },
         {
-          "name":"Watermelon",
-          "link": ""
+          "name": "Watermelon",
+          "link": "https://en.wikipedia.org/wiki/Watermelon"
         }
       ]
     },
@@ -139,107 +135,108 @@
       "image": "/Images/Moong.jpg",
       "crops": [
         {
-          "name":"Arhar (tur)",
-          "link": ""
+          "name": "Arhar (tur)",
+          "link": "https://en.wikipedia.org/wiki/Pigeon_pea"
         },
         {
           "name": "Black gram (urad)",
-          "link":""
-          },
-          {
-            "name": "Cotton",
-            "link": ""
-          },
-          {
-            "name": "Cowpea (chavala)",
-            "link": ""
-          },
-            {
-              "name": "Green gram (moong)",
-              "link": ""
-            },
-              {
-                "name": "Groundnut",
-                "link": ""
-              },
-              {
-                "name": "Guar",
-                "link": ""
-              },
-              {
-                "name": "Moth bean",
-                "link": ""
-              },
-                {
-                  "name": "Mung bean",
-                  "link": ""
-                },
-                  {
-                    "name": "Sesame (til)",
-                    "link": ""
-                  },
-                    {
-                      "name": "Soybean",
-                      "link": ""
-                    },
-                    {
-                      "name": "Urad bean",
-                      "link": ""
-                    },
-                      {
-                        "name": "Red gram (Pegion pea)"
-                      },
-                        {
-                          "name": "Fennel (Saunf)",
-                          "link":""
-                        }
-                        ]
-                      },
-                      {
-                        "name": "Vegetables",
-                        "image": "/Images/Tomato.jpg",
-                        "crops": [
-                          {
-                            "name": "Bitter gourd",
-                            "link":""
-                            },
-                            {
-                              "name": "Bottle gourd",
-                              "link":""
-                            },
-                              {
-                                "name": "Brinjal",
-                                "link": ""
-                              },
-                              {
-                                "name": "Chili",
-                                "link": ""
-                              },
-                              {
-                                "name":"Green bean",
-                                "link": ""
-                              },
-                              {
-                                "name": "Ladies fingers",
-                                "link":""
-                              },
-                                {
-                                  "name": "Sponge gourd",
-                                  "link": ""
-                                },
-                                  {
-                                    "name": "Tinda",
-                                    "link": ""
-                                  },
-                                  {
-                                    "name": "Tomato",
-                                    "link": ""
-                                  },
-                                  {
-                                    "name":"Turmeric",
-                                    "link": ""
-                                  }
-                                ]
-                              }
-                            ]
-                          }
+          "link": "https://en.wikipedia.org/wiki/Vigna_mungo"
+        },
+        {
+          "name": "Cotton",
+          "link": "https://en.wikipedia.org/wiki/Cotton"
+        },
+        {
+          "name": "Cowpea (chavala)",
+          "link": "https://en.wikipedia.org/wiki/Cowpea"
+        },
+        {
+          "name": "Green gram (moong)",
+          "link": "https://en.wikipedia.org/wiki/Mung_bean"
+        },
+        {
+          "name": "Groundnut",
+          "link": "https://en.wikipedia.org/wiki/Peanut"
+        },
+        {
+          "name": "Guar",
+          "link": "https://en.wikipedia.org/wiki/Guar"
+        },
+        {
+          "name": "Moth bean",
+          "link": "https://en.wikipedia.org/wiki/Vigna_aconitifolia"
+        },
+        {
+          "name": "Mung bean",
+          "link": "https://en.wikipedia.org/wiki/Mung_bean"
+        },
+        {
+          "name": "Sesame (til)",
+          "link": "https://en.wikipedia.org/wiki/Sesame"
+        },
+        {
+          "name": "Soybean",
+          "link": "https://en.wikipedia.org/wiki/Soybean"
+        },
+        {
+          "name": "Urad bean",
+          "link": "https://en.wikipedia.org/wiki/Vigna_mungo"
+        },
+        {
+          "name": "Red gram (Pegion pea)",
+          "link": "https://en.wikipedia.org/wiki/Pigeon_pea"
+        },
+        {
+          "name": "Fennel (Saunf)",
+          "link": "https://en.wikipedia.org/wiki/Fennel"
+        }
+      ]
+    },
+    {
+      "name": "Vegetables",
+      "image": "/Images/Tomato.jpg",
+      "crops": [
+        {
+          "name": "Bitter gourd",
+          "link": "https://en.wikipedia.org/wiki/Momordica_charantia"
+        },
+        {
+          "name": "Bottle gourd",
+          "link": "https://en.wikipedia.org/wiki/Calabash"
+        },
+        {
+          "name": "Brinjal",
+          "link": "https://en.wikipedia.org/wiki/Eggplant"
+        },
+        {
+          "name": "Chili",
+          "link": "https://en.wikipedia.org/wiki/Chili_pepper"
+        },
+        {
+          "name": "Green bean",
+          "link": "https://en.wikipedia.org/wiki/Green_bean"
+        },
+        {
+          "name": "Ladies fingers",
+          "link": "https://en.wikipedia.org/wiki/Okra"
+        },
+        {
+          "name": "Sponge gourd",
+          "link": "https://en.wikipedia.org/wiki/Luffa"
+        },
+        {
+          "name": "Tinda",
+          "link": "https://en.wikipedia.org/wiki/Tinda"
+        },
+        {
+          "name": "Tomato",
+          "link": "https://en.wikipedia.org/wiki/Tomato"
+        },
+        {
+          "name": "Turmeric",
+          "link": "https://en.wikipedia.org/wiki/Turmeric"
+        }
+      ]
+    }
+  ]
+}
