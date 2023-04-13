@@ -212,7 +212,7 @@ function NavBar({
                         </IconButton>
                         {user ?
                             <>
-                                <IconButton size='large'>
+                                <IconButton component={Link} to='/cart' size='large'>
                                     <ShoppingCartIcon color="tertiary" fontSize='inherit' />
                                 </IconButton>
                                 <Tooltip title="Open settings">
