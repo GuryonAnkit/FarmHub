@@ -40,7 +40,13 @@ const theme = createTheme({
         homeBtn: {
             main: '#07412B',
             contrastText: '#fff',
-        }
+        },
+        cropHeading: {
+            main: '#40513B',
+        },
+        // cropSubHeading:{
+        //     main: '#40513B'
+        // }
     },
 });
 
