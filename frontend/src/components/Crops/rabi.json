@@ -1,4 +1,4 @@
-{
+ {
     "name": "Rabi",
     "description": "Rabi crops or rabi harvest, also known as winter crops, are agricultural crops that are sown in winter and harvested in the spring in India, Pakistan and Bangladesh. The rabi crops are sown around mid-November, preferably after the monsoon rains are over, and harvesting begins in April / May. The crops are grown either with rainwater that has percolated into the ground or using irrigation",
     "category": [
@@ -100,31 +100,37 @@
             "crops": [
                 {
                     "name": "Chickpea",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Chickpea"
                 },
                 {
                     "name": "Kulthi (horse gram)",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Macrotyloma_uniflorum"
                 },
                 {
                     "name": "Lobias",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Black-eyed_pea"
                 },
                 {
                     "name": "Mung bean",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Mung_bean"
                 },
                 {
                     "name": "Pigeon pea",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Pigeon_pea"
                 },
                 {
                     "name": "Toria",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Brassica"
                 },
                 {
                     "name": "Urad bean",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Vigna_mungo"
+                },
+                {
+                    
+                    "name": "Masoor",
+                    "link": "https://en.wikipedia.org/wiki/Lentil"
+                
                 }
             ]
         },
@@ -134,47 +140,47 @@
             "crops": [
                 {
                     "name": "Alfalfa",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Alfalfa"
                 },
                 {
                     "name": "Cumin",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Cumin"
                 },
                 {
                     "name": "Coriander",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Coriander"
                 },
                 {
                     "name": "Linseed",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Flax"
                 },
                 {
                     "name": "Fenugreek",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Fenugreek"
                 },
                 {
                     "name": "Isabgol",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Plantago_ovata"
                 },
                 {
                     "name": "Mustard",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Mustard_plant"
                 },
                 {
                     "name": "Bengal gram",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Chickpea"
                 },
                 {
                     "name": "Sunflower",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Common_sunflower"
                 },
                 {
                     "name": "Black pepper",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Black_pepper"
                 },
                 {
                     "name": "Red gram",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Pigeon_pea"
                 }
             ]
         },
@@ -184,87 +190,87 @@
             "crops": [
                 {
                     "name": "Bean",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Bean"
                 },
                 {
                     "name": "Beetroot",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Beetroot"
                 },
                 {
                     "name": "Brinjal",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Eggplant"
                 },
                 {
                     "name": "Broccoli",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Broccoli"
                 },
                 {
                     "name": "Cabbage",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Cabbage"
                 },
                 {
                     "name": "Capsicum",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Capsicum"
                 },
                 {
                     "name": "Carrot",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Carrot"
                 },
                 {
                     "name": "Cauliflowers",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Cauliflower"
                 },
                 {
                     "name": "Chickpea",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Chickpea"
                 },
                 {
                     "name": "Fenugreek",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Fenugreek"
                 },
                 {
                     "name": "Garlic",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Garlic"
                 },
                 {
                     "name": "Lady finger",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Okra"
                 },
                 {
                     "name": "Lettuce",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Lettuce"
                 },
                 {
                     "name": "Pea",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Pea"
                 },
                 {
                     "name": "Onion",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Onion"
                 },
                 {
                     "name": "Potato",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Potato"
                 },
                 {
                     "name": "Radish",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Radish"
                 },
                 {
                     "name": "Spinach",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Spinach"
                 },
                 {
                     "name": "Sweet potato",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Sweet_potato"
                 },
                 {
                     "name": "Tomato",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Tomato"
                 },
                 {
                     "name": "Turnip",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Turnip"
                 }
             ]
         },
@@ -274,7 +280,7 @@
             "crops": [
                 {
                     "name": "Tabacco",
-                    "link": ""
+                    "link": "https://en.wikipedia.org/wiki/Tobacco"
                 }
             ]
         }
