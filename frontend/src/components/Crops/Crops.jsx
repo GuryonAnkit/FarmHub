@@ -1,9 +1,10 @@
-import {  CardContent, Typography } from "@mui/material";
+import CardContent from "@mui/material/CardContent" 
+import Grid from "@mui/material/Grid" ;
+import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
-import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
-import { Link as RouterLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const featuredCrops = [
     {
@@ -42,7 +43,7 @@ function Crops() {
                 fontFamily="Roboto"
                 fontWeight="bold"
             >
-                Here’s everything you need to know about a wide range of crops such as
+                Here's everything you need to know about a wide range of crops such as
                 Rabi, Zaid, Kharif. Browse through these section to get complete
                 information and valuable farming tips. This section covers important
                 information related to crops such as climate and soils, land
@@ -52,14 +53,23 @@ function Crops() {
                 more.
             </Typography>
 
-            <Stack direction="row" justifyContent="space-between">
+            <Grid container spacing={5}>
                 {featuredCrops.map((crop) => (
-                    <Card
-                        component={RouterLink}
-                        to={crop.link}
-                        sx={{ maxWidth: 345, borderRadius: "1em" , textDecoration:'none'}}
-                        key={crop.name}
+                    <Grid 
+                        component={Link} 
+                        to={crop.link} 
+                        item 
+                        xs={12} 
+                        md={6}
+                        lg={4}
+                        display='flex'
+                        justifyContent='center'
+                        sx={{ textDecoration: 'none'}}
                     >
+                        <Card
+                            sx={{ maxWidth: 345, borderRadius: "1em" }}
+                            key={crop.name}
+                        >
                             <CardMedia
                                 component="img"
                                 image={crop.image}
@@ -78,9 +88,10 @@ function Crops() {
                                     {crop.name}
                                 </Typography>
                             </CardContent>
-                    </Card>
+                        </Card>
+                    </Grid>
                 ))}
-            </Stack>
+            </Grid>
         </Container>
     );
 }
