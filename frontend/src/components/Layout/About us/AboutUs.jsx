@@ -1,35 +1,37 @@
 import React from "react";
+import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
-import { CardActionArea, IconButton } from '@mui/material';
-import TwitterIcon from '@mui/icons-material/Twitter';
+import { CardActionArea, IconButton } from "@mui/material";
+import TwitterIcon from "@mui/icons-material/Twitter";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
+import { Link } from "react-router-dom";
 
 //Content array for cards
-const cardContent = [
-    {
-        name: "MOHAMMAD ARSHAD KHAN",
-        image: "/Images/demo.jpg",
-        twitter: "#",
-    },
-    {
-        name: "ADITYA KUMAR MISHRA",
-        image: "/Images/demo.jpg",
-        twitter: "#",
-    },
-    {
-        name: "ABDUL MANNAN",
-        image: "/Images/demo.jpg",
-        twitter: "#",
-    },
-    {
-        name: "ANKIT KUMAR MISHRA",
-        image: "/Images/demo.jpg",
-        twitter: "#",
-    }
-]
+const profiles = [
+  {
+    name: "MOHAMMAD ARSHAD KHAN",
+    image: "/Images/arshad.jpg",
+    twitter: "https://twitter.com/marshadkhn ",
+  },
+  {
+    name: "ADITYA KUMAR MISHRA",
+    image: "/Images/demo.jpg",
+    twitter: "https://twitter.com/Aditya_m037",
+  },
+  {
+    name: "ABDUL MANNAN",
+    image: "/Images/abdul.jpg",
+    twitter: "https://twitter.com/Abdul_365m",
+  },
+  {
+    name: "ANKIT KUMAR MISHRA",
+    image: "/Images/demo.jpg",
+    twitter: "#",
+  },
+];
 
 const AboutUs = () => {
   return (
@@ -71,29 +73,42 @@ const AboutUs = () => {
       >
         Maintainers
       </Typography>
-      <Card sx={{ maxWidth: 345 }}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            height="270"
-            image="/Images/demo.jpg"
-            alt="green iguana"
-          />
-          <CardContent sx={{ display: "flex" }}>
-            <Typography
-              sx={{ mr: "auto" }}
-              gutterBottom
-              variant="h6"
-              component="div"
-            >
-              MOHAMMAD ARSHAD
-            </Typography>
-            <IconButton aria-label="delete">
-              <TwitterIcon />
-            </IconButton>
-          </CardContent>
-        </CardActionArea>
-      </Card>
+      <Grid container spacing={5}>
+        {profiles.map((profile) => (
+          <Grid item xs={3}>
+            <Card sx={{ maxWidth: 345, width: "15rem" }}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="270"
+                  image={profile.image}
+                  alt="green iguana"
+                />
+                <CardContent
+                  sx={{ display: "flex", alignItems: "center", height: "4rem" }}
+                >
+                  <Typography
+                    sx={{ mr: "auto" }}
+                    gutterBottom
+                    variant="h6"
+                    component="div"
+                  >
+                    {profile.name}
+                  </Typography>
+                  <IconButton
+                    component={Link}
+                    to={profile.twitter}
+                    aria-label="delete"
+                    sx={{ color: "#00a2f5" }}
+                  >
+                    <TwitterIcon />
+                  </IconButton>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </Container>
   );
 };
