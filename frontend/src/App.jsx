@@ -21,6 +21,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import grey from '@mui/material/colors/grey';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import CheckOutSteps from './components/Cart/CheckOutSteps';
+
 
 
 const theme = createTheme({
@@ -143,6 +145,12 @@ export default function App() {
                             setUserTab={setUserTab}
                         />}
                     />
+                    <Route path='/checkOut' element={
+                        <CheckOutSteps
+                            user={user}
+                        />}
+                    />
+
                 </Route>
                 <Route path='/shop' element={
                     <>
