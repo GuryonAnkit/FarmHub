@@ -77,6 +77,14 @@ export const productList = async (req, res) => {
         res.send(err);
     }    
 }
+export const getAllProducts = async (req, res) => {
+    try {
+        const products = await Product.find({})
+        res.json(products)
+    } catch (err) {
+        res.send(err);
+    }    
+}
 
 export const productSearch = async (req, res) => {
     try {
