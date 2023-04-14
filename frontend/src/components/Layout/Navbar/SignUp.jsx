@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
-import Box from '@mui/material/Box';   
+import Box from '@mui/material/Box';
 
 function TextFieldx({ children, ...other }) {
     return (
@@ -31,7 +31,7 @@ function TextFieldx({ children, ...other }) {
     );
 }
 
-export default function SignUp({ setTrigger }) {
+export default function SignUp({ setTrigger, openSnackbar }) {
 
     const fields = [
         { name: 'name', label: 'Enter your name' },
@@ -82,9 +82,12 @@ export default function SignUp({ setTrigger }) {
 
         axios.post('http://localhost:4000/user/register', userDetails, { withCredentials: true })
             .then((response) => {
-                if (response) {
-                    console.log(response);
+                if (!response.data.errors) {
+                    openSnackbar('Account created successfully', 'success');
                     loginUser();
+                }
+                else {
+                    openSnackbar('Account could not be created', 'error');
                 }
             })
             .catch((error) => console.log(error));
@@ -100,7 +103,7 @@ export default function SignUp({ setTrigger }) {
 
         axios.post('http://localhost:4000/user/login', loginDetails, { withCredentials: true })
             .then((response) => {
-                if(response) {
+                if (response) {
                     setTrigger(prevValue => !prevValue)
                     navigate('/');
                 }
@@ -109,57 +112,57 @@ export default function SignUp({ setTrigger }) {
     }
 
     return (
-        <Container maxWidth='xl'   sx={{background:'url(/Images/signupbg.jpg) ',py:'3rem'}}>
-            <Card sx={{ width: 500, mx: 'auto'  }}>
-            <CardContent sx={{ p: 5 }} component='form' onSubmit={createUser}>
-                <Stack>
-                    <img
-                        src='/Images/main-logo.png'
-                        alt='FarmHub'
-                        style={{ width: '5em', height: '5em', margin: 'auto' }}
-                    />
-                    <Typography align='center' variant='h6' mt={2}>Create Your Account</Typography>
-                    <Avatar
-                        sx={{ mx: 'auto', width: '5em', height: '5em', mt: '1rem' }}
-                        src={avatar}
-                    />
-                    <Button variant="contained" color='tertiary' component="label" sx={{ mx: 'auto', my: 3 }}>
-                        Upload your Image
-                        <input
-                            hidden
-                            onChange={registerDataChange}
-                            name='avatar'
-                            accept="image/*"
-                            type="file"
+        <Container maxWidth='xl' sx={{ background: 'url(/Images/signupbg.jpg) ', py: '3rem' }}>
+            <Card sx={{ width: 500, mx: 'auto' }}>
+                <CardContent sx={{ p: 5 }} component='form' onSubmit={createUser}>
+                    <Stack>
+                        <img
+                            src='/Images/main-logo.png'
+                            alt='FarmHub'
+                            style={{ width: '5em', height: '5em', margin: 'auto' }}
                         />
-                    </Button>
-                    {fields.map(field => (
-                        <Box key={field.name}>
-                            <Typography variant='subtitle2' gutterBottom>
-                                {startCase(field.name)}
-                            </Typography>
-                            <TextFieldx
-                                value={signUpInfo[field.name]}
-                                onChange={handleChange}
-                                name={field.name}
-                                label={field.label}
-                                type={field.type}
-                                fullWidth
+                        <Typography align='center' variant='h6' mt={2}>Create Your Account</Typography>
+                        <Avatar
+                            sx={{ mx: 'auto', width: '5em', height: '5em', mt: '1rem' }}
+                            src={avatar}
+                        />
+                        <Button variant="contained" color='tertiary' component="label" sx={{ mx: 'auto', my: 3 }}>
+                            Upload your Image
+                            <input
+                                hidden
+                                onChange={registerDataChange}
+                                name='avatar'
+                                accept="image/*"
+                                type="file"
                             />
-                        </Box>
-                    ))}
-                    <Button
-                        variant='contained'
-                        color='tertiary'
-                        size='large'
-                        type='submit'
-                        sx={{ my: 3 }}
-                    >
-                        Submit
-                    </Button>
-                </Stack>
-            </CardContent>
-        </Card>
+                        </Button>
+                        {fields.map(field => (
+                            <Box key={field.name}>
+                                <Typography variant='subtitle2' gutterBottom>
+                                    {startCase(field.name)}
+                                </Typography>
+                                <TextFieldx
+                                    value={signUpInfo[field.name]}
+                                    onChange={handleChange}
+                                    name={field.name}
+                                    label={field.label}
+                                    type={field.type}
+                                    fullWidth
+                                />
+                            </Box>
+                        ))}
+                        <Button
+                            variant='contained'
+                            color='tertiary'
+                            size='large'
+                            type='submit'
+                            sx={{ my: 3 }}
+                        >
+                            Submit
+                        </Button>
+                    </Stack>
+                </CardContent>
+            </Card>
         </Container>
     )
 }

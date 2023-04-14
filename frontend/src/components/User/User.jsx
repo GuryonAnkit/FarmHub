@@ -1,4 +1,3 @@
-import { useState, forwardRef } from 'react';
 import Profile from './Profile';
 import Addresses from './Addresses';
 import Orders from './Orders';
@@ -9,12 +8,6 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
-
-const Alert = forwardRef(function Alert(props, ref) {
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
 
 const StyledTab = styled(Tab)(() => ({
     alignItems: 'start',
@@ -61,23 +54,9 @@ export default function User({
     addressForm,
     setAddressForm,
     userTab,
-    setUserTab
+    setUserTab,
+    openSnackbar
 }) {
-    const [userSnackbar, setUserSnackbar] = useState({
-        open: false,
-        vertical: 'bottom',
-        horizontal: 'right',
-    });
-
-    const { vertical, horizontal, open } = userSnackbar;
-
-    const openSnackbar = () => {
-        setUserSnackbar({ ...userSnackbar, open: true });
-    };
-
-    const closeSnackbar = () => {
-        setUserSnackbar({ ...userSnackbar, open: false });
-    };
 
     if (user) {
         return (
@@ -120,18 +99,6 @@ export default function User({
                     <TabPanel value={userTab} index={3}>
                         <Orders user={user} />
                     </TabPanel>
-                    <Snackbar
-                        anchorOrigin={{
-                            vertical,
-                            horizontal
-                        }}
-                        open={open}
-                        autoHideDuration={6000}
-                        onClose={closeSnackbar}>
-                        <Alert onClose={closeSnackbar} severity="success" sx={{ width: '100%' }}>
-                            Changes saved successfully
-                        </Alert>
-                    </Snackbar>
                 </Box>
             </Container>
         );
