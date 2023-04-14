@@ -31,7 +31,7 @@ function Crops() {
                 pt={7}
                 variant="h4"
                 fontWeight="500"
-                color="tertiary"
+                color="cropHeading.main"
                 gutterBottom
             >
                 CROPS
