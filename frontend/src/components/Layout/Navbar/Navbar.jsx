@@ -237,7 +237,14 @@ function NavBar({
                                     onClose={handleCloseUserMenu}
                                     disableScrollLock={true}
                                 >
-                                    <MenuItem component={Link} to='/user' onClick={() => setUserTab(0)} key="Profile">
+                                    {user.role === 'admin' ?
+                                        <MenuItem component={Link} to='/user' onClick={() => setUserTab(0)} key="Dashboard">
+                                            <Typography textAlign="center">Dashboard</Typography>
+                                        </MenuItem>
+                                        :
+                                        null
+                                    }
+                                    <MenuItem component={Link} to='/user' onClick={() => setUserTab(1)} key="Profile">
                                         <Typography textAlign="center">Profile</Typography>
                                     </MenuItem>
                                     <MenuItem component={Link} to='/user' onClick={() => setUserTab(3)} key="Orders">

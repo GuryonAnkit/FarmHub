@@ -7,7 +7,8 @@ import {
     addReview,
     updateReview,
     deleteReview,
-    productSearch
+    productSearch,
+    getAllProducts
 } from '../controllers/productController';
 import multer from 'multer';
 
@@ -16,6 +17,8 @@ const productRoutes = (app) => {
 
     app.route('/product')
         .post(upload.array("images"), addProduct);
+    app.route('/products')
+        .get(getAllProducts);
     app.route('/products/category/:category/:sort')
         .get(productList);
     app.route('/products/search/:term/:sort')

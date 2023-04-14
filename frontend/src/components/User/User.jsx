@@ -2,6 +2,7 @@ import { useState, forwardRef } from 'react';
 import Profile from './Profile';
 import Addresses from './Addresses';
 import Orders from './Orders';
+import Dashboard from './Dashboard.jsx';
 import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -90,11 +91,15 @@ export default function User({
                         aria-label="Vertical tabs example"
                         sx={{ borderRight: 1, borderColor: 'divider', width: '20%' }}
                     >
-                        <StyledTab label="Profile" {...a11yProps(0)} onClick={() => setProfSec(true)} />
-                        <StyledTab label="Addresses" {...a11yProps(1)} onClick={() => setAddressForm(false)} />
-                        <StyledTab label="Orders" {...a11yProps(2)} />
+                        {user.role === 'admin' ? <StyledTab label="Dashboard" {...a11yProps(0)} /> : null}
+                        <StyledTab label="Profile" {...a11yProps(1)} onClick={() => setProfSec(true)} />
+                        <StyledTab label="Addresses" {...a11yProps(2)} onClick={() => setAddressForm(false)} />
+                        <StyledTab label="Orders" {...a11yProps(3)} />
                     </Tabs>
                     <TabPanel value={userTab} index={0}>
+                        <Dashboard />
+                    </TabPanel>
+                    <TabPanel value={userTab} index={1}>
                         <Profile
                             setTrigger={setTrigger}
                             user={user}
@@ -103,7 +108,7 @@ export default function User({
                             setProfSec={setProfSec}
                         />
                     </TabPanel>
-                    <TabPanel value={userTab} index={1}>
+                    <TabPanel value={userTab} index={2}>
                         <Addresses
                             setTrigger={setTrigger}
                             user={user}
@@ -112,7 +117,7 @@ export default function User({
                             setAddressForm={setAddressForm}
                         />
                     </TabPanel>
-                    <TabPanel value={userTab} index={2}>
+                    <TabPanel value={userTab} index={3}>
                         <Orders user={user} />
                     </TabPanel>
                     <Snackbar
