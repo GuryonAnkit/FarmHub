@@ -11,6 +11,9 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CircularProgress from '@mui/material/CircularProgress';
+import Badge from '@mui/material/Badge';
+import EditIcon from '@mui/icons-material/Edit';
+import { IconButton } from '@mui/material';
 
 export default function Profile({
     setTrigger,
@@ -22,7 +25,27 @@ export default function Profile({
     const userFields = ['name', 'email', 'phoneNumber'];
 
     const [status, setStatus] = useState('success');
+
+    // const [avatar, setAvatar] = useState(user.avatar);
+
+    const registerDataChange = (e) => {
+        setStatus('typing');
+        const reader = new FileReader();
+        reader.onload = () => {
+            if (reader.readyState === 2) {
+                setUserValues((prevValues) => ({
+                    ...prevValues,
+                    avatar: reader.result,
+                }));
+            }
+        };
+        reader.readAsDataURL(e.target.files[0]);
+    }
+
+
+
     const [userValues, setUserValues] = useState({
+        avatar:user.avatar,
         name: user.name,
         email: user.email,
         phoneNumber: user.phoneNumber,
@@ -50,7 +73,7 @@ export default function Profile({
         const hasEmptyRequiredField = userFields.some((field) => userValues[field] === '');
         if (hasEmptyRequiredField) return;
         setStatus('submitting');
-
+        
         axios.put(`http://localhost:4000/user/${user._id}`, userValues, { withCredentials: true })
             .then((response) => {
                 if (response.data.errors) {
@@ -72,7 +95,11 @@ export default function Profile({
                 openSnackbar('Changes saved successfully', 'success');
                 setStatus('success');
             })
-            .catch((error) => console.log(error))
+            .catch((error) => {
+                console.log(error); 
+                setStatus('typing')
+                openSnackbar('Changes could not be saved', 'error');
+            })
     }
 
     // const oldPass = useRef(null);
@@ -114,11 +141,34 @@ export default function Profile({
                         {profSec ?
                             <>
                                 <Grid item xs={12}>
-                                    <Avatar
-                                        alt="Remy Sharp"
-                                        src={user.avatar}
-                                        sx={{ width: '5em', height: '5em' }}
-                                    />
+                                    <Badge
+                                        badgeContent={
+                                            <IconButton  component="label" color="primary" sx={{ border: '0.1px solid lightgray' }} >
+                                                <EditIcon color="tertiary" />
+                                                
+                                                    <input
+                                                        hidden
+                                                        onChange={registerDataChange}
+                                                        name='avatar'
+                                                        accept="image/*"
+                                                        type="file"
+                                                    />
+                                            </IconButton>
+                                        }
+
+
+
+                                        anchorOrigin={{
+                                            vertical: 'bottom',
+                                            horizontal: 'right',
+                                        }}
+                                        overlap="circular">
+                                        <Avatar
+                                            alt={user.name}
+                                            src={userValues.avatar}
+                                            sx={{ width: '5em', height: '5em' }}
+                                        />
+                                    </Badge>
                                 </Grid>
                                 {userFields.map((field) => (
                                     <Grid item xs={6} key={field}>
