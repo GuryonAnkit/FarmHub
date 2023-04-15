@@ -19,7 +19,7 @@ function TabPanel({ children, value, index, ...other }) {
         <div
             role="tabpanel"
             hidden={value !== index}
-            style={{ width: '80%' }}
+            style={{ width: '85%' }}
             id={`vertical-tabpanel-${index}`}
             aria-labelledby={`vertical-tab-${index}`}
             {...other}
@@ -68,7 +68,7 @@ export default function User({
                         value={userTab}
                         onChange={(e, newUserTab) => setUserTab(newUserTab)}
                         aria-label="Vertical tabs example"
-                        sx={{ borderRight: 1, borderColor: 'divider', width: '20%' }}
+                        sx={{ borderRight: 1, borderColor: 'divider', width: '15%' }}
                     >
                         {user.role === 'admin' ? <StyledTab label="Dashboard" {...a11yProps(0)} /> : null}
                         <StyledTab label="Profile" {...a11yProps(1)} onClick={() => setProfSec(true)} />

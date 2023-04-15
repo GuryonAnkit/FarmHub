@@ -171,6 +171,7 @@ export default function App() {
                             setLoginDialog={setLoginDialog}
                             updateInCart={updateInCart}
                             removeFromCart={removeFromCart}
+                            setUserTab={setUserTab}
                         />
                         <Outlet />
                         <Footer />

@@ -151,17 +151,20 @@ export default function Product({
     if (product) {
         return (
             <Container sx={{ mt: { xs: 6, sm: 8 } }}>
-                <Grid container pt={5} rowSpacing={5} columnSpacing={7}>
+                <Grid container pt={5} spacing={5} columns={18}>
                     <Grid item xs={2}>
-                        <ImageList cols={1} sx={{ mt: 0 }}>
+                        <ImageList cols={1} sx={{ mt: 0 }} >
                             {product.images.map(image => (
-                                <ImageListItem component='img'
+                                <ImageListItem 
+                                    component='img'
                                     key={image._id}
                                     sx={{
-                                        width: 65,
-                                        height: 100,
+                                        width: '100%',
+                                        height: '6rem !important',
+                                        boxSizing: 'border-box',
+                                        objectFit: 'contain',
                                         border: '0.1em solid',
-                                        borderColor: image._id === productImage._id ? 'primary.main' : '#DAE1E7',
+                                        borderColor: image._id === productImage._id ? 'tertiary.main' : 'primary.main',
                                         borderRadius: '20%',
                                         mb: 1,
                                         p: 1
@@ -173,14 +176,21 @@ export default function Product({
                             ))}
                         </ImageList>
                     </Grid>
-                    <Grid item xs={5} ml={-9}>
-                        <img src={productImage.data} alt={product.name} style={{ width: '100%' }} />
+                    <Grid item xs={8} display='flex' justifyContent='center'>
+                        <Box 
+                            component='img' 
+                            src={productImage.data} 
+                            alt={product.name} 
+                            sx={{ height: '30rem', width: '100%', objectFit: 'contain' }}
+                        />
                     </Grid>
-                    <Grid item xs={5}>
-                        <Typography variant='h4' fontWeight='500'>{product.name}</Typography>
+                    <Grid item xs={8}>
+                        <Typography variant='h4' fontWeight='500' color='primary.main'>{product.name}</Typography>
                         {product.avgRating ?
                             <Box display='flex' alignItems='center' mt={2}>
-                                <Typography fontWeight='bold' variant='h6' mr={1}>{product.avgRating.toFixed(1)}</Typography>
+                                <Typography fontWeight='bold' variant='h6' mr={1}>
+                                    {product.avgRating.toFixed(1)}
+                                </Typography>
                                 <Rating sx={{ mr: 1 }} value={product.avgRating} precision={0.1} readOnly size='small' />
                                 <Typography>
                                     ({product.currentUserReview ? product.reviews.length + 1 : product.reviews.length})
@@ -196,53 +206,52 @@ export default function Product({
                             ₹{(product.price).toLocaleString(undefined, { maximumFractionDigits: 2 })}
                         </Typography>
                         <Stack spacing={2} mt={3} direction="row" alignItems='center'>
-                            {product.quantity > 0 ?
-                                user ?
-                                    user.cart.some(item => item.product._id === product._id) ?
-                                        <>
-                                            <IconButton
-                                                color='primary'
-                                                onClick={() => updateInCart(
-                                                    product._id,
-                                                    user.cart.find(item => item.product._id === product._id).quantity + 1)}
-                                            >
-                                                <AddIcon />
-                                            </IconButton>
-                                            <Typography variant='h6'>
-                                                {user.cart.find(item => item.product._id === product._id).quantity}
-                                            </Typography>
-                                            <IconButton
-                                                color='primary'
-                                                onClick={() => updateInCart(
-                                                    product._id,
-                                                    user.cart.find(item => item.product._id === product._id).quantity - 1)}
-                                            >
-                                                <RemoveIcon />
-                                            </IconButton>
-                                        </>
-                                        :
-                                        <>
-                                            <Button variant="outlined" type='button' onClick={() => addToCart(product._id)}>
-                                                Add to Cart
-                                            </Button>
-                                            <Button variant="contained">
-                                                Buy now
-                                            </Button>
-                                        </>
+                            {user ?
+                                user.cart.some(item => item.product._id === product._id) ?
+                                    <>
+                                        <IconButton
+                                            color='primary'
+                                            onClick={() => updateInCart(
+                                                product._id,
+                                                user.cart.find(item => item.product._id === product._id).quantity + 1)}
+                                        >
+                                            <AddIcon />
+                                        </IconButton>
+                                        <Typography variant='h6'>
+                                            {user.cart.find(item => item.product._id === product._id).quantity}
+                                        </Typography>
+                                        <IconButton
+                                            color='primary'
+                                            onClick={() => updateInCart(
+                                                product._id,
+                                                user.cart.find(item => item.product._id === product._id).quantity - 1)}
+                                        >
+                                            <RemoveIcon />
+                                        </IconButton>
+                                    </>
                                     :
                                     <>
-                                        <Button variant="outlined" type='button' onClick={() => setLoginDialog(true)}>
+                                        <Button variant="contained" type='button' onClick={() => addToCart(product._id)}>
                                             Add to Cart
                                         </Button>
-                                        <Button variant="contained" onClick={() => setLoginDialog(true)}>
+                                        {/* <Button variant="contained">
                                             Buy now
-                                        </Button>
+                                        </Button> */}
                                     </>
                                 :
-                                <Typography>Out of Stock</Typography>}
+                                <>
+                                    <Button variant="contained" type='button' onClick={() => setLoginDialog(true)}>
+                                        Add to Cart
+                                    </Button>
+                                    {/* <Button variant="contained" onClick={() => setLoginDialog(true)}>
+                                        Buy now
+                                    </Button> */}
+                                </>
+                            }
+                            {product.quantity === 0 ? <Typography>Out of Stock</Typography> : null}
                         </Stack>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={18}>
                         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                             <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                                 <Tab label="Description" sx={{ textTransform: 'none' }} {...a11yProps(0)} />
@@ -321,17 +330,15 @@ export default function Product({
                                             <Dialog
                                                 open={deleteDialog}
                                                 onClose={closeDeleteDialog}
-                                                aria-labelledby="alert-dialog-title"
-                                                aria-describedby="alert-dialog-description"
                                             >
-                                                <DialogTitle id="alert-dialog-title">
+                                                <DialogTitle>
                                                     Are you sure you want to delete your review?
                                                 </DialogTitle>
                                                 <DialogActions>
-                                                    <Button onClick={() => { closeDeleteDialog(); deleteReview(); }} autoFocus>
+                                                    <Button color='tertiary' onClick={() => { closeDeleteDialog(); deleteReview(); }} autoFocus>
                                                         Yes
                                                     </Button>
-                                                    <Button onClick={closeDeleteDialog}>No</Button>
+                                                    <Button color='tertiary' onClick={closeDeleteDialog}>No</Button>
                                                 </DialogActions>
                                             </Dialog>
                                         </Box>
