@@ -8,6 +8,8 @@ import CreditCardIcon from '@mui/icons-material/CreditCard';
 import EventIcon from '@mui/icons-material/Event';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import { Card } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@mui/material/Link';
 
 
 const Payment = ({ user, setActiveStep }) => {
@@ -84,9 +86,12 @@ const Payment = ({ user, setActiveStep }) => {
             <Button onClick={() => setActiveStep(1)} size='large' sx={{ textTransform: 'none',marginRight: "2rem" }} color='primary' variant='contained'>
                 Back to Confirm Order
             </Button>
-            <Button size='large' sx={{ textTransform: 'none',width: "10rem" }} color='primary' variant='contained'>
+
+            <Link component={RouterLink} to={'/orderSuccess'} underline='none'>
+            <Button size='large' sx={{ textTransform: 'none',width: "10rem" }} color='tertiary' variant='contained'>
                 Pay
             </Button>
+            </Link>
 
         </Container>
     )

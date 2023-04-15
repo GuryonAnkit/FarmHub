@@ -22,6 +22,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import grey from '@mui/material/colors/grey';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import OrderSuccess from './components/Cart/OrderSuccess';
 
 const Alert = forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -154,6 +155,9 @@ export default function App() {
                         <CheckOutSteps
                             user={user}
                         />}
+                    />
+
+                    <Route path='/orderSuccess' element={<OrderSuccess/>}
                     />
 
                 </Route>
