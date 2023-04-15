@@ -70,9 +70,9 @@ export default function App() {
     }, [updateTrigger]);
 
     const [loginDialog, setLoginDialog] = useState(false);
-    const [profSec, setProfSec] = useState(true);
-    const [addressForm, setAddressForm] = useState(false);
     const [userTab, setUserTab] = useState(0);
+    const [profSec, setProfSec] = useState(true);
+    const [addressSec, setAddressSec] = useState('view');
 
     // -------------------------------- Cart --------------------------------
 
@@ -143,8 +143,8 @@ export default function App() {
                             user={user}
                             profSec={profSec}
                             setProfSec={setProfSec}
-                            addressForm={addressForm}
-                            setAddressForm={setAddressForm}
+                            addressSec={addressSec}
+                            setAddressSec={setAddressSec}
                             userTab={userTab}
                             setUserTab={setUserTab}
                             openSnackbar={openSnackbar}

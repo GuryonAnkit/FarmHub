@@ -10,6 +10,7 @@ import Avatar from '@mui/material/Avatar';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function Profile({
     setTrigger,
@@ -20,7 +21,7 @@ export default function Profile({
 }) {
     const userFields = ['name', 'email', 'phoneNumber'];
 
-    const [userChange, setUserChange] = useState(false);
+    const [status, setStatus] = useState('success');
     const [userValues, setUserValues] = useState({
         name: user.name,
         email: user.email,
@@ -33,7 +34,7 @@ export default function Profile({
     });
 
     const handleChange = (event) => {
-        setUserChange(true);
+        setStatus('typing');
         setUserValues((prevValues) => ({
             ...prevValues,
             [event.target.name]: event.target.value,
@@ -46,16 +47,15 @@ export default function Profile({
 
     function updateUser(e) {
         e.preventDefault();
-
         const hasEmptyRequiredField = userFields.some((field) => userValues[field] === '');
         if (hasEmptyRequiredField) return;
-
-        setUserChange(false);
+        setStatus('submitting');
 
         axios.put(`http://localhost:4000/user/${user._id}`, userValues, { withCredentials: true })
             .then((response) => {
                 if (response.data.errors) {
                     openSnackbar('Changes could not be saved', 'error');
+                    setStatus('typing');
                     return;
                 }
                 if (response.data.keyPattern) {
@@ -65,11 +65,12 @@ export default function Profile({
                         email: key.email ? 'Email already registered' : '',
                         phoneNumber: key.phoneNumber ? 'Phone number already registered' : ''
                     }));
+                    setStatus('typing');
                     return;
                 }
                 setTrigger(prevValue => !prevValue);
                 openSnackbar('Changes saved successfully', 'success');
-                setUserChange(false);
+                setStatus('success');
             })
             .catch((error) => console.log(error))
     }
@@ -80,7 +81,7 @@ export default function Profile({
 
     return (
         <>
-            <Stack direction='row' mb={2}>
+            <Stack direction='row'>
                 <Typography variant='h4' mr='auto' color='primary' fontWeight='bold'>
                     {profSec ? 'Profile' : 'Change Password'}
                 </Typography>
@@ -102,7 +103,7 @@ export default function Profile({
                 noValidate
                 autoComplete="off"
                 onSubmit={updateUser}
-                sx={{ borderRadius: '0.5rem' }}
+                sx={{ borderRadius: '0.5rem', mt: 2 }}
             >
                 <CardContent sx={{ px: 4, pb: 0, pt: 3 }}>
                     <Grid
@@ -130,7 +131,7 @@ export default function Profile({
                                             onChange={handleChange}
                                             required
                                             error={userErrors[field] !== ''}
-                                            helperText={userErrors[field] !== '' ? userErrors[field] : ' '}
+                                            helperText={userErrors[field] ? userErrors[field] : ' '}
                                         />
                                     </Grid>
                                 ))}
@@ -168,11 +169,15 @@ export default function Profile({
                             <Button
                                 variant="contained"
                                 color='tertiary'
-                                disabled={!userChange}
+                                disabled={status !== 'typing'}
                                 type='Submit'
                             >
                                 Save Changes
                             </Button>
+                            {status === 'submitting'
+                                ? <CircularProgress sx={{ ml: 3 }} color='tertiary' size='2rem' />
+                                : null
+                            }
                             {/* <Button
                                 sx={{ ml: 2 }}
                                 variant="outlined"

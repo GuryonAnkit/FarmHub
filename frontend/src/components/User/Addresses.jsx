@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { startCase } from 'lodash';
 import axios from 'axios';
 import Typography from '@mui/material/Typography';
@@ -12,166 +12,187 @@ import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function Addresses({
     setTrigger,
     user,
     openSnackbar,
-    addressForm,
-    setAddressForm
+    addressSec,
+    setAddressSec
 }) {
-    const fields = ['area', 'city', 'state', 'country', 'pincode'];
-    const refs = {
-        area: useRef(),
-        city: useRef(),
-        state: useRef(),
-        country: useRef(),
-        pincode: useRef()
+    const [status, setStatus] = useState('success');
+
+    const addressFields = ['area', 'city', 'state', 'country', 'pincode'];
+    const [addressValues, setAddressValues] = useState({
+        area: '',
+        city: '',
+        state: '',
+        country: '',
+        pincode: ''
+    });
+    const [addressErrors, setAddressErrors] = useState({
+        area: '',
+        city: '',
+        state: '',
+        country: '',
+        pincode: ''
+    });
+    const handleChange = (event) => {
+        setStatus('typing');
+        const { name, value } = event.target;
+        setAddressValues((prevValues) => ({ ...prevValues, [name]: value }));
+        setAddressErrors((prevValues) => ({ ...prevValues, [name]: value === '' ? 'Required' : '' }));
     };
-    const [editAddress, setEditAddress] = useState(null);
-    const [adrsChange, setAdrsChange] = useState(false);
 
-    function addAddress(e) {
-        e.preventDefault();
-    
-        const address = fields.reduce((acc, field) => ({ ...acc, [field]: refs[field].current.value }), {});
-    
-        axios.put(`http://localhost:4000/user/${user._id}/address`, address, { withCredentials: true })
-            .then((response) => {
-                console.log(response);
-                if(response) {
-                    setTrigger(prevValue => !prevValue);
-                    openSnackbar();
-                    setAddressForm(false);
-                    setAdrsChange(false);
-                }
-            })
-            .catch((error) => console.log(error))
-    }
-    
-    function updateAddress(e, addressId) {
-        e.preventDefault();
-    
-        const address = fields.reduce((acc, field) => ({ ...acc, [field]: refs[field].current.value }), {});
-    
-        axios.put(`http://localhost:4000/user/${user._id}/address/${addressId}`, address, { withCredentials: true })
-            .then((response) => {
-                if(response) {
-                    setTrigger(prevValue => !prevValue);
-                    openSnackbar();
-                    setAddressForm(false);
-                    setEditAddress(null);
-                    setAdrsChange(false);
-                }
-            })
-            .catch((error) => console.log(error))
+    function handleAddressSec(section) {
+        setAddressErrors(addressFields.reduce((acc, field) => ({ ...acc, [field]: '' }), {}))
+        setAddressValues(
+            section === 'add'
+                ? addressFields.reduce((acc, field) => ({ ...acc, [field]: '' }), {})
+                : user.addresses[section]
+        );
+        setAddressSec(section);
     }
 
-    function deleteAddress(e, addressId) {
+    function updateAddresses(e, addressId, method) {
         e.preventDefault();
-        axios.delete(`http://localhost:4000/user/${user._id}/address/${addressId}`, { withCredentials: true })
-            .then((response) => {
-                if (response) {
-                    setTrigger(prevValue => !prevValue);
-                    openSnackbar();
-                    setAdrsChange(false);
+        if (method !== 'delete') {
+            let error = false;
+            addressFields.forEach(field => {
+                if (addressValues[field] === '') {
+                    setAddressErrors((prevValues) => ({ ...prevValues, [field]: 'Required' }));
+                    error = true;
                 }
             })
-            .catch((error) => console.log(error))
+            if(error) return;
+        }
+        setStatus('submitting');
+        const url = `http://localhost:4000/user/${user._id}/address${addressId ? `/${addressId}` : ''}`;
+        const data = method === 'delete' ? {} : addressValues;
+
+        axios({
+            method,
+            url,
+            data,
+            withCredentials: true
+        })
+            .then((response) => {
+                if (response.data.errors) {
+                    openSnackbar('Changes could not be saved', 'error');
+                    if (method !== 'delete') setStatus('typing');
+                    return;
+                }
+                setTrigger(prevValue => !prevValue);
+                openSnackbar('Changes saved successfully', 'success');
+                setAddressSec('view');
+                setStatus('success');
+            })
+            .catch((error) => console.log(error));
     }
+
     return (
         <>
-            {!addressForm ?
-                <>
-                    <Stack direction='row'>
-                        <Typography variant='h4' mr='auto'>Addresses</Typography>
-                        <Button sx={{ textTransform: 'none' }} variant='contained' onClick={() => {
-                            setEditAddress(false);
-                            setAddressForm(true);
-                        }}>
-                            Add New Address
-                        </Button>
-                    </Stack>
-                    <Grid container mt={1} spacing={2}>
-                        {user.addresses.map(address => (
-                            <Grid item xs={4} key={address._id}>
-                                <Card elavation={2} sx={{ display: 'flex', flexDirection: 'column', height: '15em' }}>
-                                    <CardContent sx={{ mb: 'auto' }}>
-                                        <Typography maxHeight='3em' overflow='hidden' gutterBottom>
-                                            {address.area}
-                                        </Typography>
-                                        <Typography>{address.city}</Typography>
-                                        <Typography>{address.state}</Typography>
-                                        <Typography>{address.country}</Typography>
-                                        <Typography>{address.pincode}</Typography>
-                                    </CardContent>
-                                    <CardActions>
-                                        <IconButton onClick={() => {
-                                            setEditAddress(user.addresses.indexOf(address));
-                                            setAddressForm(true);
-                                        }}>
-                                            <EditIcon />
-                                        </IconButton>
-                                        <IconButton onClick={(e) => deleteAddress(e, address._id)}>
-                                            <DeleteIcon />
-                                        </IconButton>
-                                    </CardActions>
-                                </Card>
-                            </Grid>
-                        ))}
-                    </Grid>
-                </>
-                :
-                <>
-                    <Stack direction='row'>
-                        <Typography variant='h4' mr='auto'>
-                            {typeof editAddress !== 'number' ? 'Add New Address' : 'Edit Address'}
-                        </Typography>
-                        <Button
-                            sx={{ textTransform: 'none' }}
-                            variant='outlined'
-                            onClick={() => {
-                                setEditAddress(null);
-                                setAddressForm(false);
-                                setAdrsChange(false);
-                            }}
-                        >
-                            Back to Addresses
-                        </Button>
-                    </Stack>
-                    <Grid
-                        container
-                        component="form"
-                        noValidate
-                        autoComplete="off"
-                        onSubmit={typeof editAddress !== 'number' ? addAddress :
-                            (e) => updateAddress(e, user.addresses[editAddress]._id)}
-                        rowSpacing={3}
-                        columnSpacing={5}
-                        mt={1}
-                    >
-                        {fields.map(field => (
-                            <Grid item xs={6} key={field}>
-                                <TextField
-                                    label={startCase(field)}
-                                    fullWidth
-                                    defaultValue={typeof editAddress === 'number' ? user.addresses[editAddress][field] : ''}
-                                    onChange={() => setAdrsChange(true)}
-                                    inputRef={refs[field]}
-                                />
-                            </Grid>
-                        ))}
-                        <Grid item xs={12}>
-                            <Button
-                                variant="contained"
-                                disabled={!adrsChange}
-                                type='Submit'
-                            >
-                                {typeof editAddress !== 'number' ? 'Add Address' : 'Edit Address'}
-                            </Button>
+            <Stack direction='row'>
+                <Typography variant='h4' mr='auto' color='primary'>
+                    {addressSec === 'view' ? 'Addresses' : null}
+                    {addressSec === 'add' ? 'Add New Address' : null}
+                    {typeof addressSec === 'number' ? 'Edit Address' : null}
+                </Typography>
+                <Button
+                    sx={{ textTransform: 'none' }}
+                    variant='contained'
+                    onClick={() => {
+                        addressSec === 'view'
+                            ? handleAddressSec('add')
+                            : setAddressSec('view'); setStatus('success')
+                    }}
+                >
+                    {addressSec === 'view' ? 'Add New Address' : 'Back to Addresses'}
+                </Button>
+            </Stack>
+            {addressSec === 'view' ?
+                <Grid container mt={2} spacing={2}>
+                    {user.addresses.map(address => (
+                        <Grid item xs={4} key={address._id}>
+                            <Card elavation={2} sx={{ display: 'flex', flexDirection: 'column', height: '15em' }}>
+                                <CardContent sx={{ mb: 'auto' }}>
+                                    <Typography maxHeight='3em' overflow='hidden' gutterBottom>
+                                        {address.area}
+                                    </Typography>
+                                    <Typography>{address.city}</Typography>
+                                    <Typography>{address.state}</Typography>
+                                    <Typography>{address.country}</Typography>
+                                    <Typography>{address.pincode}</Typography>
+                                </CardContent>
+                                <CardActions>
+                                    <IconButton onClick={() => {
+                                        handleAddressSec(user.addresses.indexOf(address));
+                                    }}>
+                                        <EditIcon />
+                                    </IconButton>
+                                    <IconButton onClick={(e) => updateAddresses(e, address._id, 'delete')}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                    {status === 'submitting'
+                                        ? <CircularProgress sx={{ ml: 3 }} color='tertiary' size='2rem' />
+                                        : null
+                                    }
+                                </CardActions>
+                            </Card>
                         </Grid>
-                    </Grid>
-                </>
+                    ))}
+                </Grid>
+                :
+                <Card
+                    component="form"
+                    noValidate
+                    autoComplete="off"
+                    onSubmit={
+                        (e) => addressSec === 'add'
+                            ? updateAddresses(e, null, 'put')
+                            : updateAddresses(e, user.addresses[addressSec]._id, 'put')
+                    }
+                    sx={{ borderRadius: '0.5rem', mt: 2 }}
+                >
+                    <CardContent sx={{ px: 4, pb: 0, pt: 3 }}>
+                        <Grid
+                            container
+                            rowSpacing={3}
+                            columnSpacing={5}
+                        >
+                            {addressFields.map(field => (
+                                <Grid item xs={6} key={field}>
+                                    <TextField
+                                        color='tertiary'
+                                        label={startCase(field)}
+                                        name={field}
+                                        value={addressValues[field]}
+                                        onChange={handleChange}
+                                        required
+                                        fullWidth
+                                        error={addressErrors[field] !== ''}
+                                        helperText={addressErrors[field] ? addressErrors[field] : ' '}
+                                    />
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </CardContent>
+                    <CardActions sx={{ px: 4, py: 3 }}>
+                        <Button
+                            color='tertiary'
+                            variant="contained"
+                            disabled={status !== 'typing'}
+                            type='Submit'
+                        >
+                            {addressSec === 'add' ? 'Add Address' : 'Edit Address'}
+                        </Button>
+                        {status === 'submitting'
+                            ? <CircularProgress sx={{ ml: 3 }} color='tertiary' size='2rem' />
+                            : null
+                        }
+                    </CardActions>
+                </Card>
             }
         </>
     )
