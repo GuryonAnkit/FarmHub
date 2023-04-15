@@ -105,7 +105,7 @@ export const addReview = async (req, res) => {
         const product = await Product.findByIdAndUpdate(
             req.params.productId,
             { $push: { reviews: req.body } },
-            { new: true },
+            { new: true, runValidators: true },
         );
         res.json(product);
     } catch (err) {

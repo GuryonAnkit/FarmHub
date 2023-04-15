@@ -51,8 +51,8 @@ export default function User({
     user,
     profSec,
     setProfSec,
-    addressForm,
-    setAddressForm,
+    addressSec,
+    setAddressSec,
     userTab,
     setUserTab,
     openSnackbar
@@ -72,7 +72,7 @@ export default function User({
                     >
                         {user.role === 'admin' ? <StyledTab label="Dashboard" {...a11yProps(0)} /> : null}
                         <StyledTab label="Profile" {...a11yProps(1)} onClick={() => setProfSec(true)} />
-                        <StyledTab label="Addresses" {...a11yProps(2)} onClick={() => setAddressForm(false)} />
+                        <StyledTab label="Addresses" {...a11yProps(2)} onClick={() => setAddressSec('view')} />
                         <StyledTab label="Orders" {...a11yProps(3)} />
                     </Tabs>
                     <TabPanel value={userTab} index={0}>
@@ -92,8 +92,8 @@ export default function User({
                             setTrigger={setTrigger}
                             user={user}
                             openSnackbar={openSnackbar}
-                            addressForm={addressForm}
-                            setAddressForm={setAddressForm}
+                            addressSec={addressSec}
+                            setAddressSec={setAddressSec}
                         />
                     </TabPanel>
                     <TabPanel value={userTab} index={3}>
