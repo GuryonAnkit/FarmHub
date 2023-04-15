@@ -8,6 +8,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import { Link } from "react-router-dom";
+import Box from "@mui/material/Box";
 
 //Content array for cards
 const profiles = [
@@ -18,7 +19,7 @@ const profiles = [
   },
   {
     name: "ADITYA KUMAR MISHRA",
-    image: "/Images/demo.jpg",
+    image: "/Images/aditya.jpeg",
     twitter: "https://twitter.com/Aditya_m037",
   },
   {
@@ -28,7 +29,7 @@ const profiles = [
   },
   {
     name: "ANKIT KUMAR MISHRA",
-    image: "/Images/demo.jpg",
+    image: "/Images/ankit.jpeg",
     twitter: "#",
   },
 ];
@@ -63,9 +64,107 @@ const AboutUs = () => {
         on our website. We are proud of being able to contribute a little the
         vast domain like agricultural.
       </Typography>
+
+      {/* Mission section start */}
+      <Typography
+        variant="h4"
+        fontWeight="500"
+        color="cropHeading.main"
+        gutterBottom
+      >
+        OUR MISSION
+      </Typography>
+      <Grid spacing={1} sx={{ display: "flex" }}>
+        <Grid sx={{ display: "flex", flexDirection: "column", width: "85%" }}>
+          <Typography color="primary" fontFamily="Roboto" fontWeight="bold">
+            Our mission at FarmHub is to empower farmers and agricultural
+            communities by providing them with the tools and resources they need
+            to thrive. We aim to connect farmers with the latest technology,
+            research, and best practices in sustainable agriculture, while also
+            fostering a strong community of like-minded individuals who are
+            passionate about building a better future for our planet. Through
+            our platform, we hope to create a more resilient and sustainable
+            food system that benefits everyone.
+          </Typography>
+          <br />
+          <Typography color="primary" fontFamily="Roboto" fontWeight="bold">
+            Farmhub aims is to revolutionize the way the world thinks about
+            agriculture. We believe that by harnessing the power of technology
+            and innovation, we can create a more sustainable and equitable food
+            system for all. Our platform connects farmers with the resources
+            they need to succeed, from cutting-edge research and best practices
+            to a supportive community of peers. By working together, we can
+            build a brighter future for our planet and its people
+          </Typography>
+        </Grid>
+
+        <Box
+          sx={{
+            borderRadius: "1rem",
+            objectFit: "cover",
+            height: "20rem",
+          }}
+          component="img"
+          src="/Images/about-us-image.jpg"
+          width="25%"
+        />
+      </Grid>
+      {/* Mission section end */}
+
+      {/* Service Start*/}
+      <Typography
+        variant="h4"
+        fontWeight="500"
+        color="cropHeading.main"
+        gutterBottom
+      >
+        SERVICES
+      </Typography>
+      <Grid spacing={1} sx={{ display: "flex" }}>
+        <Box
+          sx={{
+            borderRadius: "1rem",
+            objectFit: "cover",
+            height: "20rem",
+          }}
+          component="img"
+          src="/Images/serice-about-us.jpg"
+          width="25%"
+        />
+        <Grid
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            width: "85%",
+            paddingLeft: "2%",
+            paddingTop: "5%"
+          }}
+        >
+          <Typography color="primary" fontFamily="Roboto" fontWeight="bold">
+            1. Agricultral products
+          </Typography>
+          <br />
+          <Typography color="primary" fontFamily="Roboto" fontWeight="bold">
+            2. Place of Information
+          </Typography>
+          <br />
+
+          <Typography color="primary" fontFamily="Roboto" fontWeight="bold">
+            3. Place for relaiters
+          </Typography>
+          <br />
+
+          <Typography color="primary" fontFamily="Roboto" fontWeight="bold">
+            4. Friend of a new farmer
+          </Typography>
+        </Grid>
+      </Grid>
+      {/* Service end*/}
+
+      {/* Profiles section start */}
       <Typography
         pt={7}
-        variant="h5"
+        variant="h4"
         fontWeight="500"
         fontFamily="Roboto"
         color="cropHeading.main"
@@ -109,6 +208,7 @@ const AboutUs = () => {
           </Grid>
         ))}
       </Grid>
+      {/* Profiles section end */}
     </Container>
   );
 };

@@ -95,7 +95,7 @@ export const addAddress = async (req, res) => {
         const user = await User.findByIdAndUpdate(
             req.params.userId,
             { $push: { "addresses": req.body } },
-            { new: true }
+            { new: true, runValidators: true }
         );
         res.json(user);
     } catch (err) {
@@ -108,7 +108,7 @@ export const updateAddress = async (req, res) => {
         const user = await User.findOneAndUpdate(
             { _id: req.params.userId, "addresses._id": req.params.addressId },
             { $set: { "addresses.$": req.body } },
-            { new: true }
+            { new: true, runValidators: true }
         );
         res.json(user);
     } catch (err) {
@@ -121,7 +121,7 @@ export const deleteAddress = async (req, res) => {
         const user = await User.findOneAndUpdate(
             { _id: req.params.userId, "addresses._id": req.params.addressId },
             { $pull: { addresses: { _id: req.params.addressId } } },
-            { new: true }
+            { new: true, runValidators: true }
         );
         res.json(user);
     } catch (err) {
@@ -141,11 +141,11 @@ export const addToCart = async (req, res) => {
         const updatedProduct = await Product.findByIdAndUpdate(
             req.body.product,
             { $inc: { quantity: -req.body.quantity } },
-            { new: true });
+            { new: true, runValidators: true });
         const user = await User.findByIdAndUpdate(
             req.params.userId,
             { $push: { cart: req.body } },
-            { new: true });
+            { new: true, runValidators: true });
         res.json({ product: updatedProduct, user: user });
     } catch (err) {
         res.send(err);
@@ -170,11 +170,11 @@ export const updateInCart = async (req, res) => {
         const updatedProduct = await Product.findByIdAndUpdate(
             req.params.productId,
             { $inc: { quantity: -quantity } },
-            { new: true });
+            { new: true, runValidators: true });
         const updatedUser = await User.findOneAndUpdate(
             { _id: req.params.userId, "cart.product": req.params.productId },
             { $set: { "cart.$.quantity": req.body.quantity } },
-            { new: true });
+            { new: true, runValidators: true });
         res.json({ product: updatedProduct, user: updatedUser })
     } catch (err) {
         res.send(err);
@@ -190,11 +190,11 @@ export const deletefromCart = async (req, res) => {
         const product = await Product.findByIdAndUpdate(
             req.params.productId,
             { $inc: { quantity: +quantity } },
-            { new: true });
+            { new: true, runValidators: true });
         const updatedUser = await User.findOneAndUpdate(
             { _id: req.params.userId, "cart.product": req.params.productId },
             { $pull: { cart: { product: req.params.productId } } },
-            { new: true });
+            { new: true, runValidators: true });
         res.json({ user: updatedUser, product: product });
     } catch (err) {
         res.send(err);
