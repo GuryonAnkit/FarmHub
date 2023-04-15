@@ -55,3 +55,12 @@ export const orderList = async (req, res) => {
         res.send(err);
     }
 }
+
+export const userOrder = async (req, res) => {
+    try {
+        const orders = await Order.find({user:req.params.userId});
+        res.json(orders);
+    } catch (err) {
+        res.send(err);
+    }
+}
