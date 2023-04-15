@@ -96,7 +96,7 @@ export default function Cart(props) {
                         ))}
                     </Box>
                     <Box width='25em' bottom={0} py={2} position='fixed' backgroundColor='white'>
-                        <Button size='large' fullWidth sx={{ textTransform: 'none' }} color='tertiary' variant='contained'>
+                        <Button component={RouterLink} to="/checkOut" size='large' fullWidth sx={{ textTransform: 'none' }} color='tertiary' variant='contained'>
                             Checkout Now (₹{(props.user.cartTotal).toLocaleString(undefined, { maximumFractionDigits: 2 })})
                         </Button>
                     </Box>

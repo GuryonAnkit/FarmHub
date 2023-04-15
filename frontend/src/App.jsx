@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, forwardRef } from 'react';
 import axios from 'axios'
 import './App.css';
 import '@fontsource/roboto/300.css';
@@ -17,11 +17,15 @@ import CropDetails from './components/Crops/CropDetails';
 import ShopHome from './components/Shop/ShopHome';
 import AboutUs from './components/Layout/About us/AboutUs';
 import User from './components/User/User';
+import CheckOutSteps from './components/Cart/CheckOutSteps';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import grey from '@mui/material/colors/grey';
 import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
+import MuiAlert from '@mui/material/Alert';
 
+const Alert = forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const theme = createTheme({
     palette: {
@@ -93,19 +97,21 @@ export default function App() {
 
     // -------------------------------- Snackbar --------------------------------
 
-    const [userSnackbar, setUserSnackbar] = useState({
+    const [snackbar, setSnackbar] = useState({
+        content: '',
+        severity: '',
         open: false,
         vertical: 'bottom',
         horizontal: 'right',
     });
-    const { vertical, horizontal, open } = userSnackbar;
+    const { vertical, horizontal, open, content, severity } = snackbar;
 
-    const userCreatedSnackbar = () => {
-        setUserSnackbar({ ...userSnackbar, open: true });
+    const openSnackbar = (content, severity) => {
+        setSnackbar({ ...snackbar, open: true, content: content, severity: severity });
     };
 
-    const closeUserSnackbar = () => {
-        setUserSnackbar({ ...userSnackbar, open: false });
+    const closeSnackbar = () => {
+        setSnackbar({ ...snackbar, open: false });
     };
 
     return (
@@ -141,8 +147,15 @@ export default function App() {
                             setAddressForm={setAddressForm}
                             userTab={userTab}
                             setUserTab={setUserTab}
+                            openSnackbar={openSnackbar}
                         />}
                     />
+                    <Route path='/checkOut' element={
+                        <CheckOutSteps
+                            user={user}
+                        />}
+                    />
+
                 </Route>
                 <Route path='/shop' element={
                     <>
@@ -174,7 +187,7 @@ export default function App() {
                     />
                 </Route>
                 <Route path='/signup' element={
-                    <SignUp setTrigger={setTrigger} userCreatedSnackbar={userCreatedSnackbar} />}
+                    <SignUp setTrigger={setTrigger} openSnackbar={openSnackbar} />}
                 />
             </Routes>
             <Snackbar
@@ -184,9 +197,9 @@ export default function App() {
                 }}
                 open={open}
                 autoHideDuration={6000}
-                onClose={closeUserSnackbar}>
-                <Alert onClose={closeUserSnackbar} severity="success" sx={{ width: '100%' }}>
-                    Account created successfully
+                onClose={closeSnackbar}>
+                <Alert onClose={closeSnackbar} severity={severity} sx={{ width: '100%' }}>
+                    {content}
                 </Alert>
             </Snackbar>
         </ThemeProvider>
