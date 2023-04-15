@@ -11,7 +11,8 @@ import { styled } from '@mui/material/styles';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
 import Shipping from "./Shipping";
 import ConfirmOrder from "./ConfirmOrder";
-import Payment from "./Payment";
+import Payment from "./Payment"; 
+import OrderSuccess from "./OrderSuccess.jsx"; 
 
 
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
@@ -21,13 +22,13 @@ const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
     [`&.${stepConnectorClasses.active}`]: {
         [`& .${stepConnectorClasses.line}`]: {
             backgroundImage:
-                'linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)',
+            'linear-gradient( 136deg, #00635A 0%, #00635A 50%, #00635A 100%)',
         },
     },
     [`&.${stepConnectorClasses.completed}`]: {
         [`& .${stepConnectorClasses.line}`]: {
             backgroundImage:
-                'linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)',
+            'linear-gradient( 136deg, #00635A 0%, #00635A 50%, #00635A 100%)',
         },
     },
     [`& .${stepConnectorClasses.line}`]: {
@@ -51,12 +52,12 @@ const ColorlibStepIconRoot = styled('div')(({ theme, ownerState }) => ({
     alignItems: 'center',
     ...(ownerState.active && {
         backgroundImage:
-            'linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)',
+            'linear-gradient( 136deg, #00635A 0%, #00635A 50%, #00635A 100%)',
         boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
     }),
     ...(ownerState.completed && {
         backgroundImage:
-            'linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)',
+            'linear-gradient( 136deg, #00635A 0%, #00635A 50%, #00635A 100%)',
     }),
 }));
 
@@ -76,9 +77,11 @@ function ColorlibStepIcon(props) {
     );
 }
 
+
 const CheckoutSteps = ({user}) => {
-
-
+    
+    
+    const [addressIndex, setAddressIndex] = useState(0)
 
 
 
@@ -113,7 +116,7 @@ const [activeStep, setActiveStep] = useState(0)
                     >
                         <StepLabel
                             style={{
-                                color: activeStep >= index ? "tomato" : "rgba(0, 0, 0, 0.649)",
+                                color: activeStep >= index ? "tertiary.main" : "rgba(0, 0, 0, 0.649)",
                             }}
                             StepIconComponent={ColorlibStepIcon}
                         >
@@ -124,12 +127,12 @@ const [activeStep, setActiveStep] = useState(0)
             </Stepper>
             {
                 activeStep === 0 ?
-                    <Shipping user={user} setActiveStep={setActiveStep} />
+                    <Shipping user={user} setActiveStep={setActiveStep} addressIndex={addressIndex} setAddressIndex={setAddressIndex} />
                     : null
             }
             {
                 activeStep === 1 ?
-                    <ConfirmOrder user={user} setActiveStep={setActiveStep} />
+                    <ConfirmOrder user={user} setActiveStep={setActiveStep}  shippingAddress={user.addresses[addressIndex]}  />
                     : null}
             {
                 activeStep === 2 ?
