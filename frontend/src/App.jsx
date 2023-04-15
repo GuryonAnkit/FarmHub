@@ -17,6 +17,7 @@ import CropDetails from './components/Crops/CropDetails';
 import ShopHome from './components/Shop/ShopHome';
 import AboutUs from './components/Layout/About us/AboutUs';
 import User from './components/User/User';
+import CheckOutSteps from './components/Cart/CheckOutSteps';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import grey from '@mui/material/colors/grey';
 import Snackbar from '@mui/material/Snackbar';
@@ -149,6 +150,12 @@ export default function App() {
                             openSnackbar={openSnackbar}
                         />}
                     />
+                    <Route path='/checkOut' element={
+                        <CheckOutSteps
+                            user={user}
+                        />}
+                    />
+
                 </Route>
                 <Route path='/shop' element={
                     <>
