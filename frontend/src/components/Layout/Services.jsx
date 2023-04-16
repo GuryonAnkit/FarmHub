@@ -6,7 +6,7 @@ const Services = () => {
   return (
     <Container sx={{ mt: { xs: 6, sm: 8 } }}>
       <Typography color="primary" fontFamily="Roboto" fontWeight="bold" variant="h1" sx={{paddingBottom:"4%", paddingTop:"4%", paddingLeft:"7.5%"}}>
-        UNDER DEVLOPMENT⚠️
+        UNDER DEVLOPMENT ⚠️
       </Typography>
     </Container>
   );
