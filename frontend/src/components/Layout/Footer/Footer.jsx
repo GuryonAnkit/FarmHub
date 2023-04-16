@@ -137,7 +137,7 @@ export default function BasicGrid() {
                         </Grid>
                         <Grid item xs={12}>
                             <Typography variant='subtitle2' align='center'>
-                                2023 All Rights Reserved,Developed By 4A's
+                                2023 All Rights Reserved,Developed By FarmHub
                             </Typography>
                         </Grid>
                     </Grid>
