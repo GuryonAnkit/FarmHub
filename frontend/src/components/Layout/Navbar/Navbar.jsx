@@ -252,22 +252,22 @@ function NavBar({
                                     onClose={handleCloseUserMenu}
                                     disableScrollLock={true}
                                 >
-                                    {user.role === 'admin' ?
-                                        <MenuItem component={Link} to='/user' onClick={() => setUserTab(0)} key="Dashboard">
-                                            <Typography textAlign="center">Dashboard</Typography>
-                                        </MenuItem>
-                                        :
-                                        null
-                                    }
-                                    <MenuItem component={Link} to='/user' onClick={() => setUserTab(1)} key="Profile">
+                                    <MenuItem component={Link} to='/user' onClick={() => setUserTab(0)} key="Profile">
                                         <Typography textAlign="center">Profile</Typography>
                                     </MenuItem>
-                                    <MenuItem component={Link} to='/user' onClick={() => setUserTab(3)} key="Orders">
+                                    <MenuItem component={Link} to='/user' onClick={() => setUserTab(2)} key="Orders">
                                         <Typography textAlign="center">Orders</Typography>
                                     </MenuItem>
                                     <MenuItem onClick={() => { signOut(); handleCloseUserMenu() }}>
                                         <Typography textAlign="center">Sign Out</Typography>
                                     </MenuItem>
+                                    {user.role === 'admin' ?
+                                        <MenuItem component={Link} to='/user' onClick={() => setUserTab(3)} key="Dashboard">
+                                            <Typography textAlign="center">Dashboard</Typography>
+                                        </MenuItem>
+                                        :
+                                        null
+                                    }
                                 </Menu>
                             </>
                             : null

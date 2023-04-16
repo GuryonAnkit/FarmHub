@@ -259,7 +259,7 @@ export default function Product({
                             </Tabs>
                         </Box>
                         <TabPanel value={value} index={0}>
-                            <Typography>{product.description}</Typography>
+                            <Typography sx={{ whiteSpace: 'pre-wrap' }}>{product.description}</Typography>
                         </TabPanel>
                         <TabPanel value={value} index={1}>
                             {user ?

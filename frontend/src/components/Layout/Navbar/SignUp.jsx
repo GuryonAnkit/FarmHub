@@ -142,6 +142,7 @@ export default function SignUp({ setTrigger, openSnackbar }) {
                                     {startCase(field.name)}
                                 </Typography>
                                 <TextFieldx
+                                    required
                                     value={signUpInfo[field.name]}
                                     onChange={handleChange}
                                     name={field.name}

@@ -12,8 +12,6 @@ import Link from '@mui/material/Link';
 import Chip from '@mui/material/Chip';
 import Divider from '@mui/material/Divider';
 
-
-
 export default function Order() {
 
     const { orderId } = useParams();

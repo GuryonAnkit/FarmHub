@@ -11,9 +11,7 @@ import { styled } from '@mui/material/styles';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
 import Shipping from "./Shipping";
 import ConfirmOrder from "./ConfirmOrder";
-import Payment from "./Payment"; 
-import OrderSuccess from "./OrderSuccess.jsx"; 
-
+import Payment from "./Payment";
 
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
     [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -22,13 +20,13 @@ const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
     [`&.${stepConnectorClasses.active}`]: {
         [`& .${stepConnectorClasses.line}`]: {
             backgroundImage:
-            'linear-gradient( 136deg, #00635A 0%, #00635A 50%, #00635A 100%)',
+                'linear-gradient( 136deg, #00635A 0%, #00635A 50%, #00635A 100%)',
         },
     },
     [`&.${stepConnectorClasses.completed}`]: {
         [`& .${stepConnectorClasses.line}`]: {
             backgroundImage:
-            'linear-gradient( 136deg, #00635A 0%, #00635A 50%, #00635A 100%)',
+                'linear-gradient( 136deg, #00635A 0%, #00635A 50%, #00635A 100%)',
         },
     },
     [`& .${stepConnectorClasses.line}`]: {
@@ -77,13 +75,9 @@ function ColorlibStepIcon(props) {
     );
 }
 
+const CheckoutSteps = ({ user, setTrigger }) => {
 
-const CheckoutSteps = ({user}) => {
-    
-    
     const [addressIndex, setAddressIndex] = useState(0)
-
-
 
     const steps = [
         {
@@ -100,14 +94,11 @@ const CheckoutSteps = ({user}) => {
         },
     ];
 
-const [activeStep, setActiveStep] = useState(0)
-
-
-
+    const [activeStep, setActiveStep] = useState(0)
 
     return (
         <Container sx={{ mt: { xs: 7, sm: 11 } }}>
-            <Stepper alternativeLabel activeStep={activeStep}  connector={<ColorlibConnector />} >
+            <Stepper alternativeLabel activeStep={activeStep} connector={<ColorlibConnector />} >
                 {steps.map((item, index) => (
                     <Step
                         key={index}
@@ -132,11 +123,16 @@ const [activeStep, setActiveStep] = useState(0)
             }
             {
                 activeStep === 1 ?
-                    <ConfirmOrder user={user} setActiveStep={setActiveStep}  shippingAddress={user.addresses[addressIndex]}  />
+                    <ConfirmOrder user={user} setActiveStep={setActiveStep} shippingAddress={user.addresses[addressIndex]} />
                     : null}
             {
                 activeStep === 2 ?
-                    <Payment user={user} setActiveStep={setActiveStep} />
+                    <Payment 
+                        user={user}
+                        setTrigger={setTrigger} 
+                        setActiveStep={setActiveStep} 
+                        shippingAddress={user.addresses[addressIndex]}
+                    />
                     : null
             }
         </Container>

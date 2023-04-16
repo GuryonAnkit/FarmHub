@@ -16,7 +16,7 @@ export const createOrder = async (req, res) => {
                 tax: subtotal * 0.18,
                 total: subtotal + (subtotal * 0.18) + (subtotal > 1500 ? 0 : 60),
                 user: req.params.userId,
-                address: req.body.address
+                address: req.body
             });
             newOrders.push(newOrder);
         }
@@ -63,7 +63,9 @@ export const orderList = async (req, res) => {
 
 export const userOrder = async (req, res) => {
     try {
-        const orders = await Order.find({ user: req.params.userId }).populate('product');
+        const orders = await Order.find({ user: req.params.userId })
+            .populate('product')
+            .sort({ createdAt: -1 });
         res.json(orders);
     } catch (err) {
         res.send(err);

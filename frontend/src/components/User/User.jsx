@@ -70,15 +70,12 @@ export default function User({
                         aria-label="Vertical tabs example"
                         sx={{ borderRight: 1, borderColor: 'divider', width: '15%' }}
                     >
-                        {user.role === 'admin' ? <StyledTab label="Dashboard" {...a11yProps(0)} /> : null}
-                        <StyledTab label="Profile" {...a11yProps(1)} onClick={() => setProfSec(true)} />
-                        <StyledTab label="Addresses" {...a11yProps(2)} onClick={() => setAddressSec('view')} />
-                        <StyledTab label="Orders" {...a11yProps(3)} />
+                        <StyledTab label="Profile" {...a11yProps(0)} onClick={() => setProfSec(true)} />
+                        <StyledTab label="Addresses" {...a11yProps(1)} onClick={() => setAddressSec('view')} />
+                        <StyledTab label="Orders" {...a11yProps(2)} />
+                        {user.role === 'admin' ? <StyledTab label="Dashboard" {...a11yProps(3)} /> : null}
                     </Tabs>
                     <TabPanel value={userTab} index={0}>
-                        <Dashboard />
-                    </TabPanel>
-                    <TabPanel value={userTab} index={1}>
                         <Profile
                             setTrigger={setTrigger}
                             user={user}
@@ -87,7 +84,7 @@ export default function User({
                             setProfSec={setProfSec}
                         />
                     </TabPanel>
-                    <TabPanel value={userTab} index={2}>
+                    <TabPanel value={userTab} index={1}>
                         <Addresses
                             setTrigger={setTrigger}
                             user={user}
@@ -96,9 +93,15 @@ export default function User({
                             setAddressSec={setAddressSec}
                         />
                     </TabPanel>
-                    <TabPanel value={userTab} index={3}>
+                    <TabPanel value={userTab} index={2}>
                         <Orders user={user} />
                     </TabPanel>
+                    {user.role === 'admin' ?
+                        <TabPanel value={userTab} index={3}>
+                            <Dashboard />
+                        </TabPanel>
+                        : null
+                    }
                 </Box>
             </Container>
         );
