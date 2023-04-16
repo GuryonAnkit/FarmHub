@@ -1,6 +1,5 @@
 import express from 'express';
 import bodyparser from 'body-parser';
-import fileUpload from  "express-fileupload";
 import connectDB from './config/database';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
@@ -10,19 +9,15 @@ import cors from 'cors';
 import userRoutes from './routes/userRoutes';
 import productRoutes from './routes/productRoutes';
 import orderRoutes from './routes/orderRoutes';
-require('dotenv').config({ path: './config/config.env'});
+require('dotenv').config({ path: './config/config.env' });
 const app = express();
 
 // mongo connection
 connectDB();
 
 // bodyparser setup
-app.use(express.json({limit: "150mb", extended: true}))
-app.use(express.urlencoded({limit: "150mb", extended: true, parameterLimit: 50000}))
-app.use(bodyparser.urlencoded({ extended: true }));
-app.use(bodyparser.json());
-
-app.use(fileUpload());
+app.use(bodyparser.json({ limit: "150mb", extended: true }))
+app.use(bodyparser.urlencoded({ limit: "150mb", extended: true, parameterLimit: 50000 }))
 
 // cors
 const corsOptions = {

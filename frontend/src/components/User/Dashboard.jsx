@@ -53,7 +53,7 @@ const Dashboard = () => {
                 setOrders(response.data);
                 setTotalPrice(0);
                 response.data.forEach((item) => {
-                    setTotalPrice((value) => value + item.totalAmount);
+                    setTotalPrice((value) => value + item.total);
                 });
             })
             .catch((err) => console.log(err));

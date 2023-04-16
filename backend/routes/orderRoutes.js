@@ -8,7 +8,7 @@ import {
 
 const orderRoutes = (app) => {
 
-    app.route('/order')
+    app.route('/order/:userId')
         .post(createOrder);
     
     app.route('/orders')

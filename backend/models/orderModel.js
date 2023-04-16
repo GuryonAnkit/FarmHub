@@ -5,7 +5,10 @@ const Schema = mongoose.Schema;
 const orderSchema = new Schema({
     product: { type: Schema.Types.ObjectId, ref: 'Product', required: true },
     quantity: { type: Number, required: true },
-    totalAmount: { type: Number, required: true },
+    subtotal: { type: Number, required: true },
+    tax: { type: Number, required: true },
+    shippingCharges: { type: Number, required: true },
+    total: { type: Number, required: true },
     status: {
         type: String,
         enum: [

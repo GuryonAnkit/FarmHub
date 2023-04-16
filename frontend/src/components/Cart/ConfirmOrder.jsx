@@ -38,25 +38,24 @@ const ConfirmOrder = ({ user, setActiveStep, shippingAddress }) => {
                             width: "100%",
                             border: 1,
                             borderColor: "secondary.main",
-                            borderRadius: "1rem",
                             boxSizing: "border-box"
                         }}>
                         <Box ml={3} mb={2} mt={2} display='flex' alignItems='center'>
-                            <Typography color="tertiary.main">Name:</Typography>
-                            <Typography color="primary.dark" ml={2}>{user.name}</Typography>
+                            <Typography color="tertiary.main" fontWeight='bold'>Name:</Typography>
+                            <Typography ml={2}>{user.name}</Typography>
                         </Box>
                         <Box ml={3} mb={2} display='flex' alignItems='center'>
-                            <Typography color="tertiary.main">Phone:</Typography>
-                            <Typography color="primary.dark" ml={2}>{user.phoneNumber}</Typography>
+                            <Typography color="tertiary.main" fontWeight='bold'>Phone:</Typography>
+                            <Typography ml={2}>{user.phoneNumber}</Typography>
                         </Box>
                         <Box ml={3} mb={2} display='flex' alignItems='flex-start'>
-                            <Typography color="tertiary.main">Address:</Typography>
+                            <Typography color="tertiary.main" fontWeight='bold'>Address:</Typography>
                             <Box display='flex' flexDirection='column' justifyContent='center' ml={2} >
-                                <Typography color="primary.dark" >{shippingAddress.area}</Typography>
-                                <Typography color="primary.dark" >{shippingAddress.city}</Typography>
-                                <Typography color="primary.dark" >{shippingAddress.state}</Typography>
-                                <Typography color="primary.dark" >{shippingAddress.country}</Typography>
-                                <Typography color="primary.dark" >{shippingAddress.pincode}</Typography>
+                                <Typography>{shippingAddress.area}</Typography>
+                                <Typography>{shippingAddress.city}</Typography>
+                                <Typography>{shippingAddress.state}</Typography>
+                                <Typography>{shippingAddress.country}</Typography>
+                                <Typography>{shippingAddress.pincode}</Typography>
                             </Box>
                         </Box>
                     </Card>
@@ -68,7 +67,13 @@ const ConfirmOrder = ({ user, setActiveStep, shippingAddress }) => {
 
 
                             <Link component={RouterLink} to={`/shop/product/${item.product._id}`} underline='none'>
-                                <Card sx={{ display: 'flex', width: '100%', marginBottom: '2rem', backgroundColor: "primary.main", borderRadius: "1rem" }}>
+                                <Card 
+                                    sx={{ 
+                                        display: 'flex', 
+                                        width: '100%', 
+                                        marginBottom: '2rem', 
+                                        backgroundColor: "primary.main"
+                                    }}>
                                     <CardMedia
                                         component="img"
                                         sx={{ width: 80, padding: 2 }}
@@ -98,31 +103,38 @@ const ConfirmOrder = ({ user, setActiveStep, shippingAddress }) => {
 
                 <Grid item xs={5} className="orderSummary">
                     <Typography variant="h5" mt={4} mb={2} color="cropHeading.main">Order Summery</Typography>
-                    <Card sx={{ borderRadius:"1rem"}}>
-                        <CardContent>
-                            <Box display="flex" justifyContent='space-between'>
-                                <Typography variant="subtitle2" fontSize="1rem" mt={2} color="primary.dark">Subtotal:</Typography>
-                                <Typography variant="subtitle2" fontSize="1rem" mt={2} color="tertiary.main">₹{subtotal}</Typography>
-
+                    <Card sx={{ minWidth: 275 }}>
+                        <CardContent sx={{
+                            p: 3,
+                            "&:last-child": {
+                                pb: 3,
+                            },
+                        }}>
+                            <Typography variant='h6' gutterBottom>Total Summary</Typography>
+                            <Box display='flex'>
+                                <Typography mr='auto'>Subtotal:</Typography>
+                                <Typography color="tertiary.main" fontWeight='bold'>
+                                    ₹{(subtotal).toLocaleString(undefined, { maximumFractionDigits: 2 })}
+                                </Typography>
                             </Box>
-                            <Box display="flex" justifyContent='space-between'>
-                                <Typography variant="subtitle2" fontSize="1rem" mt={2} color="primary.dark">Shipping Charges:</Typography>
-                                <Typography variant="subtitle2" fontSize="1rem" mt={2} color="tertiary.main">₹{shippingCharges}</Typography>
-
+                            <Box display='flex' mt={1}>
+                                <Typography mr='auto'>Shipping Charges:</Typography>
+                                <Typography color="tertiary.main" fontWeight='bold'>
+                                    ₹{(shippingCharges).toLocaleString(undefined, { maximumFractionDigits: 2 })}
+                                </Typography>
                             </Box>
-                            <Box display="flex" justifyContent='space-between'>
-                                <Typography variant="subtitle2" fontSize="1rem" mt={2} color="primary.dark">GST:</Typography>
-                                <Typography variant="subtitle2" fontSize="1rem" mt={2} color="tertiary.main">18%(₹{tax})</Typography>
-
+                            <Box display='flex' mt={1}>
+                                <Typography mr='auto'>GST(18%):</Typography>
+                                <Typography color="tertiary.main" fontWeight='bold'>
+                                    ₹{(tax).toLocaleString(undefined, { maximumFractionDigits: 2 })}
+                                </Typography>
                             </Box>
-                        </CardContent>
-
-                        <Divider variant="middle" />
-
-                        <CardContent>
-                            <Box display="flex"  justifyContent='space-between'>
-                                <Typography variant="h6" mt={2} color="primary.dark">Total :-</Typography>
-                                <Typography variant="h6" mt={2} color="tertiary.main">₹{totalPrice}</Typography>
+                            <Divider sx={{ mt: 1 }} />
+                            <Box display='flex' mt={1}>
+                                <Typography mr='auto'>Total:</Typography>
+                                <Typography color="tertiary.main" fontWeight='bold'>
+                                    ₹{(totalPrice).toLocaleString(undefined, { maximumFractionDigits: 2 })}
+                                </Typography>
                             </Box>
                         </CardContent>
                     </Card>

@@ -3,24 +3,25 @@ import User from '../models/userModel';
 
 export const createOrder = async (req, res) => {
     try {
-        const user = await User.findById(req.body.user).populate('cart.product');
-        let newOrder;
+        console.log(req.body);
+        const user = await User.findById(req.params.userId).populate('cart.product');
         let newOrders = [];
         for (const item of user.cart) {
-            newOrder = new Order({
+            const subtotal = item.product.price * item.quantity;
+            const newOrder = new Order({
                 product: item.product._id,
                 quantity: item.quantity,
-                totalAmount: (item.product.price * item.quantity),
-                user: req.body.user,
+                subtotal: subtotal,
+                shippingCharges: subtotal > 1500 ? 0 : 60,
+                tax: subtotal * 0.18,
+                total: subtotal + (subtotal * 0.18) + (subtotal > 1500 ? 0 : 60),
+                user: req.params.userId,
                 address: req.body.address
-            })
+            });
             newOrders.push(newOrder);
         }
         const orders = await Order.insertMany(newOrders, { populate: "product" });
-        await User.findByIdAndUpdate(
-            req.body.user,
-            { $set: { cart: [] } },
-            { new: true, runVaidators: true });
+        await User.findByIdAndUpdate(req.params.userId, { $set: { cart: [] } }, { runVaidators: true });
         res.json(orders);
     } catch (err) {
         res.send(err);
@@ -45,7 +46,7 @@ export const updateOrder = async (req, res) => {
             req.params.orderId,
             { status: req.body.status, dateDelivered: dd },
             { new: true, runValidators: true });
-        res.json(order);                
+        res.json(order);
     } catch (err) {
         res.send(err);
     }
@@ -62,7 +63,7 @@ export const orderList = async (req, res) => {
 
 export const userOrder = async (req, res) => {
     try {
-        const orders = await Order.find({user:req.params.userId}).populate('product');
+        const orders = await Order.find({ user: req.params.userId }).populate('product');
         res.json(orders);
     } catch (err) {
         res.send(err);
