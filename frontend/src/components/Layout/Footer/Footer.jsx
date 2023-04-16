@@ -68,7 +68,7 @@ export default function BasicGrid() {
                             <List>
                                 <ListItem disablePadding> <ListItemText primary="Invertis University Bareilly , Uttar Pradesh" /> </ListItem>
                                 <ListItem disablePadding> <ListItemText primary="Email: farm4hub@gmail.com" /> </ListItem>
-                                <ListItem disablePadding> <ListItemText primary="Phone: +1 1123 456 780" /> </ListItem>
+                                {/* <ListItem disablePadding> <ListItemText primary="Phone: +1 1123 456 780" /> </ListItem> */}
                             </List>
                         </Grid>
                         <Grid item xs={12} sm={6} md={4}>
@@ -108,8 +108,8 @@ export default function BasicGrid() {
                         </Grid>
                         <Grid item xs={12} sm={6} md={4}>
                             <Typography variant='h6' gutterBottom>SOCIAL LINKS</Typography>
-                            <Link to='https://www.linkedin.com/in/farm-hub-6843a1272/'><LinkedInIcon fontSize="large" color="primary" /></Link>
-                            <Link to=''><InstagramIcon sx={{ ml: 1 }} fontSize="large" color="primary" /></Link>
+                            <Link component={RouterLink} to='https://www.linkedin.com/in/farm-hub-6843a1272/'><LinkedInIcon fontSize="large" color="primary" /></Link>
+                            <Link component={RouterLink} to='https://www.instagram.com/farm.hub4/'><InstagramIcon sx={{ ml: 1 }} fontSize="large" color="primary" /></Link>
                             {/* <Box mt={5}>
                                 <FormControl sx={{ minWidth: '8em' }}>
                                     <InputLabel id="demo-simple-select-label" sx={{ color: 'primary.main' }}>
