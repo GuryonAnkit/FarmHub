@@ -17,6 +17,8 @@ import SignUp from './components/Layout/Navbar/SignUp';
 import CropDetails from './components/Crops/CropDetails';
 import ShopHome from './components/Shop/ShopHome';
 import AboutUs from './components/Layout/About us/AboutUs';
+import TermsAndConditions from './components/Layout/Terms And privacy Policy/TermsAndConditions';
+import PrivacyPolicy from './components/Layout/Terms And privacy Policy/PrivacyPolicy';
 import User from './components/User/User';
 import Order from './components/User/Order';
 import CheckOutSteps from './components/Cart/CheckOutSteps';
@@ -141,6 +143,8 @@ export default function App() {
                     <Route path='crops/:season' element={<CropDetails />} />
                     <Route path='services' element={<Services/>} />
                     <Route path='about-us' element={<AboutUs />} />
+                    <Route path='termsAndConditions' element={<TermsAndConditions />} />
+                    <Route path='privacyPolicy' element={<PrivacyPolicy />} />
                     <Route path='user' element={
                         <User
                             setTrigger={setTrigger}

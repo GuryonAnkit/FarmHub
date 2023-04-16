@@ -95,12 +95,12 @@ export default function BasicGrid() {
                                     </Link> 
                                 </ListItem>
                                 <ListItem disablePadding> 
-                                    <Link component={RouterLink} to='' color='primary.main' underline='hover'>
+                                    <Link component={RouterLink} to='/termsAndConditions' color='primary.main' underline='hover'>
                                         <ListItemText primary="Terms & Conditions"/>
                                     </Link> 
                                 </ListItem>
                                 <ListItem disablePadding> 
-                                    <Link component={RouterLink} to='' color='primary.main' underline='hover'>
+                                    <Link component={RouterLink} to='/privacyPolicy' color='primary.main' underline='hover'>
                                         <ListItemText primary="Privacy Policy"/>
                                     </Link> 
                                 </ListItem>
@@ -110,7 +110,7 @@ export default function BasicGrid() {
                             <Typography variant='h6' gutterBottom>SOCIAL LINKS</Typography>
                             <Link to='https://www.linkedin.com/in/farm-hub-6843a1272/'><LinkedInIcon fontSize="large" color="primary" /></Link>
                             <Link to=''><InstagramIcon sx={{ ml: 1 }} fontSize="large" color="primary" /></Link>
-                            <Box mt={5}>
+                            {/* <Box mt={5}>
                                 <FormControl sx={{ minWidth: '8em' }}>
                                     <InputLabel id="demo-simple-select-label" sx={{ color: 'primary.main' }}>
                                         Language
@@ -133,7 +133,7 @@ export default function BasicGrid() {
                                     </LanguageSelect>
                                     <LanguageIcon sx={{ position: 'absolute', top: '0.64em', left: '0.5em' }} />
                                 </FormControl>
-                            </Box>
+                            </Box> */}
                         </Grid>
                         <Grid item xs={12}>
                             <Typography variant='subtitle2' align='center'>
