@@ -67,7 +67,7 @@ const AboutUs = () => {
 
       {/* Mission section start */}
       <Typography
-        variant="h4"
+        variant="h5"
         fontWeight="500"
         color="cropHeading.main"
         gutterBottom
@@ -113,7 +113,7 @@ const AboutUs = () => {
 
       {/* Service Start*/}
       <Typography
-        variant="h4"
+        variant="h5"
         fontWeight="500"
         color="cropHeading.main"
         gutterBottom
@@ -164,7 +164,7 @@ const AboutUs = () => {
       {/* Profiles section start */}
       <Typography
         pt={7}
-        variant="h4"
+        variant="h5"
         fontWeight="500"
         fontFamily="Roboto"
         color="cropHeading.main"
