@@ -16,7 +16,7 @@ import Button from '@mui/material/Button';
 import Badge from '@mui/material/Badge';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import SearchIcon from '@mui/icons-material/Search';
+// import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const mainPages = [
@@ -217,9 +217,9 @@ function NavBar({
                             width: 0,
                             justifyContent: 'flex-end',
                         }}>
-                        <IconButton size='large'>
+                        {/* <IconButton size='large'>
                             <SearchIcon color="tertiary" fontSize='inherit' />
-                        </IconButton>
+                        </IconButton> */}
                         {user ?
                             <>
                                 <IconButton onClick={() => setCartDrawer(true)} size='large'>

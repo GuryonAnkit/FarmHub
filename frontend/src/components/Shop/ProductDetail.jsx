@@ -79,12 +79,14 @@ export default function Product({
     useEffect(() => {
         axios.get(`http://localhost:4000/product/${id}`, { withCredentials: true })
             .then((response) => {
-                setProduct(response.data)
-                if (prevId !== id)
-                    setImage(response.data.images[0]);
-                setPrevId(id);
-                if (response.data.currentUserReview)
-                    setRating(response.data.currentUserReview.rating);
+                if(!response.data.errors) {
+                    setProduct(response.data)
+                    if (prevId !== id)
+                        setImage(response.data.images[0]);
+                    setPrevId(id);
+                    if (response.data.currentUserReview)
+                        setRating(response.data.currentUserReview.rating);
+                }
             })
             .catch((err) => console.log(err));
     }, [id, prevId, updateTrigger])

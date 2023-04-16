@@ -102,17 +102,30 @@ export default function Cart({
                         ))}
                     </Box>
                     <Box width='25em' bottom={0} py={2} position='fixed' backgroundColor='white'>
-                        <Button
-                            component={RouterLink}
-                            to="/checkOut"
-                            onClick={() => setCartDrawer(false)}
-                            size='large'
-                            fullWidth sx={{ textTransform: 'none' }}
-                            color='tertiary'
-                            variant='contained'
-                        >
-                            Checkout Now (₹{(user.cartTotal).toLocaleString(undefined, { maximumFractionDigits: 2 })})
-                        </Button>
+                        {user.cart.length !== 0 ?
+                            <Button
+                                component={RouterLink}
+                                to="/checkOut"
+                                onClick={() => setCartDrawer(false) }
+                                size='large'
+                                fullWidth sx={{ textTransform: 'none' }}
+                                color='tertiary'
+                                variant='contained'
+                            >
+                                Checkout Now (₹{(user.cartTotal).toLocaleString(undefined, { maximumFractionDigits: 2 })})
+                            </Button>
+                            : 
+                            <Button
+                                component={RouterLink}
+                                to="/shop"
+                                onClick={() => setCartDrawer(false)}
+                                size='large'
+                                fullWidth sx={{ textTransform: 'none' }}
+                                color='tertiary'
+                                variant='contained'
+                            >
+                                Shop Now
+                            </Button>}
                     </Box>
                 </Box>
             </Drawer>
