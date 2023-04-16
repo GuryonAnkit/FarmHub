@@ -5,8 +5,6 @@
 /.pnp
 .pnp.js
 
-/public/Images/main-video.mp4
-
 # testing
 /coverage
 

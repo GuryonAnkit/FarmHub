@@ -21,21 +21,6 @@ const VideoBox = styled(Box)({
         objectFit: 'cover',
         zIndex: 0,
         filter: 'brightness(80%)',
-    },
-    '&::before': {
-        content: '""',
-        display: 'block',
-        position: 'absolute',
-        left: 0,
-        top: 0,
-        width: '100%',
-        height: '100%',
-        opacity: 0.8,
-        backgroundImage: `url(/Images/combine.jpg)`,
-        filter: 'brightness(50%)',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center center',
-        backgroundSize: 'cover'
     }
 });
 
@@ -90,12 +75,12 @@ export default function Home() {
     return (
         <Box sx={{ mt: { xs: 6, sm: 8 } }}>
             <VideoBox minHeight='30em' height={{ xs: 'calc(100vh - 3rem)', md: 'calc(100vh - 4rem)' }}>
-                {/* <video autoPlay muted loop>
+                <video autoPlay muted loop>
                     <source
                         src="/Images/main-video.mp4"
                         type="video/mp4"
                     />
-                </video> */}
+                </video>
                 <CaptionBox
                     alignItems='center'
                     justifyContent='center'
