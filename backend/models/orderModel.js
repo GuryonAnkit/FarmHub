@@ -19,7 +19,13 @@ const orderSchema = new Schema({
     },
     dateDelivered: { type: Date },
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    address: { type: String, required: true },
+    address: {
+        area: { type: String, required: true },
+        city: { type: String, required: true },
+        state: { type: String, required: true },
+        country: { type: String, required: true },
+        pincode: { type: String, required: true },
+    },
 }, { timestamps: true });
 
 module.exports = mongoose.model('Order', orderSchema);

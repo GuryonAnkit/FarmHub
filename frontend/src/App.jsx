@@ -1,4 +1,4 @@
-import { useState, useEffect, forwardRef } from 'react';
+ import { useState, useEffect, forwardRef } from 'react';
 import axios from 'axios'
 import './App.css';
 import '@fontsource/roboto/300.css';
@@ -10,6 +10,7 @@ import Navbar from './components/Layout/Navbar/Navbar'
 import Home from './components/Layout/Home/Home';
 import Footer from "./components/Layout/Footer/Footer"
 import Crops from './components/Crops/Crops'
+import Services from './components/Layout/Services'
 import ProductList from './components/Shop/ProductList';
 import ProductDetail from './components/Shop/ProductDetail';
 import SignUp from './components/Layout/Navbar/SignUp';
@@ -19,6 +20,7 @@ import AboutUs from './components/Layout/About us/AboutUs';
 import TermsAndConditions from './components/Layout/Terms And privacy Policy/TermsAndConditions';
 import PrivacyPolicy from './components/Layout/Terms And privacy Policy/PrivacyPolicy';
 import User from './components/User/User';
+import Order from './components/User/Order';
 import CheckOutSteps from './components/Cart/CheckOutSteps';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import grey from '@mui/material/colors/grey';
@@ -139,10 +141,11 @@ export default function App() {
                     <Route index element={<Home />} />
                     <Route path='crops' element={<Crops />} />
                     <Route path='crops/:season' element={<CropDetails />} />
+                    <Route path='services' element={<Services/>} />
                     <Route path='about-us' element={<AboutUs />} />
                     <Route path='termsAndConditions' element={<TermsAndConditions />} />
                     <Route path='privacyPolicy' element={<PrivacyPolicy />} />
-                    <Route path='/user' element={
+                    <Route path='user' element={
                         <User
                             setTrigger={setTrigger}
                             user={user}
@@ -155,13 +158,9 @@ export default function App() {
                             openSnackbar={openSnackbar}
                         />}
                     />
-                    <Route path='/checkOut' element={
-                        <CheckOutSteps
-                            user={user}
-                        />}
-                    />
-
-                    <Route path='/orderSuccess' element={<OrderSuccess/>}
+                    <Route path='order/:orderId' element={<Order user={user} />} />
+                    <Route path='checkOut' element={<CheckOutSteps user={user} />} />
+                    <Route path='orderSuccess' element={<OrderSuccess/>}
                     />
 
                 </Route>
@@ -205,7 +204,7 @@ export default function App() {
                     horizontal
                 }}
                 open={open}
-                autoHideDuration={6000}
+                autoHideDuration={3000}
                 onClose={closeSnackbar}>
                 <Alert onClose={closeSnackbar} severity={severity} sx={{ width: '100%' }}>
                     {content}

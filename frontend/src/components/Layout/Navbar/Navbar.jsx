@@ -26,7 +26,7 @@ const mainPages = [
     },
     {
         name: 'Services',
-        link: '/'
+        link: '/services'
     },
     {
         name: 'Shop',
