@@ -36,6 +36,10 @@ const mainPages = [
 
 const shopPages = [
     {
+        name: 'Shop Home',
+        link: '/shop'
+    },
+    {
         name: 'Fertilizers',
         link: '/shop/products/category/Fertilizers'
     },
