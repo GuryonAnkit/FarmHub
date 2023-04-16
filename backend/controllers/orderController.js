@@ -17,6 +17,10 @@ export const createOrder = async (req, res) => {
             newOrders.push(newOrder);
         }
         const orders = await Order.insertMany(newOrders, { populate: "product" });
+        await User.findByIdAndUpdate(
+            req.body.user,
+            { $set: { cart: [] } },
+            { new: true, runVaidators: true });
         res.json(orders);
     } catch (err) {
         res.send(err);
@@ -50,6 +54,15 @@ export const updateOrder = async (req, res) => {
 export const orderList = async (req, res) => {
     try {
         const orders = await Order.find({});
+        res.json(orders);
+    } catch (err) {
+        res.send(err);
+    }
+}
+
+export const userOrder = async (req, res) => {
+    try {
+        const orders = await Order.find({user:req.params.userId}).populate('product');
         res.json(orders);
     } catch (err) {
         res.send(err);
