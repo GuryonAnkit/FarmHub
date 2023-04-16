@@ -17,11 +17,13 @@ import CropDetails from './components/Crops/CropDetails';
 import ShopHome from './components/Shop/ShopHome';
 import AboutUs from './components/Layout/About us/AboutUs';
 import User from './components/User/User';
+import Order from './components/User/Order';
 import CheckOutSteps from './components/Cart/CheckOutSteps';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import grey from '@mui/material/colors/grey';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import OrderSuccess from './components/Cart/OrderSuccess';
 
 const Alert = forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -137,7 +139,7 @@ export default function App() {
                     <Route path='crops' element={<Crops />} />
                     <Route path='crops/:season' element={<CropDetails />} />
                     <Route path='about-us' element={<AboutUs />} />
-                    <Route path='/user' element={
+                    <Route path='user' element={
                         <User
                             setTrigger={setTrigger}
                             user={user}
@@ -150,10 +152,9 @@ export default function App() {
                             openSnackbar={openSnackbar}
                         />}
                     />
-                    <Route path='/checkOut' element={
-                        <CheckOutSteps
-                            user={user}
-                        />}
+                    <Route path='order/:orderId' element={<Order user={user} />} />
+                    <Route path='checkOut' element={<CheckOutSteps user={user} />} />
+                    <Route path='orderSuccess' element={<OrderSuccess/>}
                     />
 
                 </Route>
@@ -167,6 +168,7 @@ export default function App() {
                             setLoginDialog={setLoginDialog}
                             updateInCart={updateInCart}
                             removeFromCart={removeFromCart}
+                            setUserTab={setUserTab}
                         />
                         <Outlet />
                         <Footer />
